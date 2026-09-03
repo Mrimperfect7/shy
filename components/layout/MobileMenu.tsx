@@ -1,6 +1,7 @@
-﻿"use client";
+"use client";
 import Link from "next/link";
-import { X, Instagram, MessageCircle, Heart } from "lucide-react";
+import { X, MessageCircle, Heart } from "lucide-react";
+import InstagramIcon from "@/components/shared/InstagramIcon";
 import { useEffect } from "react";
 
 const LINKS = [
@@ -80,7 +81,7 @@ export default function MobileMenu({ onClose, isLoggedIn = false }: { onClose: (
             rel="noopener"
             className="flex items-center gap-1.5 text-xs tracking-wider uppercase font-sans text-[#5E564F] hover:text-[#C5A059] transition-colors"
           >
-            <Instagram size={15} />
+            <InstagramIcon size={15} />
             <span>@shyn.ish</span>
           </Link>
           <Link

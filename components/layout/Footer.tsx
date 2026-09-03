@@ -1,5 +1,6 @@
-﻿import Link from "next/link";
-import { Mail, Phone, Instagram, ArrowUpRight, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import Link from "next/link";
+import { Mail, Phone, ArrowUpRight, ShieldCheck, Sparkles, Truck } from "lucide-react";
+import InstagramIcon from "@/components/shared/InstagramIcon";
 
 const COLUMNS = [
   {
@@ -98,7 +99,7 @@ export default function Footer() {
                 aria-label="Instagram @shyn.ish"
                 className="flex items-center gap-2 text-xs tracking-widest uppercase font-sans text-[#C5A059] hover:text-white transition-colors"
               >
-                <Instagram size={18} />
+                <InstagramIcon size={18} />
                 <span>Follow @shyn.ish</span>
                 <ArrowUpRight size={14} />
               </a>

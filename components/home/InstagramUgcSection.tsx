@@ -1,6 +1,7 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
-import { Instagram, Play, ArrowUpRight } from "lucide-react";
+import { Play, ArrowUpRight } from "lucide-react";
+import InstagramIcon from "@/components/shared/InstagramIcon";
 
 interface InstagramUgcSectionProps {
   reels?: Array<{
@@ -71,7 +72,7 @@ export default function InstagramUgcSection({ reels }: InstagramUgcSectionProps)
             className="btn-outline flex items-center gap-2 text-xs"
             data-cursor="INSTA"
           >
-            <Instagram size={16} />
+            <InstagramIcon size={16} />
             <span>Follow @shyn.ish</span>
             <ArrowUpRight size={14} />
           </Link>
