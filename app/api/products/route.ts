@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import prisma from "@/lib/prisma";
 
+import { SHYNISH_CATALOG } from "@/lib/data/shynish-products";
+
 export const revalidate = 60;
 
 export async function GET(request: Request) {
@@ -39,8 +41,19 @@ export async function GET(request: Request) {
       where: whereClause,
       orderBy
     });
-    
-    const offer = await prisma.offerSettings.findUnique({ where: { id: "singleton" } });
+
+    const activeProducts = products.filter(p => p.slug !== "eshara-natural-hair-oil");
+    if (activeProducts.length === 0) {
+      let filtered = SHYNISH_CATALOG;
+      if (slugs) {
+        const list = slugs.split(",").map(s => s.trim()).filter(Boolean);
+        filtered = SHYNISH_CATALOG.filter(p => list.includes(p.slug));
+      }
+      return NextResponse.json({
+        products: filtered,
+        pageInfo: { hasNextPage: false, endCursor: null }
+      });
+    }
 
     // Format to match the previous NormalizedProduct type so the frontend doesn't break too much yet
     const normalizedProducts = products.map(p => {

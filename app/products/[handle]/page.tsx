@@ -1,4 +1,4 @@
-﻿import prisma from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import ProductCard from "@/components/shop/ProductCard";
@@ -12,15 +12,12 @@ import type { Metadata } from "next";
 import ProductViewTracker from "@/components/marketing/ProductViewTracker";
 import DOMPurify from "isomorphic-dompurify";
 
+import { SHYNISH_CATALOG } from "@/lib/data/shynish-products";
+
 export const revalidate = 60;
 
 export async function generateStaticParams() {
-  const products = await prisma.product.findMany({
-    select: { slug: true },
-    where: { status: "ACTIVE" },
-  });
-
-  return products.map((product) => ({
+  return SHYNISH_CATALOG.map((product) => ({
     handle: product.slug,
   }));
 }
@@ -28,9 +25,16 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: { params: Promise<{ handle: string }> }): Promise<Metadata> {
   const params = await props.params;
   const { handle } = params;
-  const product = await prisma.product.findUnique({
-    where: { slug: handle },
-  });
+  let product: any = null;
+  try {
+    product = await prisma.product.findUnique({
+      where: { slug: handle },
+    });
+  } catch {}
+
+  if (!product) {
+    product = SHYNISH_CATALOG.find((p) => p.slug === handle);
+  }
 
   if (!product) {
     return { title: "Product Not Found | SHYN.ISH" };
@@ -39,7 +43,7 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
   const productUrl = `${siteUrl}/products/${product.slug}`;
   const cleanDescription =
-    product.descriptionHtml.replace(/<[^>]*>?/gm, "").slice(0, 160) ||
+    (product.descriptionHtml || "").replace(/<[^>]*>?/gm, "").slice(0, 160) ||
     `Discover ${product.title} from SHYN.ISH. 18K PVD gold plated jewellery under ₹480.`;
 
   return {
@@ -53,14 +57,14 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
       description: cleanDescription,
       url: productUrl,
       siteName: "SHYN.ISH",
-      images: product.imageUrls.length > 0 ? [{ url: product.imageUrls[0], alt: product.title }] : [],
+      images: product.imageUrls?.length > 0 ? [{ url: product.imageUrls[0], alt: product.title }] : [],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
       title: `${product.title} | SHYN.ISH`,
       description: cleanDescription,
-      images: product.imageUrls.length > 0 ? [product.imageUrls[0]] : [],
+      images: product.imageUrls?.length > 0 ? [product.imageUrls[0]] : [],
     },
   };
 }
@@ -69,24 +73,43 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
   const params = await props.params;
   const { handle } = params;
 
-  const [rawProduct, relatedProducts, approvedReviews] = await Promise.all([
-    prisma.product.findUnique({
-      where: { slug: handle },
-      include: { category: true },
-    }),
-    prisma.product.findMany({
-      where: { status: "ACTIVE" },
-      take: 5,
-    }),
-    prisma.review.findMany({
-      where: { status: "APPROVED" },
-      orderBy: { createdAt: "desc" },
-      take: 6,
-    }),
-  ]);
+  let rawProduct: any = null;
+  let relatedProducts: any[] = [];
+  let approvedReviews: any[] = [];
+
+  try {
+    const [dbProduct, dbRelated, dbReviews] = await Promise.all([
+      prisma.product.findUnique({
+        where: { slug: handle },
+        include: { category: true },
+      }),
+      prisma.product.findMany({
+        where: { status: "ACTIVE" },
+        take: 5,
+      }),
+      prisma.review.findMany({
+        where: { status: "APPROVED" },
+        orderBy: { createdAt: "desc" },
+        take: 6,
+      }),
+    ]);
+    if (dbProduct && dbProduct.slug !== "eshara-natural-hair-oil") {
+      rawProduct = dbProduct;
+    }
+    relatedProducts = dbRelated.filter((p) => p.slug !== "eshara-natural-hair-oil" && p.slug !== handle);
+    approvedReviews = dbReviews;
+  } catch {}
 
   if (!rawProduct) {
-    notFound();
+    const fallbackItem = SHYNISH_CATALOG.find((p) => p.slug === handle);
+    if (!fallbackItem) {
+      notFound();
+    }
+    rawProduct = fallbackItem;
+  }
+
+  if (relatedProducts.length === 0) {
+    relatedProducts = SHYNISH_CATALOG.filter((p) => p.slug !== handle).slice(0, 4);
   }
 
   const finalPrice = rawProduct.price;

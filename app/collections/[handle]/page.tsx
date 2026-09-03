@@ -1,7 +1,8 @@
-﻿import prisma from "@/lib/prisma";
+import prisma from "@/lib/prisma";
 import ProductCard from "@/components/shop/ProductCard";
 import Link from "next/link";
 import TrustBar from "@/components/home/TrustBar";
+import { SHYNISH_CATALOG } from "@/lib/data/shynish-products";
 import type { Metadata } from "next";
 
 export const revalidate = 60;
@@ -69,28 +70,43 @@ export default async function CollectionPage(props: { params: Promise<{ handle: 
       orderBy: { createdAt: "desc" },
     });
   } else {
-    const category = await prisma.category.findUnique({
-      where: { slug: handle },
-      include: {
-        products: {
-          where: { status: "ACTIVE" },
-          orderBy: { createdAt: "desc" },
+    try {
+      const category = await prisma.category.findUnique({
+        where: { slug: handle },
+        include: {
+          products: {
+            where: { status: "ACTIVE" },
+            orderBy: { createdAt: "desc" },
+          },
         },
-      },
-    });
+      });
 
-    if (category) {
-      collectionTitle = category.name;
-      collectionDescription = category.description || "18K PVD Gold Plated & 316L Stainless Steel everyday jewellery.";
-      products = category.products;
-    } else {
+      if (category) {
+        collectionTitle = category.name;
+        collectionDescription = category.description || "18K PVD Gold Plated & 316L Stainless Steel everyday jewellery.";
+        products = category.products.filter((p) => p.slug !== "eshara-natural-hair-oil");
+      }
+    } catch {}
+
+    if (!collectionTitle) {
       collectionTitle = handle.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
       collectionDescription = "Explore the curated SHYN.ISH collection.";
-      products = await prisma.product.findMany({
-        where: { status: "ACTIVE" },
-        include: { category: true },
-        take: 8,
-      });
+    }
+  }
+
+  // If DB returned no jewellery products, fall back to SHYNISH_CATALOG
+  if (products.length === 0) {
+    if (handle === "under-199") {
+      products = SHYNISH_CATALOG.filter((p) => p.price <= 199);
+    } else if (handle === "under-299") {
+      products = SHYNISH_CATALOG.filter((p) => p.price <= 299);
+    } else if (handle === "under-480") {
+      products = SHYNISH_CATALOG.filter((p) => p.price <= 480);
+    } else if (handle === "bestsellers") {
+      products = SHYNISH_CATALOG;
+    } else {
+      const matched = SHYNISH_CATALOG.filter((p) => p.category?.slug === handle || p.slug.includes(handle));
+      products = matched.length > 0 ? matched : SHYNISH_CATALOG;
     }
   }
 

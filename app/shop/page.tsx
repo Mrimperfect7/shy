@@ -83,12 +83,14 @@ function ShopSkeleton() {
 }
 
 import ShopClient from "@/components/shop/ShopClient";
+import { SHYNISH_CATALOG } from "@/lib/data/shynish-products";
 
 async function ShopContent() {
-  const [rawProducts, offer] = await Promise.all([
-    prisma.product.findMany({
+  let products: any[] = [];
+  try {
+    const rawProducts = await prisma.product.findMany({
       where: { status: "ACTIVE" },
-      orderBy: { createdAt: 'desc' },
+      orderBy: { createdAt: "desc" },
       select: {
         id: true,
         title: true,
@@ -99,32 +101,39 @@ async function ShopContent() {
         imageUrls: true,
         createdAt: true,
       },
-    }),
-    prisma.offerSettings.findUnique({ where: { id: "singleton" } })
-  ]);
+    });
 
-  const products = rawProducts.map(p => {
-    let finalPrice = p.price;
-    let finalCompareAtPrice = p.compareAtPrice;
-
-    if (offer?.isActive && (offer.href.includes(p.slug) || offer.href.includes("shop"))) {
-      finalPrice = offer.salePrice;
-      finalCompareAtPrice = offer.originalPrice;
+    const jewelleryProducts = rawProducts.filter((p) => p.slug !== "eshara-natural-hair-oil");
+    if (jewelleryProducts.length > 0) {
+      products = jewelleryProducts.map((p) => ({
+        id: p.id,
+        handle: p.slug,
+        title: p.title,
+        price: p.price.toString(),
+        compareAtPrice: p.compareAtPrice ? p.compareAtPrice.toString() : null,
+        featuredImage: p.imageUrls.length > 0 ? { url: p.imageUrls[0], altText: p.title } : null,
+        images: p.imageUrls.map((url) => ({ url, altText: p.title })),
+        availableForSale: p.inventory > 0,
+        variants: [{ id: p.id }],
+        createdAt: p.createdAt,
+      }));
     }
+  } catch {}
 
-    return {
+  if (products.length === 0) {
+    products = SHYNISH_CATALOG.map((p) => ({
       id: p.id,
       handle: p.slug,
       title: p.title,
-      price: finalPrice.toString(),
-      compareAtPrice: finalCompareAtPrice ? finalCompareAtPrice.toString() : null,
-      featuredImage: p.imageUrls.length > 0 ? { url: p.imageUrls[0], altText: p.title } : null,
-      images: p.imageUrls.map(url => ({ url, altText: p.title })),
-      availableForSale: p.inventory > 0,
+      price: p.price.toString(),
+      compareAtPrice: p.compareAtPrice ? p.compareAtPrice.toString() : null,
+      featuredImage: { url: p.imageUrls[0], altText: p.title },
+      images: p.images,
+      availableForSale: true,
       variants: [{ id: p.id }],
-      createdAt: p.createdAt
-    };
-  });
+      createdAt: new Date().toISOString(),
+    }));
+  }
 
   const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
   const shopUrl = `${siteUrl}/shop`;

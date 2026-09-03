@@ -1,4 +1,4 @@
-﻿import Hero3DSection from "@/components/home/Hero3DSection";
+import Hero3DSection from "@/components/home/Hero3DSection";
 import TrustBar from "@/components/home/TrustBar";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import CollectionStory3D from "@/components/home/CollectionStory3D";
@@ -13,6 +13,7 @@ import CustomerReviewsSection from "@/components/home/CustomerReviewsSection";
 import FinalCtaSection from "@/components/home/FinalCtaSection";
 import JewelleryChain from "@/components/3d/JewelleryChain";
 import prisma from "@/lib/prisma";
+import { SHYNISH_CATALOG } from "@/lib/data/shynish-products";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -31,12 +32,21 @@ export const metadata: Metadata = {
 export const revalidate = 60; // ISR cache revalidation window
 
 export default async function HomePage() {
-  // 1. Fetch real active products with category
-  const products = await prisma.product.findMany({
-    where: { status: "ACTIVE" },
-    include: { category: true },
-    orderBy: { createdAt: "desc" },
-  });
+  // 1. Fetch active products from DB if configured, but ignore any non-jewellery products
+  let products: any[] = [];
+  try {
+    const dbProducts = await prisma.product.findMany({
+      where: { status: "ACTIVE" },
+      include: { category: true },
+      orderBy: { createdAt: "desc" },
+    });
+    // Filter out any non-jewellery items so Eshara products are NEVER shown here
+    products = dbProducts.filter((p) => p.slug !== "eshara-natural-hair-oil" && p.category?.slug !== "hair-care");
+  } catch {}
+
+  if (products.length === 0) {
+    products = SHYNISH_CATALOG as any;
+  }
 
   // 2. Fetch active Instagram Reels
   const reels = await prisma.instagramReel.findMany({
