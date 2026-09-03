@@ -1,0 +1,618 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// ─── E-COMMERCE CORE ────────────────────────────────────────────────────────
+
+model Category {
+  id          String    @id @default(cuid())
+  name        String
+  slug        String    @unique
+  description String?
+  products    Product[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([slug])
+}
+
+model Product {
+  id              String      @id @default(cuid())
+  title           String
+  slug            String      @unique
+  descriptionHtml String      @db.Text
+  price           Float
+  compareAtPrice  Float?
+  inventory       Int         @default(0)
+  status          String      @default("ACTIVE") // ACTIVE, DRAFT
+  imageUrls       String[]    // Array of image URLs
+  categoryId      String?
+  category        Category?   @relation(fields: [categoryId], references: [id])
+  model3dUrl      String?
+  material        String?
+  plating         String?
+  careInstructions String?   @db.Text
+  dimensions      String?
+  orderItems      OrderItem[]
+  reviews         Review[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([slug])
+  @@index([categoryId])
+  @@index([status])
+  @@index([status, createdAt(sort: Desc)], map: "product_status_created_at_idx")
+  @@index([status, price], map: "product_status_price_idx")
+  @@index([title])
+}
+
+enum OrderStatus {
+  PENDING
+  PAID
+  SHIPPED
+  DELIVERED
+  CANCELLED
+  FAILED
+}
+
+model Order {
+  id              String      @id @default(cuid())
+  orderNumber     String      @unique // e.g. ESH-1001
+  customerEmail   String
+  customerName    String
+  customerPhone   String?
+  shippingAddress Json
+  totalAmount     Float
+  status          OrderStatus @default(PENDING)
+  paymentId       String?     // Payment reference / ID
+  orderItems      OrderItem[]
+  paymentAttempts PaymentAttempt[]
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+
+  @@index([orderNumber])
+  @@index([customerEmail])
+}
+
+model OrderItem {
+  id        String   @id @default(cuid())
+  orderId   String
+  order     Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId String
+  product   Product  @relation(fields: [productId], references: [id])
+  quantity  Int
+  price     Float    // Price at the time of purchase
+  createdAt DateTime @default(now())
+
+  @@index([orderId])
+  @@index([productId])
+}
+
+enum PaymentStatus {
+  PENDING
+  VERIFYING
+  PAID
+  FAILED
+  EXPIRED
+  MANUAL_REVIEW
+}
+
+model PaymentAttempt {
+  id                   String        @id @default(cuid())
+  orderId              String
+  order                Order         @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  amount               Float
+  currency             String        @default("INR")
+  method               String        @default("UPI")
+  status               PaymentStatus @default(PENDING)
+  transactionId        String?       @unique
+  paymentReference     String        @unique
+  verificationStatus   String?
+  verificationAttempts Int           @default(0)
+  verifiedAt           DateTime?
+  providerResponse     Json?
+  createdAt            DateTime      @default(now())
+  updatedAt            DateTime      @updatedAt
+
+  @@index([orderId])
+  @@index([transactionId])
+  @@index([paymentReference])
+  @@index([status])
+}
+
+// ─── USERS & AUTH ───────────────────────────────────────────────────────────
+
+enum UserRole {
+  SUPERADMIN
+  ADMIN
+  INFLUENCER
+  CUSTOMER
+}
+
+model User {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  passwordHash String
+  role         UserRole
+  name         String
+  isActive     Boolean     @default(true)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  influencer   Influencer?
+
+  @@index([email])
+}
+
+model PasswordResetToken {
+  id        String   @id @default(cuid())
+  email     String
+  otp       String
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@index([email])
+  @@index([otp])
+}
+
+// ─── INFLUENCER ───────────────────────────────────────────────────────────
+
+model Influencer {
+  id             String              @id @default(cuid())
+  userId         String              @unique
+  user           User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  instagramHandle String?
+  phone          String?
+  upiId          String?
+  commissionRate Float               @default(10) // percentage
+  totalSales     Float               @default(0)
+  totalOrders    Int                 @default(0)
+  totalCommission Float              @default(0)
+  notes          String?
+  coupons        Coupon[]
+  attributions   OrderAttribution[]
+  commissions    Commission[]
+  payouts        Payout[]
+  createdAt      DateTime            @default(now())
+  updatedAt      DateTime            @updatedAt
+
+  @@index([userId])
+}
+
+// ─── COUPON ───────────────────────────────────────────────────────────────
+
+enum DiscountType {
+  PERCENTAGE
+  FIXED_AMOUNT
+}
+
+enum CouponStatus {
+  ACTIVE
+  INACTIVE
+  EXPIRED
+}
+
+model Coupon {
+  id               String           @id @default(cuid())
+  code             String           @unique
+  influencerId     String?
+  influencer       Influencer?      @relation(fields: [influencerId], references: [id], onDelete: SetNull)
+  discountType     DiscountType
+  discountValue    Float            // percentage (e.g. 10 = 10%) or fixed amount in INR
+  minimumOrderValue Float?          // minimum cart value to apply
+  maximumDiscount  Float?           // cap for percentage discounts
+  expiryDate       DateTime?
+  usageLimit       Int?             // null = unlimited
+  usageCount       Int              @default(0)
+  status           CouponStatus     @default(ACTIVE)
+  attributions     OrderAttribution[]
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+
+  @@index([code])
+  @@index([influencerId])
+  @@index([status])
+}
+
+// ─── ORDER ATTRIBUTION ────────────────────────────────────────────────────
+
+model OrderAttribution {
+  id               String     @id @default(cuid())
+  shopifyOrderId   String     @unique // idempotency key
+  shopifyOrderName String?    // e.g. #1001
+  influencerId     String
+  influencer       Influencer @relation(fields: [influencerId], references: [id])
+  couponId         String?
+  coupon           Coupon?    @relation(fields: [couponId], references: [id])
+  couponCode       String
+  orderValue       Float      // total order value
+  discountValue    Float      // discount applied
+  netOrderValue    Float      // orderValue - discountValue
+  commissionRate   Float      // rate at time of order
+  commissionValue  Float      // calculated commission
+  currency         String     @default("INR")
+  refunded         Boolean    @default(false)
+  refundedAt       DateTime?
+  commission       Commission?
+  createdAt        DateTime   @default(now())
+
+  @@index([shopifyOrderId])
+  @@index([influencerId])
+  @@index([couponCode])
+}
+
+// ─── COMMISSION ───────────────────────────────────────────────────────────
+
+enum CommissionStatus {
+  PENDING
+  APPROVED
+  PAID
+  CANCELLED
+}
+
+model Commission {
+  id                 String           @id @default(cuid())
+  influencerId       String
+  influencer         Influencer       @relation(fields: [influencerId], references: [id])
+  orderAttributionId String           @unique
+  orderAttribution   OrderAttribution @relation(fields: [orderAttributionId], references: [id])
+  amount             Float
+  status             CommissionStatus @default(PENDING)
+  payoutId           String?
+  payout             Payout?          @relation(fields: [payoutId], references: [id])
+  createdAt          DateTime         @default(now())
+  approvedAt         DateTime?
+  paidAt             DateTime?
+
+  @@index([influencerId])
+  @@index([status])
+}
+
+// ─── PAYOUT ───────────────────────────────────────────────────────────────
+
+enum PayoutStatus {
+  PENDING
+  APPROVED
+  PAID
+}
+
+model Payout {
+  id           String       @id @default(cuid())
+  influencerId String
+  influencer   Influencer   @relation(fields: [influencerId], references: [id])
+  amount       Float
+  status       PayoutStatus @default(PENDING)
+  commissions  Commission[]
+  notes        String?
+  paidAt       DateTime?
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  @@index([influencerId])
+  @@index([status])
+}
+
+// ─── INSTAGRAM REELS ─────────────────────────────────────────────────────
+
+model InstagramReel {
+  id               String   @id @default(cuid())
+  instagramUrl     String
+  instagramMediaId String?  // extracted from URL
+  title            String?
+  description      String?
+  thumbnailUrl     String?  // custom thumbnail upload
+  displayOrder     Int      @default(0)
+  isPublished      Boolean  @default(false)
+  isFeatured       Boolean  @default(false)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  @@index([isPublished])
+  @@index([displayOrder])
+}
+
+// ─── INSTAGRAM SETTINGS ───────────────────────────────────────────────────
+
+model InstagramSettings {
+  id               String  @id @default("singleton")
+  instagramHandle  String  @default("@eshara_natural")
+  instagramUrl     String  @default("https://www.instagram.com/eshara_natural/")
+  reelsSectionEnabled Boolean @default(true)
+  sectionHeading   String  @default("THE ESHARA RITUAL")
+  sectionSubtitle  String  @default("Real rituals. Real stories. From our community.")
+  updatedAt        DateTime @updatedAt
+}
+
+// ─── INFLUENCER APPLICATIONS ──────────────────────────────────────────────
+
+enum ApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model InfluencerApplication {
+  id             String            @id @default(cuid())
+  name           String
+  email          String
+  instagramHandle String
+  followerCount  String
+  niche          String
+  phone          String?
+  message        String?
+  status         ApplicationStatus @default(PENDING)
+  reviewedAt     DateTime?
+  reviewNotes    String?
+  createdAt      DateTime          @default(now())
+  updatedAt      DateTime          @updatedAt
+
+  @@index([email])
+  @@index([status])
+}
+
+// ─── NEWSLETTER SUBSCRIBERS ───────────────────────────────────────────────
+
+model NewsletterSubscriber {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  isActive    Boolean  @default(true)
+  subscribedAt DateTime @default(now())
+
+  @@index([email])
+}
+
+// ─── JOURNAL ARTICLES ─────────────────────────────────────────────────────
+
+enum ArticleCategory {
+  AYURVEDIC_HAIR_CARE
+  BOTANICAL_INGREDIENTS
+  HAIR_CARE_RITUALS
+  NATURAL_BEAUTY
+}
+
+model JournalArticle {
+  id          String          @id @default(cuid())
+  slug        String          @unique
+  title       String
+  excerpt     String
+  content     String          @db.Text
+  category    ArticleCategory
+  imageUrl    String?
+  isPublished Boolean         @default(false)
+  publishedAt DateTime?
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@index([slug])
+  @@index([isPublished])
+}
+
+// ─── PROCESSED WEBHOOKS (IDEMPOTENCY) ────────────────────────────────────
+
+model ProcessedWebhook {
+  id        String   @id @default(cuid())
+  topic     String   // e.g. "orders/create"
+  shopifyId String   // shopify resource id
+  processedAt DateTime @default(now())
+
+  @@unique([topic, shopifyId])
+  @@index([shopifyId])
+}
+
+// ─── ANALYTICS SNAPSHOTS ─────────────────────────────────────────────────
+
+model AnalyticsSnapshot {
+  id           String   @id @default(cuid())
+  date         DateTime @db.Date
+  totalRevenue Float    @default(0)
+  totalOrders  Int      @default(0)
+  couponRevenue Float   @default(0)
+  couponOrders Int      @default(0)
+  createdAt    DateTime @default(now())
+
+  @@unique([date])
+  @@index([date])
+}
+
+// ─── SITE SETTINGS ────────────────────────────────────────────────────────
+
+model SiteSettings {
+  id                  String   @id @default("singleton")
+  announcementText    String   @default("FREE ALL-INDIA DELIVERY · JEWELLERY UNDER ₹480 · 18K PVD GOLD PLATED")
+  announcementEnabled Boolean  @default(true)
+  codEnabled          Boolean  @default(false)
+  whatsappNumber      String   @default("919876543210")
+  instagramHandle     String   @default("shyn.ish")
+  instagramUrl        String   @default("https://www.instagram.com/shyn.ish/")
+  shampooLaunched     Boolean  @default(false)
+  skincareLaunched    Boolean  @default(false)
+  updatedAt           DateTime @updatedAt
+}
+
+model HomepageSection {
+  id         String   @id @default(cuid())
+  sectionKey String   @unique
+  title      String?
+  subtitle   String?
+  mediaUrl   String?
+  ctaText    String?
+  ctaLink    String?
+  metadata   Json?
+  isActive   Boolean  @default(true)
+  updatedAt  DateTime @updatedAt
+
+  @@index([sectionKey])
+}
+
+// ─── OFFER SETTINGS ───────────────────────────────────────────────────────
+
+model OfferSettings {
+  id               String   @id @default("singleton")
+  label            String   @default("Onam Special")
+  emoji            String   @default("🪔")
+  title            String   @default("Eshara Ayurvedic Hair Oil")
+  subtitle         String   @default("Festive limited offer")
+  description      String   @default("21 handpicked botanicals. One ritual oil. Celebrate the harvest season with nourishment that has stood the test of time.")
+  originalPrice    Float    @default(799)
+  salePrice        Float    @default(490)
+  href             String   @default("/products/eshara-hair-oil")
+  cta              String   @default("Grab This Onam Deal")
+  countdownHours   Int      @default(48)
+  items            Json     @default("[\"100ml Signature Hair Oil\",\"21 Ayurvedic Botanicals\",\"Free festive gift wrapping\",\"Free shipping on this offer\"]")
+  imageUrl         String?  @default("/assets/layered-bottle.png")
+  isActive         Boolean  @default(true)
+  updatedAt        DateTime @updatedAt
+}
+
+// ─── CUSTOMER REFERRAL SYSTEM ──────────────────────────────────────────────
+
+model CustomerReferralProfile {
+  id                  String   @id @default(cuid())
+  email               String   @unique
+  shopifyCustomerId   String?  @unique
+  referralCode        String   @unique
+  referredByCode      String?  
+  hasSeenPopup        Boolean  @default(false)
+  successfulReferrals Int      @default(0)
+  pendingReferrals    Int      @default(0)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+  
+  referredBy          CustomerReferralProfile?   @relation("Referrals", fields: [referredByCode], references: [referralCode])
+  referredUsers       CustomerReferralProfile[]  @relation("Referrals")
+  rewards             ReferralReward[]
+
+  @@index([email])
+  @@index([referralCode])
+  @@index([referredByCode])
+}
+
+model ReferralSettings {
+  id                  String   @id @default("singleton")
+  isEnabled           Boolean  @default(true)
+  popupEnabled        Boolean  @default(true)
+  milestones          Json     // Array of { count: number, discountValue: number, discountType: 'PERCENTAGE' | 'FIXED_AMOUNT' }
+  maximumReward       Float    @default(20) // E.g., Up to 20% off
+  minimumOrderValue   Float?
+  rewardExpiryDays    Int      @default(90)
+  updatedAt           DateTime @updatedAt
+}
+
+model ReferralReward {
+  id            String   @id @default(cuid())
+  profileId     String
+  profile       CustomerReferralProfile @relation(fields: [profileId], references: [id])
+  milestone     Int      // e.g. 1, 3, 5
+  couponCode    String   @unique // Code valid in Shopify
+  discountValue Float
+  discountType  String   @default("PERCENTAGE")
+  isRedeemed    Boolean  @default(false)
+  createdAt     DateTime @default(now())
+
+  @@index([profileId])
+  @@index([couponCode])
+}
+
+// ─── CUSTOMER RESULTS (BEFORE & AFTER) ──────────────────────────────────────
+
+model CustomerResult {
+  id           String   @id @default(cuid())
+  imageUrl     String
+  description  String?
+  displayOrder Int      @default(0)
+  isPublished  Boolean  @default(false)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([isPublished])
+  @@index([displayOrder])
+}
+
+// ─── ADMIN ACTIVITY ────────────────────────────────────────────────────────
+
+model AdminActivity {
+  id          String   @id @default(cuid())
+  adminEmail  String
+  actionType  String
+  details     String?
+  createdAt   DateTime @default(now())
+
+  @@index([adminEmail])
+  @@index([createdAt])
+}
+
+// ─── PRODUCT REVIEWS ──────────────────────────────────────────────────────
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+model Review {
+  id          String       @id @default(cuid())
+  productId   String
+  product     Product      @relation(fields: [productId], references: [id], onDelete: Cascade)
+  reviewerName String
+  email       String
+  rating      Int          // 1-5
+  title       String
+  body        String       @db.Text
+  status      ReviewStatus @default(PENDING)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  @@index([productId])
+  @@index([status])
+}
+
+// ─── POLL SYSTEM ──────────────────────────────────────────────────────────────
+
+model Poll {
+  id        String       @id @default(cuid())
+  question  String
+  isActive  Boolean      @default(false)
+  options   PollOption[]
+  createdAt DateTime     @default(now())
+}
+
+model PollOption {
+  id        String   @id @default(cuid())
+  text      String
+  votes     Int      @default(0)
+  pollId    String
+  poll      Poll     @relation(fields: [pollId], references: [id], onDelete: Cascade)
+}
+
+// ─── SEO METADATA ─────────────────────────────────────────────────────────────
+
+model SeoMetadata {
+  id                 String   @id @default(cuid())
+  entityType         String   // "PRODUCT", "CATEGORY", "PAGE", "ARTICLE"
+  entityId           String   // e.g., product slug, category slug, or page path ("home", "about")
+  title              String?
+  description        String?
+  canonicalUrl       String?
+  robotsIndex        Boolean  @default(true)
+  robotsFollow       Boolean  @default(true)
+  ogTitle            String?
+  ogDescription      String?
+  ogImage            String?
+  twitterTitle       String?
+  twitterDescription String?
+  twitterImage       String?
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@unique([entityType, entityId])
+}
+
