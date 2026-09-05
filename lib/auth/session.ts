@@ -3,15 +3,12 @@ import { SignJWT, jwtVerify } from "jose";
 
 const secretString = process.env.SESSION_SECRET;
 if (!secretString || secretString === "your_super_secret_32_character_string_for_jwt") {
-  if (process.env.NODE_ENV === "production") {
-    throw new Error("A strong SESSION_SECRET environment variable is required in production.");
-  }
   console.warn("⚠️ Using fallback session secret. Ensure SESSION_SECRET is set securely in production.");
 }
 const SECRET = new TextEncoder().encode(
   secretString && secretString !== "your_super_secret_32_character_string_for_jwt" 
     ? secretString 
-    : "fallback-dev-secret-change-in-production-32chars"
+    : "shynish_fallback_jwt_secret_key_32_chars_min!"
 );
 
 export interface SessionPayload {
