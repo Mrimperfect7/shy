@@ -1,31 +1,32 @@
 import Link from "next/link";
 import JournalGrid from "@/components/home/JournalGrid";
 import type { Metadata } from "next";
+import { Sparkles } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "The Journal | Ayurvedic Hair Care Wisdom & Ayurvedic Herbs | Eshara Naturals",
-  description: "Explore Ayurvedic wisdom, traditional hair rituals, botanical ingredient spotlights, and natural beauty insights from Eshara Naturals.",
+  title: "The Jewellery Journal | Stacking Guides, Metallurgy & Care | SHYN.ISH",
+  description: "Explore jewellery styling guides, necklace stacking tutorials, 18K PVD gold metallurgy insights, and anti-tarnish care tips from SHYN.ISH.",
   alternates: {
     canonical: "/journal",
   },
   openGraph: {
-    title: "The Journal | Eshara Naturals",
-    description: "Thoughts on slow rituals, natural beauty, and the Ayurvedic botanical wisdom that guides us.",
+    title: "The Jewellery Journal | SHYN.ISH",
+    description: "Guides on effortless necklace stacking, fine metallurgy, and everyday shine.",
     url: "/journal",
-    siteName: "Eshara Naturals",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "The Journal - Eshara Naturals" }],
+    siteName: "SHYN.ISH",
+    images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "The Jewellery Journal - SHYN.ISH" }],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "The Journal | Eshara Naturals",
-    description: "Thoughts on slow rituals, natural beauty, and the Ayurvedic botanical wisdom that guides us.",
+    title: "The Jewellery Journal | SHYN.ISH",
+    description: "Guides on effortless necklace stacking, fine metallurgy, and everyday shine.",
     images: ["/og-image.jpg"],
   },
 };
 
 export default function JournalPage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
 
   const breadcrumbLd = {
     "@context": "https://schema.org",
@@ -49,18 +50,27 @@ export default function JournalPage() {
   const blogLd = {
     "@context": "https://schema.org",
     "@type": "Blog",
-    name: "Eshara Naturals Botanical Journal",
-    description: "Insights into Ayurveda, natural hair care rituals, and botanical transparency.",
+    name: "The SHYN.ISH Jewellery Journal",
+    description: "Jewellery styling, necklace stacking rules, 18K PVD metallurgy, and care guides.",
     url: `${siteUrl}/journal`,
     publisher: {
       "@type": "Organization",
-      name: "Eshara Naturals",
-      logo: `${siteUrl}/assets/logo.png`
+      name: "SHYN.ISH",
+      logo: `${siteUrl}/assets/eshara-logo-whitebg.png`
     }
   };
 
+  const categories = [
+    "Material Science",
+    "Styling Guides",
+    "Jewellery Care",
+    "Stacking 101",
+    "Gifting Stories",
+    "Behind The Bench"
+  ];
+
   return (
-    <div className="pt-6 lg:pt-10 min-h-screen" style={{ background: "var(--ivory)" }}>
+    <div className="pt-6 lg:pt-10 min-h-screen bg-[#FAF8F5]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
@@ -69,25 +79,37 @@ export default function JournalPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogLd) }}
       />
+      
+      {/* Editorial Header */}
       <div className="max-w-4xl mx-auto px-6 lg:px-12 pt-12 pb-16 text-center">
-        <p className="section-eyebrow justify-center mb-6">Editorial</p>
-        <h1 className="font-serif text-4xl lg:text-5xl mb-8" style={{ color: "var(--charcoal)" }}>The Journal</h1>
-        <p className="font-sans text-base leading-relaxed mx-auto max-w-xl" style={{ color: "var(--text-secondary)" }}>
-          Thoughts on slow rituals, natural beauty, and the botanical wisdom that guides us.
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A059]/10 text-[#C5A059] text-[11px] font-sans font-semibold tracking-[0.2em] uppercase mb-4">
+          <Sparkles size={12} />
+          <span>Editorial & Styling</span>
+        </div>
+        <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl mb-6 text-[#141312] leading-[1.1]">
+          The Jewellery Journal
+        </h1>
+        <p className="font-sans text-base sm:text-lg leading-relaxed mx-auto max-w-xl text-[#5E564F]">
+          Notes on modern metallurgy, the art of effortless chain stacking, and caring for waterproof everyday jewellery.
         </p>
       </div>
 
       <JournalGrid />
 
-      {/* Categories */}
-      <section className="py-10 lg:py-20 border-t" style={{ borderColor: "var(--border)", background: "#fff" }}>
-        <div className="max-w-8xl mx-auto px-6 lg:px-12">
-          <h2 className="font-serif text-2xl mb-8" style={{ color: "var(--charcoal)" }}>Explore by Category</h2>
-          <div className="flex flex-wrap gap-4">
-            {["Ayurvedic Hair Care", "Botanical Ingredients", "Hair Care Rituals", "Brand Story", "Founder's Note"].map(cat => (
-              <Link key={cat} href={`/journal?category=${encodeURIComponent(cat)}`} className="btn-outline text-xs px-4 py-2">
+      {/* Categories Strip */}
+      <section className="py-12 lg:py-20 border-t border-[#C5A059]/20 bg-white">
+        <div className="max-w-7xl mx-auto px-6 lg:px-12 text-center">
+          <h2 className="font-serif text-2xl mb-6 text-[#141312]">
+            Explore by Topic
+          </h2>
+          <div className="flex flex-wrap justify-center gap-3">
+            {categories.map((cat) => (
+              <span
+                key={cat}
+                className="px-4 py-2 rounded-full border border-[#C5A059]/30 bg-[#FAF8F5] text-xs font-sans font-medium text-[#141312] hover:bg-[#C5A059] hover:text-white transition-all cursor-pointer"
+              >
                 {cat}
-              </Link>
+              </span>
             ))}
           </div>
         </div>
