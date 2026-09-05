@@ -98,7 +98,11 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   let description = "Ayurvedic hair care insights from Eshara Naturals.";
   let imageUrl = "/og-image.jpg";
 
-  const dbArticle = await prisma.journalArticle.findUnique({ where: { slug } });
+  let dbArticle = null;
+  try {
+    dbArticle = await prisma.journalArticle.findUnique({ where: { slug } });
+  } catch {}
+
   if (dbArticle) {
     title = dbArticle.title;
     description = dbArticle.excerpt.slice(0, 160);
@@ -140,7 +144,11 @@ export default async function JournalArticlePage(props: { params: Promise<{ slug
   const params = await props.params;
   const { slug } = params;
 
-  const dbArticle = await prisma.journalArticle.findUnique({ where: { slug } });
+  let dbArticle = null;
+  try {
+    dbArticle = await prisma.journalArticle.findUnique({ where: { slug } });
+  } catch {}
+
   const staticArticle = STATIC_ARTICLES[slug];
 
   if (!dbArticle && !staticArticle) {

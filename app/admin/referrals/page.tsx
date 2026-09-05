@@ -1,15 +1,24 @@
 import { prisma } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 
-export default async function AdminReferralsPage() {
-  const settings = await prisma.referralSettings.findUnique({
-    where: { id: "singleton" },
-  });
+export const dynamic = "force-dynamic";
 
-  const profiles = await prisma.customerReferralProfile.findMany({
-    orderBy: { createdAt: "desc" },
-    include: { rewards: true },
-  });
+export default async function AdminReferralsPage() {
+  let settings = null;
+  let profiles: any[] = [];
+
+  try {
+    settings = await prisma.referralSettings.findUnique({
+      where: { id: "singleton" },
+    });
+
+    profiles = await prisma.customerReferralProfile.findMany({
+      orderBy: { createdAt: "desc" },
+      include: { rewards: true },
+    });
+  } catch (e) {
+    console.error("Error loading referral data:", e);
+  }
 
   const totalReferrals = profiles.reduce((acc, p) => acc + p.successfulReferrals, 0);
   const pendingReferrals = profiles.reduce((acc, p) => acc + p.pendingReferrals, 0);

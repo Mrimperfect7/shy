@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -66,6 +66,7 @@ export default function ProductCard({ product, priority = false }: ProductCardPr
       title: title,
       price: price,
       image: primaryImage,
+      imageUrl: primaryImage,
       quantity: 1,
       variantTitle: product.material || "18K PVD Gold",
     });

@@ -8,12 +8,25 @@ export const metadata: Metadata = {
   title: "SEO Management",
 };
 
+export const dynamic = "force-dynamic";
+
 export default async function SeoDashboardPage() {
-  const [products, categories, seoMetadata] = await Promise.all([
-    prisma.product.findMany({ select: { slug: true, title: true, status: true } }),
-    prisma.category.findMany({ select: { slug: true, name: true } }),
-    prisma.seoMetadata.findMany(),
-  ]);
+  let products: any[] = [];
+  let categories: any[] = [];
+  let seoMetadata: any[] = [];
+
+  try {
+    const res = await Promise.all([
+      prisma.product.findMany({ select: { slug: true, title: true, status: true } }),
+      prisma.category.findMany({ select: { slug: true, name: true } }),
+      prisma.seoMetadata.findMany(),
+    ]);
+    products = res[0];
+    categories = res[1];
+    seoMetadata = res[2];
+  } catch (e) {
+    console.error("Error fetching SEO dashboard data:", e);
+  }
 
   const activeProducts = products.filter((p) => p.status === "ACTIVE");
   

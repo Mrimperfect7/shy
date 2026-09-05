@@ -49,17 +49,31 @@ export default async function HomePage() {
   }
 
   // 2. Fetch active Instagram Reels
-  const reels = await prisma.instagramReel.findMany({
-    where: { isPublished: true },
-    orderBy: { displayOrder: "asc" },
-  });
+  let reels: any[] = [];
+  try {
+    reels = await prisma.instagramReel.findMany({
+      where: { isPublished: true },
+      orderBy: { displayOrder: "asc" },
+    });
+  } catch {}
 
   // 3. Fetch approved reviews
-  const reviews = await prisma.review.findMany({
-    where: { status: "APPROVED" },
-    orderBy: { createdAt: "desc" },
-    take: 6,
-  });
+  let reviews: any[] = [];
+  try {
+    const dbReviews = await prisma.review.findMany({
+      where: { status: "APPROVED" },
+      orderBy: { createdAt: "desc" },
+      take: 6,
+    });
+
+    reviews = dbReviews.map((r) => ({
+      id: r.id,
+      name: r.reviewerName,
+      rating: r.rating,
+      title: r.title,
+      body: r.body,
+    }));
+  } catch {}
 
   return (
     <main id="main" className="overflow-hidden bg-[#FAF8F5]">

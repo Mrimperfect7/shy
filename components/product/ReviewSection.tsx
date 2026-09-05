@@ -340,8 +340,8 @@ function WriteReviewForm({
 }
 
 /* ─── Main section ───────────────────────────────────────────────────── */
-export default function ReviewSection({ productId }: { productId: string }) {
-  const [reviews, setReviews] = useState<Review[]>([]);
+export default function ReviewSection({ productId, reviews: initialReviews }: { productId: string; reviews?: any[] }) {
+  const [reviews, setReviews] = useState<Review[]>(initialReviews || []);
   const [stats, setStats] = useState<Stats>({ avg: 0, count: 0, distribution: [] });
   const [loading, setLoading] = useState(true);
   const [showForm, setShowForm] = useState(false);

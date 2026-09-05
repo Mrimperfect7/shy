@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
@@ -41,6 +41,7 @@ export default function ProductForm({ product }: ProductFormProps) {
       title: product.title,
       price: price,
       image: product.images?.[0]?.url || "/assets/products/necklace-pendant.jpg",
+      imageUrl: product.images?.[0]?.url || "/assets/products/necklace-pendant.jpg",
       quantity: quantity,
       variantTitle: product.material || "18K PVD Gold",
     });

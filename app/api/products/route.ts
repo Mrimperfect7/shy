@@ -56,6 +56,8 @@ export async function GET(request: Request) {
     }
 
     // Format to match the previous NormalizedProduct type so the frontend doesn't break too much yet
+    const offer = await prisma.offerSettings.findUnique({ where: { id: "singleton" } });
+
     const normalizedProducts = products.map(p => {
       let finalPrice = p.price;
       let finalCompareAtPrice = p.compareAtPrice;

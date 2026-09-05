@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -54,6 +54,7 @@ export default function WishlistPage() {
       title: product.title,
       price: product.price,
       image: product.imageUrls?.[0] || "/assets/products/necklace-pendant.jpg",
+      imageUrl: product.imageUrls?.[0] || "/assets/products/necklace-pendant.jpg",
       quantity: 1,
       variantTitle: product.material || "18K PVD Gold",
     });

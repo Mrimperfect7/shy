@@ -18,9 +18,13 @@ export async function generateMetadata(props: { params: Promise<{ handle: string
   else if (handle === "bestsellers") title = "SHYN.ISH Bestsellers";
   else if (handle === "gifts") title = "Luxury Gifting Collection";
   else {
-    const cat = await prisma.category.findUnique({ where: { slug: handle } });
-    if (cat) title = cat.name;
-    else title = handle.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
+    try {
+      const cat = await prisma.category.findUnique({ where: { slug: handle } });
+      if (cat) title = cat.name;
+      else title = handle.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
+    } catch {
+      title = handle.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
+    }
   }
 
   return {
@@ -37,40 +41,40 @@ export default async function CollectionPage(props: { params: Promise<{ handle: 
   let collectionDescription = "";
   let products: any[] = [];
 
-  if (handle === "under-199") {
-    collectionTitle = "Jewellery Under ₹199";
-    collectionDescription = "Dainty essentials, stackable rings, and minimalist earrings crafted with 18K PVD gold plating under ₹199.";
-    products = await prisma.product.findMany({
-      where: { price: { lte: 199 }, status: "ACTIVE" },
-      include: { category: true },
-      orderBy: { price: "asc" },
-    });
-  } else if (handle === "under-299") {
-    collectionTitle = "Jewellery Under ₹299";
-    collectionDescription = "Croissant hoops, lucky clover studs, and fluid herringbone chains under ₹299.";
-    products = await prisma.product.findMany({
-      where: { price: { lte: 299 }, status: "ACTIVE" },
-      include: { category: true },
-      orderBy: { price: "asc" },
-    });
-  } else if (handle === "under-480") {
-    collectionTitle = "Jewellery Under ₹480";
-    collectionDescription = "Our signature tier. Aura interlocking pendants, Roman cuffs, and heavy 18K gold plated statements under ₹480.";
-    products = await prisma.product.findMany({
-      where: { price: { lte: 480 }, status: "ACTIVE" },
-      include: { category: true },
-      orderBy: { price: "asc" },
-    });
-  } else if (handle === "bestsellers") {
-    collectionTitle = "SHYN.ISH Bestsellers";
-    collectionDescription = "Our most coveted pieces. Handcrafted with medical-grade stainless steel and water-resistant 18K gold.";
-    products = await prisma.product.findMany({
-      where: { status: "ACTIVE" },
-      include: { category: true },
-      orderBy: { createdAt: "desc" },
-    });
-  } else {
-    try {
+  try {
+    if (handle === "under-199") {
+      collectionTitle = "Jewellery Under ₹199";
+      collectionDescription = "Dainty essentials, stackable rings, and minimalist earrings crafted with 18K PVD gold plating under ₹199.";
+      products = await prisma.product.findMany({
+        where: { price: { lte: 199 }, status: "ACTIVE" },
+        include: { category: true },
+        orderBy: { price: "asc" },
+      });
+    } else if (handle === "under-299") {
+      collectionTitle = "Jewellery Under ₹299";
+      collectionDescription = "Croissant hoops, lucky clover studs, and fluid herringbone chains under ₹299.";
+      products = await prisma.product.findMany({
+        where: { price: { lte: 299 }, status: "ACTIVE" },
+        include: { category: true },
+        orderBy: { price: "asc" },
+      });
+    } else if (handle === "under-480") {
+      collectionTitle = "Jewellery Under ₹480";
+      collectionDescription = "Our signature tier. Aura interlocking pendants, Roman cuffs, and heavy 18K gold plated statements under ₹480.";
+      products = await prisma.product.findMany({
+        where: { price: { lte: 480 }, status: "ACTIVE" },
+        include: { category: true },
+        orderBy: { price: "asc" },
+      });
+    } else if (handle === "bestsellers") {
+      collectionTitle = "SHYN.ISH Bestsellers";
+      collectionDescription = "Our most coveted pieces. Handcrafted with medical-grade stainless steel and water-resistant 18K gold.";
+      products = await prisma.product.findMany({
+        where: { status: "ACTIVE" },
+        include: { category: true },
+        orderBy: { createdAt: "desc" },
+      });
+    } else {
       const category = await prisma.category.findUnique({
         where: { slug: handle },
         include: {
@@ -86,13 +90,13 @@ export default async function CollectionPage(props: { params: Promise<{ handle: 
         collectionDescription = category.description || "18K PVD Gold Plated & 316L Stainless Steel everyday jewellery.";
         products = category.products.filter((p) => p.slug !== "eshara-natural-hair-oil");
       }
-    } catch {}
+    }
+  } catch {}
 
     if (!collectionTitle) {
       collectionTitle = handle.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
       collectionDescription = "Explore the curated SHYN.ISH collection.";
     }
-  }
 
   // If DB returned no jewellery products, fall back to SHYNISH_CATALOG
   if (products.length === 0) {

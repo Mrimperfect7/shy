@@ -3,6 +3,8 @@ import SeoEditForm from "./SeoEditForm";
 import { notFound } from "next/navigation";
 import { getSeoMetadata } from "@/lib/seo";
 
+export const dynamic = "force-dynamic";
+
 export default async function SeoEditPage({
   searchParams,
 }: {
