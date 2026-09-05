@@ -43,11 +43,7 @@ export default async function proxy(request: NextRequest) {
       shouldRewrite = true;
     }
   } else {
-    // Block direct access to /admin on the main domain in production
-    if (pathname.startsWith("/admin") && !isLocal) {
-      url.pathname = "/404";
-      return NextResponse.rewrite(url);
-    }
+    // Direct /admin access is safely guarded by Auth Protection below
   }
 
   // 2. Auth Protection Logic
