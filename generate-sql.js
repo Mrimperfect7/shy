@@ -7,7 +7,7 @@ if (sql.charCodeAt(0) === 0xFEFF) {
 }
 
 const hash = bcrypt.hashSync('password123', 10);
-sql += `\n\nINSERT INTO "User" (id, email, "passwordHash", role, name, "isActive", "createdAt", "updatedAt") VALUES ('cuid-admin-1', 'admin@esharanatural.com', '${hash}', 'ADMIN', 'Admin User', true, NOW(), NOW());\n`;
+sql += `\n\nINSERT INTO "User" (id, email, "passwordHash", role, name, "isActive", "createdAt", "updatedAt") VALUES ('cuid-admin-1', 'admin@shynish.com', '${hash}', 'ADMIN', 'Admin User', true, NOW(), NOW());\n`;
 
 fs.writeFileSync('setup_encoded.sql', sql, 'utf8');
 console.log('SQL generated successfully.');

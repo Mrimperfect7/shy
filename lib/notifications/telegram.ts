@@ -25,7 +25,7 @@ export async function sendTelegramOrderAlert(data: TelegramOrderAlertParams) {
   try {
     const botToken = process.env.TELEGRAM_BOT_TOKEN;
     const chatId = process.env.TELEGRAM_CHAT_ID;
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
 
     if (!botToken || !chatId) {
       console.warn("[Telegram Notifier] TELEGRAM_BOT_TOKEN or TELEGRAM_CHAT_ID not configured in environment variables.");

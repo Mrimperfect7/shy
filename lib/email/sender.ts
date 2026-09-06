@@ -21,9 +21,9 @@ export interface SendOtpResponse {
 export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpResponse> {
   const { toEmail, customerName = "Valued Customer", otp } = params;
   
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
-  const fromEmail = process.env.EMAIL_FROM || process.env.SMTP_USER || process.env.GMAIL_USER || "Eshara Naturals <care@esharanatural.com>";
-  const fromAddress = fromEmail.includes("<") ? fromEmail : `Eshara Naturals <${fromEmail}>`;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
+  const fromEmail = process.env.EMAIL_FROM || process.env.SMTP_USER || process.env.GMAIL_USER || "SHYN.ISH <care@shynish.com>";
+  const fromAddress = fromEmail.includes("<") ? fromEmail : `SHYN.ISH <${fromEmail}>`;
 
   const emailHtml = `
     <!DOCTYPE html>
@@ -32,25 +32,25 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <style>
-          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FAF7F2; margin: 0; padding: 20px; color: #1A1A1A; }
+          body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #FAF8F5; margin: 0; padding: 20px; color: #141312; }
           .container { max-width: 500px; margin: 0 auto; background: #ffffff; border-radius: 16px; padding: 32px; border: 1px solid #EAE5DC; box-shadow: 0 4px 12px rgba(0,0,0,0.04); }
           .logo { text-align: center; margin-bottom: 24px; }
-          .otp-box { background: #F4EFE6; border: 2px dashed #0A2612; border-radius: 12px; padding: 18px; text-align: center; margin: 24px 0; }
-          .otp-code { font-family: monospace; font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #0A2612; }
+          .otp-box { background: #FAF8F5; border: 2px dashed #C5A059; border-radius: 12px; padding: 18px; text-align: center; margin: 24px 0; }
+          .otp-code { font-family: monospace; font-size: 32px; font-weight: bold; letter-spacing: 8px; color: #141312; }
           .footer { text-align: center; margin-top: 24px; font-size: 12px; color: #7A7A7A; border-top: 1px solid #EAE5DC; padding-top: 16px; }
         </style>
       </head>
       <body>
         <div class="container">
           <div class="logo">
-            <h2 style="font-family: serif; color: #0A2612; margin: 0; font-size: 24px; letter-spacing: 1px;">ESHARA NATURALS</h2>
-            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #7A7A7A; margin-top: 4px;">Ayurvedic Hair Care</p>
+            <h2 style="font-family: serif; color: #141312; margin: 0; font-size: 24px; letter-spacing: 2px;">SHYN.ISH</h2>
+            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #C5A059; margin-top: 4px;">Everyday Shine. Effortless Style.</p>
           </div>
 
-          <h3 style="font-size: 18px; margin-bottom: 8px; color: #1A1A1A;">Password Reset Verification Code</h3>
+          <h3 style="font-size: 18px; margin-bottom: 8px; color: #141312;">Password Reset Verification Code</h3>
           <p style="font-size: 14px; color: #4A4A4A; line-height: 1.5;">
             Hello ${customerName},<br><br>
-            We received a request to reset the password for your Eshara Naturals account. Use the 6-digit verification code below to complete your password reset:
+            We received a request to reset the password for your SHYN.ISH account. Use the 6-digit verification code below to complete your password reset:
           </p>
 
           <div class="otp-box">
@@ -63,8 +63,8 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
           </p>
 
           <div class="footer">
-            &copy; ${new Date().getFullYear()} Eshara Naturals. All rights reserved.<br>
-            <a href="${siteUrl}" style="color: #0A2612; text-decoration: none; font-weight: 500;">esharanatural.com</a>
+            &copy; ${new Date().getFullYear()} SHYN.ISH. All rights reserved.<br>
+            <a href="${siteUrl}" style="color: #C5A059; text-decoration: none; font-weight: 500;">shynish.com</a>
           </div>
         </div>
       </body>
@@ -185,9 +185,9 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
           "Accept": "application/json",
         },
         body: JSON.stringify({
-          sender: { name: "Eshara Naturals", email: process.env.BREVO_SENDER_EMAIL || "care@esharanatural.com" },
+          sender: { name: "SHYN.ISH", email: process.env.BREVO_SENDER_EMAIL || "care@shynish.com" },
           to: [{ email: toEmail, name: customerName }],
-          subject: `${otp} is your Eshara Naturals verification code`,
+          subject: `${otp} is your SHYN.ISH verification code`,
           htmlContent: emailHtml,
         }),
       });
@@ -203,7 +203,7 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
 
   // 4. Development Fallback (Logged to console when no email provider keys are set in .env)
   console.log(`\n======================================================`);
-  console.log(`🔑 [ESHARA PASSWORD RESET OTP GENERATED]`);
+  console.log(`🔑 [SHYN.ISH PASSWORD RESET OTP GENERATED]`);
   console.log(`📧 Recipient: ${toEmail}`);
   console.log(`🔢 OTP Code: ${otp}`);
   console.log(`⚠️  Note: Configure SMTP (SMTP_HOST, SMTP_USER, SMTP_PASS) or RESEND_API_KEY in .env to deliver live emails.`);

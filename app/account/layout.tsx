@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "My Account | Eshara Naturals",
+  title: "My Account | SHYN.ISH",
   robots: {
     index: false,
     follow: false,

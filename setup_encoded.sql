@@ -142,10 +142,10 @@ CREATE TABLE "InstagramReel" (
 -- CreateTable
 CREATE TABLE "InstagramSettings" (
     "id" TEXT NOT NULL DEFAULT 'singleton',
-    "instagramHandle" TEXT NOT NULL DEFAULT '@esharanaturals',
-    "instagramUrl" TEXT NOT NULL DEFAULT 'https://www.instagram.com/esharanaturals/',
+    "instagramHandle" TEXT NOT NULL DEFAULT '@shyn.ish',
+    "instagramUrl" TEXT NOT NULL DEFAULT 'https://www.instagram.com/shyn.ish/',
     "reelsSectionEnabled" BOOLEAN NOT NULL DEFAULT true,
-    "sectionHeading" TEXT NOT NULL DEFAULT 'THE ESHARA RITUAL',
+    "sectionHeading" TEXT NOT NULL DEFAULT 'THE SHYN.ISH LOOKBOOK',
     "sectionSubtitle" TEXT NOT NULL DEFAULT 'Real rituals. Real stories. From our community.',
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -347,4 +347,4 @@ ALTER TABLE "Payout" ADD CONSTRAINT "Payout_influencerId_fkey" FOREIGN KEY ("inf
 
 
 
-INSERT INTO "User" (id, email, "passwordHash", role, name, "isActive", "createdAt", "updatedAt") VALUES ('cuid-admin-1', 'admin@esharanatural.com', '$2b$10$6E293CTpJEMv6/C0AmvAju7c7OWlRSEH15aKkg/yhLD40PElznQDy', 'ADMIN', 'Admin User', true, NOW(), NOW());
+INSERT INTO "User" (id, email, "passwordHash", role, name, "isActive", "createdAt", "updatedAt") VALUES ('cuid-admin-1', 'admin@shynish.com', '$2b$10$MSQ09VATjJubw..dcQC.WelKvXkF98UNQFa/2.hHnIoOmynk5q1hi', 'ADMIN', 'Admin User', true, NOW(), NOW());

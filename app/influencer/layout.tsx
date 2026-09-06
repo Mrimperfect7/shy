@@ -54,7 +54,7 @@ export default function InfluencerLayout({ children }: { children: React.ReactNo
         <div className="flex flex-col h-full">
           <div className="h-20 flex items-center justify-between px-6 border-b" style={{ borderColor: "rgba(26,26,26,0.1)" }}>
             <Link href="/influencer" className="font-serif text-xl tracking-widest uppercase block" style={{ color: "var(--charcoal)" }}>
-              Eshara Partner
+              SHYN.ISH Partner
             </Link>
             <button onClick={() => setSidebarOpen(false)} className="lg:hidden p-2">
               <X size={20} style={{ color: "var(--charcoal)" }} />

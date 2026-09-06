@@ -87,7 +87,7 @@ export default function TransactionVerificationBox({
 
   const cleanPhone = (customerPhone || "").replace(/\D/g, "");
   const waConfirmMsg = encodeURIComponent(
-    `Hello ${customerName}! Your payment of ₹${totalAmount} (${isRazorpay ? "Razorpay ID" : "UPI Ref"}: ${txId || "Verified"}) for Eshara Naturals order #${orderNumber} has been verified and confirmed ✓. Your handcrafted package is now queued for dispatch.`
+    `Hello ${customerName}! Your payment of ₹${totalAmount} (${isRazorpay ? "Razorpay ID" : "UPI Ref"}: ${txId || "Verified"}) for SHYN.ISH order #${orderNumber} has been verified and confirmed ✓. Your handcrafted package is now queued for dispatch.`
   );
 
   return (

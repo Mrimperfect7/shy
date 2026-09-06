@@ -49,7 +49,7 @@ export default function AboutPage() {
       "@type": "Organization",
       name: "SHYN.ISH",
       url: siteUrl,
-      logo: `${siteUrl}/assets/eshara-logo-whitebg.png`,
+      logo: `${siteUrl}/assets/shyn-logo.png`,
     }
   };
 

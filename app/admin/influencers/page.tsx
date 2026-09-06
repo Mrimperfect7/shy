@@ -96,7 +96,7 @@ export default function InfluencersPage() {
     const randomNum = Math.floor(1000 + Math.random() * 9000);
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ";
     const char = chars.charAt(Math.floor(Math.random() * chars.length));
-    const generated = `Eshara${char}@${randomNum}`;
+    const generated = `Shyn${char}@${randomNum}`;
     setNewPartner(prev => ({ ...prev, password: generated }));
     toast.success("Generated secure password!");
   };
@@ -107,7 +107,7 @@ export default function InfluencersPage() {
     setError("");
     
     try {
-      const portalUrl = "https://influencer.esharanatural.com";
+      const portalUrl = "https://influencer.shynish.com";
       
       const res = await fetch("/api/admin/influencers", {
         method: "POST",
@@ -147,7 +147,7 @@ export default function InfluencersPage() {
 
   const copyCredentialsToClipboard = () => {
     if (!createdCredentials) return;
-    const text = `🌿 *Eshara Naturals - Influencer Portal Credentials* 🌿\n\n👤 *Partner Name:* ${createdCredentials.name}\n📧 *Email:* ${createdCredentials.email}\n🔑 *Password:* ${createdCredentials.password}\n💰 *Commission Rate:* ${createdCredentials.commissionRate}%\n🔗 *Login Portal:* ${createdCredentials.portalUrl}\n\nPlease log in and update your payout UPI/Bank details in your dashboard.`;
+    const text = `✨ *SHYN.ISH - Influencer Portal Credentials* ✨\n\n👤 *Partner Name:* ${createdCredentials.name}\n📧 *Email:* ${createdCredentials.email}\n🔑 *Password:* ${createdCredentials.password}\n💰 *Commission Rate:* ${createdCredentials.commissionRate}%\n🔗 *Login Portal:* ${createdCredentials.portalUrl}\n\nPlease log in and update your payout UPI/Bank details in your dashboard.`;
     navigator.clipboard.writeText(text);
     setCopied(true);
     toast.success("Copied credentials to clipboard! Ready to share.");

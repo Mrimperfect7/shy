@@ -4,15 +4,12 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ShoppingBag } from "lucide-react";
-import { useCart } from "@/context/CartContext";
 
 import WhatsAppIcon from "./WhatsAppIcon";
 
 export default function FloatingButtons() {
   const pathname = usePathname();
-  const { addItem } = useCart();
   const [isVisible, setIsVisible] = useState(false);
-  const [isAdding, setIsAdding] = useState(false);
 
   useEffect(() => {
     const checkVisibility = () => {
@@ -40,8 +37,8 @@ export default function FloatingButtons() {
         // Hide in admin
         setIsVisible(false);
       } else {
-        // On other pages (e.g. /shop, /about, /collections)
-        setIsVisible(window.scrollY > 400);
+        // Other pages (shop, contact, about, etc): visible after scrolling down a bit
+        setIsVisible(window.scrollY > 300);
       }
     };
 
@@ -55,23 +52,6 @@ export default function FloatingButtons() {
       window.removeEventListener("resize", checkVisibility);
     };
   }, [pathname]);
-
-  const handleShopNowClick = async () => {
-    try {
-      setIsAdding(true);
-      await addItem({
-        id: "eshara-natural-hair-oil",
-        title: "Eshara Naturals Herbal Hair Oil (100ml)",
-        price: "490",
-        images: [{ url: "/assets/layered-bottle.png" }],
-        featuredImage: { url: "/assets/layered-bottle.png" }
-      }, 1, 490);
-    } catch (err) {
-      console.error("Failed to add product to cart", err);
-    } finally {
-      setIsAdding(false);
-    }
-  };
 
   if (!isVisible) return null;
 

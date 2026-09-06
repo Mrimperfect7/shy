@@ -33,7 +33,7 @@ export default function CreatorCollabForm() {
           <CheckCircle2 size={48} strokeWidth={1} className="mx-auto mb-6" style={{ color: "var(--forest)" }} />
           <h2 className="font-serif text-3xl mb-4" style={{ color: "var(--charcoal)" }}>Application Received</h2>
           <p className="font-sans text-sm" style={{ color: "var(--text-muted)" }}>
-            Thank you for your interest in Eshara Naturals. Our team will review your application and get back to you within 3-5 business days if there's a fit.
+            Thank you for your interest in SHYN.ISH. Our team will review your application and get back to you within 3-5 business days if there's a fit.
           </p>
         </div>
       ) : (
@@ -74,16 +74,16 @@ export default function CreatorCollabForm() {
             <label className="form-label">Primary Niche *</label>
             <select required value={formData.niche} onChange={e => setFormData({...formData, niche: e.target.value})} className="form-input">
               <option value="">Select your primary focus</option>
-              <option value="Beauty & Skincare">Beauty & Skincare</option>
-              <option value="Hair Care">Hair Care</option>
-              <option value="Wellness & Lifestyle">Wellness & Lifestyle</option>
-              <option value="Ayurveda / Natural Living">Ayurveda / Natural Living</option>
+              <option value="Fashion & Styling">Fashion & Styling</option>
+              <option value="Jewellery & Accessories">Jewellery & Accessories</option>
+              <option value="Lifestyle & Aesthetics">Lifestyle & Aesthetics</option>
+              <option value="Beauty & Makeup">Beauty & Makeup</option>
               <option value="Other">Other</option>
             </select>
           </div>
 
           <div>
-            <label className="form-label">Why do you want to partner with Eshara Naturals?</label>
+            <label className="form-label">Why do you want to partner with SHYN.ISH?</label>
             <textarea rows={4} value={formData.message} onChange={e => setFormData({...formData, message: e.target.value})} className="form-input resize-y"></textarea>
           </div>
 

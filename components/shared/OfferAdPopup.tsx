@@ -37,7 +37,7 @@ export default function OfferAdPopup() {
   useEffect(() => {
     // Check if dismissed in current session
     if (typeof window !== "undefined") {
-      const dismissed = sessionStorage.getItem("eshara_offer_ad_dismissed");
+      const dismissed = sessionStorage.getItem("shyn_offer_ad_dismissed");
       if (dismissed === "true") return;
     }
 
@@ -85,8 +85,8 @@ export default function OfferAdPopup() {
   const handleClose = () => {
     setIsOpen(false);
     if (typeof window !== "undefined") {
-      sessionStorage.setItem("eshara_offer_ad_dismissed", "true");
-      window.dispatchEvent(new Event("eshara_offer_ad_closed"));
+      sessionStorage.setItem("shyn_offer_ad_dismissed", "true");
+      window.dispatchEvent(new Event("shyn_offer_ad_closed"));
     }
   };
 
@@ -96,7 +96,7 @@ export default function OfferAdPopup() {
   const salePrice = offer.salePrice;
   const saved = Math.max(0, originalPrice - salePrice);
   const savePct = originalPrice > 0 ? Math.round((saved / originalPrice) * 100) : 0;
-  const prodImg = offer.imageUrl || "/assets/layered-bottle.png";
+  const prodImg = offer.imageUrl || "/assets/products/necklace-pendant.jpg";
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/65 backdrop-blur-sm animate-in fade-in duration-300">

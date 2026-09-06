@@ -121,7 +121,7 @@ export default function LoginPage() {
           <div className="animate-in fade-in duration-300">
             <div className="text-center mb-6">
               <h1 className="font-serif text-3xl font-bold mb-1.5" style={{ color: "var(--charcoal)" }}>Welcome Back</h1>
-              <p className="text-sm text-gray-500 font-sans">Sign in to your Eshara Naturals account</p>
+              <p className="text-sm text-gray-500 font-sans">Sign in to your SHYN.ISH account</p>
             </div>
 
             {error && (

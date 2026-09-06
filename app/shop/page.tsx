@@ -135,14 +135,14 @@ async function ShopContent() {
     }));
   }
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
   const shopUrl = `${siteUrl}/shop`;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
-    name: "All Products",
-    description: "Shop Eshara Naturals premium Ayurvedic Hair Oil infused with Ayurvedic herbs.",
+    name: "All Jewellery",
+    description: "Shop SHYN.ISH premium waterproof 18K PVD gold and 316L stainless steel jewellery under ₹480.",
     url: shopUrl,
     mainEntity: {
       "@type": "ItemList",

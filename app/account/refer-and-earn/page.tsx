@@ -45,7 +45,7 @@ export default async function ReferAndEarnPage() {
   const progressPercentage = Math.min((currentCount / nextMilestone.count) * 100, 100);
   
   // Base URL for referral link
-  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://eshara.com";
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://shynish.com";
   const referralLink = `${appUrl}/ref/${profile.referralCode}`;
 
   return (
@@ -59,7 +59,7 @@ export default async function ReferAndEarnPage() {
           </Link>
           <h1 className="font-serif text-4xl mb-4" style={{ color: "var(--charcoal)" }}>Refer & Earn</h1>
           <p className="font-sans text-gray-600 max-w-xl text-lg">
-            Share your ESHARA experience with friends and unlock exclusive rewards up to {settings?.maximumReward ?? 20}% off as your referral journey grows.
+            Share your SHYN.ISH experience with friends and unlock exclusive rewards up to {settings?.maximumReward ?? 20}% off as your referral journey grows.
           </p>
         </div>
 
@@ -80,7 +80,7 @@ export default async function ReferAndEarnPage() {
           </div>
           <div className="flex gap-3">
             <a 
-              href={`https://wa.me/?text=Discover%20ESHARA%20Naturals!%20Use%20my%20link%20to%20explore:%20${encodeURIComponent(referralLink)}`}
+              href={`https://wa.me/?text=Discover%20SHYN.ISH%20Jewellery!%20Use%20my%20link%20to%20explore:%20${encodeURIComponent(referralLink)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] text-white px-6 py-3 rounded-md font-sans text-sm font-medium hover:bg-[#128C7E] transition-colors flex items-center gap-2"
@@ -92,12 +92,8 @@ export default async function ReferAndEarnPage() {
 
         {/* Progress Section */}
         <div className="space-y-6">
-          <h2 className="font-serif text-2xl" style={{ color: "var(--charcoal)" }}>Your ESHARA Reward Journey</h2>
+          <h2 className="font-serif text-2xl" style={{ color: "var(--charcoal)" }}>Your SHYN.ISH Reward Journey</h2>
           <div className="bg-white p-8 rounded-2xl border border-[#E5E5E5] shadow-sm relative overflow-hidden">
-            {/* Ayurvedic Herbs Background (subtle) */}
-            <div className="absolute top-0 right-0 w-64 h-64 opacity-5 pointer-events-none">
-              <img src="/assets/amla.PNG" alt="" className="w-full h-full object-cover" />
-            </div>
 
             <div className="relative z-10">
               <div className="flex justify-between items-end mb-4">

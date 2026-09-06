@@ -75,7 +75,7 @@ export default async function AccountPage() {
           <div className="bg-[#2D4A28] rounded-xl p-6 text-white flex flex-col sm:flex-row items-center justify-between gap-6 shadow-md transition-colors group-hover:bg-[#253d21]">
             <div className="flex-1 text-center sm:text-left">
               <h2 className="font-serif text-2xl mb-1">Refer & Earn</h2>
-              <p className="font-sans text-green-100 text-sm">Share ESHARA and unlock up to {settings?.maximumReward ?? 20}% off your next order.</p>
+              <p className="font-sans text-[#FAF8F5]/80 text-sm">Share SHYN.ISH and unlock up to {settings?.maximumReward ?? 20}% off your next order.</p>
             </div>
             
             <div className="flex items-center gap-4 sm:gap-6 bg-white/10 rounded-xl p-4 sm:p-5 w-full sm:w-auto border border-white/10">

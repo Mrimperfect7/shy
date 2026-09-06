@@ -22,24 +22,24 @@ interface OfferForm {
 }
 
 const DEFAULT: OfferForm = {
-  label: "Onam Special",
-  emoji: "🪔",
-  title: "Eshara Ayurvedic Hair Oil",
-  subtitle: "Festive limited offer",
+  label: "Special Launch",
+  emoji: "✨",
+  title: "18K PVD Gold Herringbone Necklace",
+  subtitle: "Everyday Shine Limited Offer",
   description:
-    "Handpicked Ayurvedic herbs. One ritual oil. Celebrate every season with nourishment that has stood the test of time.",
+    "18K PVD gold plated over 316L stainless steel. Waterproof, anti-tarnish, and hypoallergenic.",
   originalPrice: 799,
-  salePrice: 490,
-  href: "/products/eshara-hair-oil",
-  cta: "Grab This Special Deal",
+  salePrice: 480,
+  href: "/products/herringbone-chain-necklace",
+  cta: "Shop The Special Deal",
   countdownHours: 48,
   items: [
-    "100ml Signature Hair Oil",
-    "Ayurvedic herbs",
-    "Eco-friendly gift packaging",
+    "18K PVD Gold Herringbone Chain",
+    "Waterproof & Anti-Tarnish Finish",
+    "Luxury presentation velvet box",
     "Express delivery across India",
   ],
-  imageUrl: "/assets/layered-bottle.png",
+  imageUrl: "/assets/products/necklace-pendant.jpg",
   isActive: true,
 };
 

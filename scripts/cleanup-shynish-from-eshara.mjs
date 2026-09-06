@@ -1,4 +1,4 @@
-﻿import prisma from "./lib/prisma.js";
+import prisma from "./lib/prisma.js";
 
 async function cleanup() {
   console.log("Starting cleanup of SHYN.ISH products from shared DB...");
@@ -75,8 +75,8 @@ async function cleanup() {
           announcementEnabled: true,
           codEnabled: true,
           whatsappNumber: "919048995577",
-          instagramHandle: "esharanatural",
-          instagramUrl: "https://www.instagram.com/esharanatural",
+          instagramHandle: "shyn.ish",
+          instagramUrl: "https://www.instagram.com/shyn.ish",
         }
       });
       console.log("Restored Eshara Naturals siteSettings");

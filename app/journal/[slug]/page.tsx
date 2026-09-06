@@ -194,7 +194,7 @@ export default async function JournalArticlePage(props: { params: Promise<{ slug
       name: "SHYN.ISH",
       logo: {
         "@type": "ImageObject",
-        url: `${siteUrl}/assets/eshara-logo-whitebg.png`
+        url: `${siteUrl}/assets/shyn-logo.png`
       }
     }
   };

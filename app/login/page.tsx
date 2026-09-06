@@ -42,7 +42,7 @@ export default function UnifiedLogin() {
         throw new Error(data.error || "Login failed");
       }
 
-      const target = data.redirect || (data.role === "ADMIN" ? "/admin" : data.role === "INFLUENCER" ? "https://influencer.esharanatural.com" : "/account");
+      const target = data.redirect || (data.role === "ADMIN" ? "/admin" : data.role === "INFLUENCER" ? "https://influencer.shynish.com" : "/account");
       window.location.href = target;
     } catch (err: any) {
       setError(err.message);
@@ -119,7 +119,7 @@ export default function UnifiedLogin() {
           <div className="animate-in fade-in duration-300">
             <div className="text-center mb-8">
               <Link href="/" className="font-serif text-2xl tracking-wide uppercase block mb-4" style={{ color: "var(--charcoal)" }}>
-                Eshara
+                SHYN.ISH
               </Link>
               <h1 className="font-serif text-xl" style={{ color: "var(--charcoal)" }}>Partner & Admin Portal</h1>
               <p className="text-sm text-gray-500 mt-2 font-sans">Sign in to access your dashboard</p>

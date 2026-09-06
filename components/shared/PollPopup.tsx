@@ -18,7 +18,7 @@ export default function PollPopup() {
   useEffect(() => {
     // Check if user has already interacted with poll this session
     if (typeof window !== "undefined") {
-      const dismissed = sessionStorage.getItem("eshara_poll_dismissed");
+      const dismissed = sessionStorage.getItem("shyn_poll_dismissed");
       if (dismissed === "true") return;
     }
 
@@ -32,7 +32,7 @@ export default function PollPopup() {
           // Sequencing Logic: Check if Offer Ad was dismissed.
           // OfferAdPopup sets sessionStorage when closed, OR if not active it doesn't set it but it won't render.
           // To be safe, wait a little bit to see if OfferAdPopup renders.
-          const offerAdDismissed = sessionStorage.getItem("eshara_offer_ad_dismissed");
+          const offerAdDismissed = sessionStorage.getItem("shyn_offer_ad_dismissed");
           
           // Check if OfferAd is currently active
           fetch("/api/offer-settings", { cache: "no-store" }).then(res => res.json()).then(offerData => {
@@ -41,9 +41,9 @@ export default function PollPopup() {
                // Wait for offer ad to be closed
                const handleOfferClosed = () => {
                  setTimeout(() => setIsOpen(true), 800); // 800ms delay after closing offer
-                 window.removeEventListener("eshara_offer_ad_closed", handleOfferClosed);
+                 window.removeEventListener("shyn_offer_ad_closed", handleOfferClosed);
                };
-               window.addEventListener("eshara_offer_ad_closed", handleOfferClosed);
+               window.addEventListener("shyn_offer_ad_closed", handleOfferClosed);
              } else {
                // Show poll immediately if no offer ad
                setTimeout(() => setIsOpen(true), 2500); 
@@ -57,7 +57,7 @@ export default function PollPopup() {
   const handleClose = () => {
     setIsOpen(false);
     if (typeof window !== "undefined") {
-      sessionStorage.setItem("eshara_poll_dismissed", "true");
+      sessionStorage.setItem("shyn_poll_dismissed", "true");
     }
   };
 

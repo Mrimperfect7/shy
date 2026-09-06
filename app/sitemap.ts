@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import prisma from '@/lib/prisma';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://esharanatural.com';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://shynish.com';
 
   // Base routes
   const routes: MetadataRoute.Sitemap = [
@@ -19,9 +19,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
-      url: `${baseUrl}/ingredients`,
+      url: `${baseUrl}/collections/under-480`,
       lastModified: new Date(),
-      changeFrequency: 'monthly',
+      changeFrequency: 'weekly',
       priority: 0.85,
     },
     {
@@ -118,9 +118,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     // Fallback static article slugs if not in DB yet
     const fallbackArticleSlugs = [
-      "ayurvedic-secrets-scalp-health",
-      "bhringraj-herb-of-hair",
-      "building-a-hair-oil-ritual",
+      "pvd-gold-vs-regular-gold-plating",
+      "art-of-everyday-chain-layering",
+      "complete-jewellery-care-guide",
     ];
 
     const dbSlugs = new Set(dbArticles.map((a) => a.slug));

@@ -56,7 +56,7 @@ export default function JournalPage() {
     publisher: {
       "@type": "Organization",
       name: "SHYN.ISH",
-      logo: `${siteUrl}/assets/eshara-logo-whitebg.png`
+      logo: `${siteUrl}/assets/shyn-logo.png`
     }
   };
 

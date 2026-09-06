@@ -36,7 +36,7 @@ export default function RegisterPage() {
     <div className="min-h-screen pt-32 pb-24 px-6 flex items-center justify-center bg-[#FAF7F2]">
       <div className="w-full max-w-md bg-white p-8 md:p-12 rounded-xl shadow-sm border border-[#E5E5E5]">
         <h1 className="font-serif text-3xl mb-2 text-center" style={{ color: "var(--charcoal)" }}>Create Account</h1>
-        <p className="text-center text-sm text-gray-500 mb-8 font-sans">Join the Eshara Naturals community</p>
+        <p className="text-center text-sm text-gray-500 mb-8 font-sans">Join the SHYN.ISH community</p>
 
         {error && (
           <div className="mb-6 p-3 bg-red-50 text-red-700 text-sm rounded-md border border-red-100 text-center">

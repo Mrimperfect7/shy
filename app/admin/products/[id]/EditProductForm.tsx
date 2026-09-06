@@ -143,7 +143,7 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
                 required
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="e.g. Eshara Premium Hair Oil"
+                placeholder="e.g. 18K PVD Gold Cuban Chain Necklace"
                 className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50"
                 style={{ borderColor: "rgba(26,26,26,0.15)" }}
               />
@@ -157,7 +157,7 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
                 required
                 value={slug}
                 onChange={(e) => setSlug(e.target.value)}
-                placeholder="eshara-premium-hair-oil"
+                placeholder="cuban-link-chain-necklace"
                 className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50 font-mono text-xs"
                 style={{ borderColor: "rgba(26,26,26,0.15)" }}
               />

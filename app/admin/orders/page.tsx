@@ -386,13 +386,13 @@ export default async function AdminOrdersPage({
             const cleanPhone = (order.customerPhone || "").replace(/\D/g, "");
             const whatsappLink = cleanPhone.length >= 10 
               ? `https://wa.me/91${cleanPhone.slice(-10)}?text=${encodeURIComponent(
-                  `Hi ${order.customerName}! We have received your Eshara Naturals order *${order.orderNumber}* for ₹${order.totalAmount}.`
+                  `Hi ${order.customerName}! We have received your SHYN.ISH order *${order.orderNumber}* for ₹${order.totalAmount}.`
                 )}`
               : null;
 
             const shippingUpdateLink = cleanPhone.length >= 10
               ? `https://wa.me/91${cleanPhone.slice(-10)}?text=${encodeURIComponent(
-                  `Hi ${order.customerName}! Great news! 🌿 Your Eshara Naturals order *${order.orderNumber}* has been dispatched via ${rawAddress.courierName || "Courier"}${rawAddress.trackingNumber ? ` (Tracking / AWB: ${rawAddress.trackingNumber})` : ""} and is on its way to ${rawAddress.city || "your address"}.`
+                  `Hi ${order.customerName}! Great news! ✨ Your SHYN.ISH order *${order.orderNumber}* has been dispatched via ${rawAddress.courierName || "Courier"}${rawAddress.trackingNumber ? ` (Tracking / AWB: ${rawAddress.trackingNumber})` : ""} and is on its way to ${rawAddress.city || "your address"}.`
                 )}`
               : null;
 

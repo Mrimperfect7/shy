@@ -89,7 +89,7 @@ export default function OrderEditModal({ order }: OrderEditModalProps) {
 
     const itemsHtml = (order.orderItems || []).map((i: any) => `
       <tr>
-        <td style="padding: 8px; border-bottom: 1px solid #eee;">${i.product?.title || "Eshara Product"}</td>
+        <td style="padding: 8px; border-bottom: 1px solid #eee;">${i.product?.title || "SHYN.ISH Product"}</td>
         <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: center;">${i.quantity}</td>
         <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right;">₹${i.price}</td>
         <td style="padding: 8px; border-bottom: 1px solid #eee; text-align: right; font-weight: bold;">₹${i.price * i.quantity}</td>
@@ -103,23 +103,23 @@ export default function OrderEditModal({ order }: OrderEditModalProps) {
           <title>Packing Slip - ${order.orderNumber}</title>
           <style>
             body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 24px; color: #1a1a1a; }
-            .header { display: flex; justify-content: space-between; border-bottom: 2px solid #2D3E33; padding-bottom: 16px; margin-bottom: 20px; }
-            .brand { font-size: 24px; font-weight: bold; color: #2D3E33; }
-            .badge { background: #f0fdf4; color: #166534; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
+            .header { display: flex; justify-content: space-between; border-bottom: 2px solid #C5A059; padding-bottom: 16px; margin-bottom: 20px; }
+            .brand { font-size: 24px; font-weight: bold; color: #141312; }
+            .badge { background: #fefce8; color: #854d0e; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; }
             .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px; }
             .box { background: #fafafa; border: 1px solid #e5e5e5; padding: 12px; border-radius: 6px; }
             .box-title { font-size: 11px; text-transform: uppercase; color: #666; font-weight: bold; margin-bottom: 6px; }
             table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 13px; }
             th { text-align: left; background: #f5f5f5; padding: 8px; border-bottom: 2px solid #ddd; }
-            .total { text-align: right; font-size: 16px; font-weight: bold; margin-top: 16px; color: #2D3E33; }
+            .total { text-align: right; font-size: 16px; font-weight: bold; margin-top: 16px; color: #141312; }
             .footer { margin-top: 30px; border-top: 1px dashed #ccc; padding-top: 12px; font-size: 11px; color: #666; text-align: center; }
           </style>
         </head>
         <body>
           <div class="header">
             <div>
-              <div class="brand">ESHARA NATURALS</div>
-              <div style="font-size: 12px; color: #666;">Handcrafted Ayurvedic Hair & Skin Formulations, Kerala</div>
+              <div class="brand">SHYN.ISH</div>
+              <div style="font-size: 12px; color: #666;">Everyday Shine. Effortless Style. 18K PVD Gold Jewellery</div>
             </div>
             <div style="text-align: right;">
               <div style="font-size: 18px; font-weight: bold;">PACKING SLIP</div>
@@ -164,7 +164,7 @@ export default function OrderEditModal({ order }: OrderEditModalProps) {
           <div class="total">Total Order Value: ₹${order.totalAmount}</div>
 
           <div class="footer">
-            Thank you for choosing Eshara Naturals. Made with purity in Kerala. For support: +91 9048995577
+            Thank you for choosing SHYN.ISH. Everyday shine, effortless style. For support: care@shynish.com
           </div>
           <script>window.print();</script>
         </body>
@@ -175,7 +175,7 @@ export default function OrderEditModal({ order }: OrderEditModalProps) {
 
   const getWhatsAppTrackingMsg = () => {
     return encodeURIComponent(
-      `Hello ${customerName}! 🌿 Your order *#${order.orderNumber}* from Eshara Naturals has been packed and handed over to *${courierName}* for delivery to ${city}.\n\n📦 *Tracking / AWB Number:* ${trackingNumber || "Pending Update"}\n\nTrack your shipment or reach us here for any assistance.`
+      `Hello ${customerName}! ✨ Your order *#${order.orderNumber}* from SHYN.ISH has been packed and handed over to *${courierName}* for delivery to ${city}.\n\n📦 *Tracking / AWB Number:* ${trackingNumber || "Pending Update"}\n\nTrack your shipment or reach us here for any assistance.`
     );
   };
 

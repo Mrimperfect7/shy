@@ -87,7 +87,7 @@ export default function CheckoutPage() {
   // Load saved address
   useEffect(() => {
     try {
-      const saved = localStorage.getItem("eshara_saved_delivery_address");
+      const saved = localStorage.getItem("shyn_saved_delivery_address");
       if (saved) {
         const p = JSON.parse(saved);
         if (p?.name && p?.phone && p?.address) setSavedAddress(p);
@@ -177,7 +177,7 @@ export default function CheckoutPage() {
     if (saveAddress && typeof window !== "undefined") {
       try {
         const fields = { name, phone, email, address, city, state, pinCode };
-        localStorage.setItem("eshara_saved_delivery_address", JSON.stringify(fields));
+        localStorage.setItem("shyn_saved_delivery_address", JSON.stringify(fields));
         setSavedAddress(fields);
       } catch {}
     }
@@ -630,8 +630,10 @@ export default function CheckoutPage() {
       {/* Header */}
       <header className="bg-white border-b border-gray-200">
         <div className="max-w-5xl mx-auto px-5 sm:px-8 py-3 flex items-center justify-between">
-          <Link href="/">
-            <Image src="/assets/eshara-logo.png" alt="Eshara Naturals" width={130} height={40} className="h-8 w-auto object-contain" />
+          <Link href="/" className="inline-block">
+            <span className="font-serif text-2xl tracking-[0.2em] font-medium text-[#141312]">
+              SHYN<span className="text-[#C5A059]">.</span>ISH
+            </span>
           </Link>
           <div className="flex items-center gap-1.5 text-xs font-sans text-green-700 bg-green-50 border border-green-200 px-3 py-1.5 rounded-full">
             <Lock size={11} className="text-green-600" /> Secure Checkout

@@ -1,12 +1,12 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, MapPin, Sparkles } from "lucide-react";
 import WhatsAppIcon from "@/components/shared/WhatsAppIcon";
 import type { Metadata } from "next";
 import { getSeoMetadata } from "@/lib/seo";
 
 export async function generateMetadata(): Promise<Metadata> {
   const seo = await getSeoMetadata("PAGE", "contact");
-  const title = "Contact Us & FAQ | Eshara Naturals";
-  const description = "Get in touch with Eshara Naturals. Have questions about our Ayurvedic hair oil, your ritual, or an order? Find our contact info and FAQs here.";
+  const title = "Contact Us & FAQ | SHYN.ISH Everyday Jewellery";
+  const description = "Get in touch with SHYN.ISH. Questions about our 18K PVD gold plated jewellery, order tracking, shipping, or styling? We are here to help.";
 
   return {
     title: seo?.title || title,
@@ -19,16 +19,16 @@ export async function generateMetadata(): Promise<Metadata> {
       follow: seo?.robotsFollow ?? true,
     },
     openGraph: {
-      title: seo?.ogTitle || seo?.title || "Contact Us & FAQ | Eshara Naturals",
+      title: seo?.ogTitle || seo?.title || "Contact Us & FAQ | SHYN.ISH",
       description: seo?.ogDescription || seo?.description || description,
       url: "/contact",
-      siteName: "Eshara Naturals",
-      images: seo?.ogImage ? [{ url: seo.ogImage }] : [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Contact Eshara Naturals" }],
+      siteName: "SHYN.ISH",
+      images: seo?.ogImage ? [{ url: seo.ogImage }] : [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Contact SHYN.ISH" }],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: seo?.twitterTitle || seo?.title || "Contact Us & FAQ | Eshara Naturals",
+      title: seo?.twitterTitle || seo?.title || "Contact Us & FAQ | SHYN.ISH",
       description: seo?.twitterDescription || seo?.description || description,
       images: seo?.twitterImage ? [seo.twitterImage] : ["/og-image.jpg"],
     },
@@ -36,7 +36,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function ContactPage() {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
 
   const faqLd = {
     "@context": "https://schema.org",
@@ -73,26 +73,26 @@ export default function ContactPage() {
   const contactLd = {
     "@context": "https://schema.org",
     "@type": "ContactPage",
-    name: "Contact Eshara Naturals",
+    name: "Contact SHYN.ISH",
     url: `${siteUrl}/contact`,
     mainEntity: {
       "@type": "Organization",
-      name: "Eshara Naturals",
-      telephone: "+919048995577",
-      email: "esharanatural@gmail.com",
+      name: "SHYN.ISH",
+      telephone: "+919876543210",
+      email: "care@shynish.com",
       address: {
         "@type": "PostalAddress",
-        streetAddress: "Naduvattam Paripalana Committee",
-        addressLocality: "Kozhikode",
-        addressRegion: "Kerala",
-        postalCode: "673015",
+        streetAddress: "Fashion Jewellery Hub",
+        addressLocality: "Mumbai",
+        addressRegion: "Maharashtra",
+        postalCode: "400001",
         addressCountry: "IN"
       }
     }
   };
 
   return (
-    <div className="pt-6 lg:pt-10 min-h-screen" style={{ background: "var(--ivory)" }}>
+    <div className="pt-6 lg:pt-10 min-h-screen bg-[#FAF8F5]">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
@@ -105,39 +105,49 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(contactLd) }}
       />
-      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-12 lg:py-12 lg:py-24">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 py-12 lg:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24">
           
           {/* Info */}
           <div>
-            <p className="section-eyebrow mb-6">Get in Touch</p>
-            <h1 className="font-serif text-4xl lg:text-5xl mb-8" style={{ color: "var(--charcoal)" }}>We're Here for You.</h1>
-            <p className="font-sans text-base leading-relaxed mb-12" style={{ color: "var(--text-secondary)" }}>
-              Whether you have a question about our ingredients, your ritual, or an order, our team is happy to help.
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#C5A059]/10 text-[#C5A059] text-[11px] font-sans font-semibold tracking-[0.2em] uppercase mb-4">
+              <Sparkles size={12} />
+              <span>Get in Touch</span>
+            </div>
+            <h1 className="font-serif text-4xl lg:text-5xl mb-6 text-[#141312]">We're Here for You.</h1>
+            <p className="font-sans text-base leading-relaxed mb-12 text-[#141312]/70">
+              Whether you have a question about sizing, styling recommendations, 18K PVD metallurgy, or order tracking, our team is always ready to assist.
             </p>
 
             <div className="space-y-8">
               <div className="flex gap-4">
-                <Mail className="mt-1" size={20} strokeWidth={1.5} style={{ color: "var(--forest)" }} />
+                <div className="w-10 h-10 rounded-full bg-[#C5A059]/10 flex items-center justify-center shrink-0">
+                  <Mail size={18} strokeWidth={1.5} className="text-[#C5A059]" />
+                </div>
                 <div>
-                  <h3 className="text-xs tracking-widest uppercase font-sans font-semibold mb-1" style={{ color: "var(--charcoal)" }}>Email Us</h3>
-                  <a href="mailto:esharanatural@gmail.com" className="font-sans text-sm hover:underline" style={{ color: "var(--text-muted)" }}>esharanatural@gmail.com</a>
+                  <h3 className="text-xs tracking-widest uppercase font-sans font-semibold mb-1 text-[#141312]">Email Us</h3>
+                  <a href="mailto:care@shynish.com" className="font-sans text-sm hover:underline text-[#141312]/80">care@shynish.com</a>
+                  <p className="text-xs font-sans mt-0.5 text-gray-500">Replies usually within 4–6 hours</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <WhatsAppIcon className="mt-1 shrink-0" size={20} fill="#25D366" />
+                <div className="w-10 h-10 rounded-full bg-emerald-50 flex items-center justify-center shrink-0">
+                  <WhatsAppIcon className="shrink-0" size={18} fill="#25D366" />
+                </div>
                 <div>
-                  <h3 className="text-xs tracking-widest uppercase font-sans font-semibold mb-1" style={{ color: "var(--charcoal)" }}>Call / WhatsApp</h3>
-                  <a href="https://wa.me/919048995577" target="_blank" rel="noopener" className="font-sans text-sm hover:underline" style={{ color: "var(--text-muted)" }}>+91 90489 95577</a>
-                  <p className="text-xs font-sans mt-1" style={{ color: "var(--text-muted)" }}>Mon - Fri, 9am - 6pm IST</p>
+                  <h3 className="text-xs tracking-widest uppercase font-sans font-semibold mb-1 text-[#141312]">Call / WhatsApp Support</h3>
+                  <a href="https://wa.me/919876543210" target="_blank" rel="noopener" className="font-sans text-sm hover:underline text-[#141312]/80">+91 98765 43210</a>
+                  <p className="text-xs font-sans mt-0.5 text-gray-500">Mon - Sat, 10am - 7pm IST</p>
                 </div>
               </div>
               <div className="flex gap-4">
-                <MapPin className="mt-1" size={20} strokeWidth={1.5} style={{ color: "var(--forest)" }} />
+                <div className="w-10 h-10 rounded-full bg-[#C5A059]/10 flex items-center justify-center shrink-0">
+                  <MapPin size={18} strokeWidth={1.5} className="text-[#C5A059]" />
+                </div>
                 <div>
-                  <h3 className="text-xs tracking-widest uppercase font-sans font-semibold mb-1" style={{ color: "var(--charcoal)" }}>Headquarters</h3>
-                  <p className="font-sans text-sm leading-relaxed" style={{ color: "var(--text-muted)" }}>
-                    Naduvattam Paripalana Committee<br />Kozhikode, Kerala 673015<br />India
+                  <h3 className="text-xs tracking-widest uppercase font-sans font-semibold mb-1 text-[#141312]">Customer Care & Dispatch</h3>
+                  <p className="font-sans text-sm leading-relaxed text-[#141312]/80">
+                    SHYN.ISH Studio & Fulfillment<br />Mumbai, Maharashtra 400001<br />India
                   </p>
                 </div>
               </div>
@@ -146,15 +156,15 @@ export default function ContactPage() {
 
           {/* FAQ */}
           <div id="faq">
-            <h2 className="font-serif text-3xl mb-8" style={{ color: "var(--charcoal)" }}>Frequently Asked Questions</h2>
-            <div className="divide-y" style={{ borderColor: "var(--border)" }}>
+            <h2 className="font-serif text-3xl mb-8 text-[#141312]">Frequently Asked Questions</h2>
+            <div className="divide-y divide-[#C5A059]/20">
               {faqData.map((faq, i) => (
                 <details key={i} className="group py-5">
-                  <summary className="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-sm" style={{ color: "var(--charcoal)" }}>
+                  <summary className="flex items-center justify-between cursor-pointer list-none font-sans font-medium text-sm text-[#141312] hover:text-[#C5A059] transition-colors">
                     {faq.q}
-                    <span className="transition-transform group-open:rotate-45" style={{ color: "var(--forest)" }}>+</span>
+                    <span className="transition-transform group-open:rotate-45 text-[#C5A059] text-base">+</span>
                   </summary>
-                  <div className="pt-4 pb-2 font-sans text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                  <div className="pt-4 pb-2 font-sans text-sm leading-relaxed text-[#141312]/70">
                     {faq.a}
                   </div>
                 </details>
@@ -170,27 +180,27 @@ export default function ContactPage() {
 
 const faqData = [
   {
-    q: "What makes Eshara Naturals Herbal Hair Oil unique?",
-    a: "Eshara Naturals Herbal Hair Oil is crafted with carefully selected Ayurvedic herbs and natural oils using traditional Ayurvedic principles. The formulation is designed to nourish the scalp and support overall hair wellness as part of a regular hair care routine."
+    q: "Is SHYN.ISH jewellery waterproof and anti-tarnish?",
+    a: "Yes. Every piece features genuine 18K PVD gold coating vacuum-bonded over surgical 316L/304 stainless steel. It resists water, sweat, lotions, and daily wear without discoloration."
   },
   {
-    q: "Is this herbal hair oil suitable for both men and women?",
-    a: "Yes. Eshara Naturals Herbal Hair Oil is suitable for both men and women and can be used as part of any regular hair-care regimen."
+    q: "Will SHYN.ISH jewellery turn my skin green?",
+    a: "Never. Green discoloration is caused by cheap copper and low-grade nickel alloys. Our surgical steel base is 100% hypoallergenic, nickel-free, and lead-free."
   },
   {
-    q: "Is this herbal hair oil suitable for all hair types?",
-    a: "Yes. The oil can be used on dry, normal, oily, straight, wavy, and curly hair types."
+    q: "What does 'Jewellery Under ₹480' mean?",
+    a: "We cut out traditional middleman markups and expensive retail overheads so you can wear high-end aesthetic jewellery every day with prices mostly under ₹480."
   },
   {
-    q: "How often should I use this herbal hair oil?",
-    a: "For best results, apply the oil 2–3 times a week or as part of your regular hair care routine."
+    q: "How long does shipping take across India?",
+    a: "Orders are processed within 1–2 business days. Delivery to metro cities takes 3–5 business days, while other destinations arrive within 4–7 business days."
   },
   {
-    q: "Is this herbal hair oil suitable for dry and damaged hair?",
-    a: "Yes. The nourishing blend of Ayurvedic herbs and natural oils helps care for dry, rough, and dull-looking hair while improving softness and manageability."
+    q: "How should I clean and store my jewellery?",
+    a: "Rinse under lukewarm water with a drop of mild dish soap, pat dry with a soft microfiber cloth, and store inside your SHYN.ISH pouch or box to keep it scratch-free."
   },
   {
-    q: "What is the best herbal oil for hair?",
-    a: "The best herbal hair oil is one that combines authentic Ayurvedic herbs with traditional preparation methods. Eshara Naturals Herbal Hair Oil is made with carefully selected herbal ingredients to nourish the scalp, strengthen hair, and support healthy, naturally beautiful hair with regular use."
+    q: "What is your exchange and return policy?",
+    a: "We offer a 7-day return/exchange policy if your item arrives damaged, defective, or incorrect. Reach out to care@shynish.com with your unboxing video or photo."
   }
 ];

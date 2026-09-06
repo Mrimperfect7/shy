@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
               pinCode: rawAddress?.pinCode,
             },
             items: order.orderItems.map(item => ({
-              title: item.product?.title || "Eshara Naturals Herbal Hair Oil",
+              title: item.product?.title || "SHYN.ISH Jewellery Item",
               quantity: item.quantity,
               price: item.price
             }))

@@ -11,7 +11,7 @@ async function main() {
     const deleted = await prisma.user.deleteMany({
       where: {
         email: {
-          in: ["crzmik@gmail.com", "admin@esharanatural.com"],
+          not: "admin@shynish.com",
         },
       },
     });

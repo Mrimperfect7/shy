@@ -17,7 +17,7 @@ export async function notifyAdminTransactionVerification(data: TransactionVerifi
   try {
     const adminNumber = process.env.ADMIN_WHATSAPP_NUMBER || "+919048995577";
     const apiKey = process.env.TEXTMEBOT_API_KEY || process.env.CALLMEBOT_API_KEY;
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://esharanatural.com";
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://shynish.com";
 
     const isVerified = data.verificationStatus === "SUCCESS";
     const statusIcon = isVerified ? "✅ VERIFIED & CONFIRMED" : "⏳ AWAITING ADMIN UTR REVIEW";

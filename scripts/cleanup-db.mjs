@@ -1,4 +1,4 @@
-﻿import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function cleanup() {
@@ -71,8 +71,8 @@ async function cleanup() {
           announcementEnabled: true,
           codEnabled: true,
           whatsappNumber: "919048995577",
-          instagramHandle: "esharanatural",
-          instagramUrl: "https://www.instagram.com/esharanatural",
+          instagramHandle: "shyn.ish",
+          instagramUrl: "https://www.instagram.com/shyn.ish",
         }
       });
       console.log("Restored Eshara Naturals siteSettings");

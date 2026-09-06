@@ -120,7 +120,7 @@ export default function SeoEditForm({ entityType, entityId, entityName, entityUr
                 name="canonicalUrl"
                 value={formData.canonicalUrl}
                 onChange={handleChange}
-                placeholder={`https://esharanatural.com${entityUrl}`}
+                placeholder={`https://shynish.com${entityUrl}`}
                 className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-primary-500 focus:ring-primary-500 sm:text-sm p-2 border"
               />
             </div>
@@ -197,10 +197,10 @@ export default function SeoEditForm({ entityType, entityId, entityName, entityUr
             <h3 className="text-lg font-medium text-gray-900 border-b pb-2">Google Search Preview</h3>
             <div className="p-4 bg-gray-50 rounded-lg border border-gray-100 font-sans">
               <div className="text-sm text-gray-800 flex items-center gap-2 mb-1">
-                <div className="w-6 h-6 bg-gray-200 rounded-full flex items-center justify-center text-xs">E</div>
+                <div className="w-6 h-6 bg-[#C5A059]/20 text-[#C5A059] rounded-full flex items-center justify-center text-xs font-bold">S</div>
                 <div>
-                  <div className="font-medium">Eshara Naturals</div>
-                  <div className="text-gray-500 text-xs">https://esharanatural.com{entityUrl}</div>
+                  <div className="font-medium">SHYN.ISH</div>
+                  <div className="text-gray-500 text-xs">https://shynish.com{entityUrl}</div>
                 </div>
               </div>
               <div className="text-xl text-[#1a0dab] font-medium hover:underline cursor-pointer truncate">
@@ -223,7 +223,7 @@ export default function SeoEditForm({ entityType, entityId, entityName, entityUr
                 )}
               </div>
               <div className="p-3 bg-gray-50 border-t border-gray-200">
-                <div className="text-xs text-gray-500 uppercase">ESHARANATURAL.COM</div>
+                <div className="text-xs text-gray-500 uppercase">SHYNISH.COM</div>
                 <div className="font-semibold text-gray-900 mt-1 truncate">
                   {formData.ogTitle || formData.title || entityName}
                 </div>

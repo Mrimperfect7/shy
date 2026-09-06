@@ -53,7 +53,7 @@ export default function DynamicUpiQr({
   const formattedAmount = amount.toFixed(2);
 
   // Exact UPI Deep Link
-  const singleUpiDeepLink = `upi://pay?pa=9562445577%40axisbank&pn=Eshara+Naturals&am=${formattedAmount}&cu=INR`;
+  const singleUpiDeepLink = `upi://pay?pa=9562445577%40axisbank&pn=SHYNISH&am=${formattedAmount}&cu=INR`;
 
   // Generate QR Code dynamically from authoritative UPI URL
   useEffect(() => {
@@ -197,7 +197,7 @@ export default function DynamicUpiQr({
             <div className="relative inline-block p-3.5 rounded-2xl bg-white border border-[#E0DACF] shadow-sm">
               <img 
                 src="/assets/upi-qr.png" 
-                alt="Official Eshara Naturals UPI Payment QR Code" 
+                alt="Official SHYN.ISH UPI Payment QR Code" 
                 className="w-48 h-auto mx-auto object-contain rounded-xl"
               />
 

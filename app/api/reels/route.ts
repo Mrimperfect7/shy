@@ -28,10 +28,10 @@ export async function GET() {
       {
         reels,
         settings: settings || {
-          sectionHeading: "THE ESHARA RITUAL",
-          sectionSubtitle: "Real rituals. Real stories. From our community.",
-          instagramUrl: "https://www.instagram.com/eshara_natural/",
-          instagramHandle: "@eshara_natural",
+          sectionHeading: "THE SHYN.ISH LOOKBOOK",
+          sectionSubtitle: "Everyday shine. Real styling. From our community.",
+          instagramUrl: "https://www.instagram.com/shyn.ish/",
+          instagramHandle: "@shyn.ish",
           reelsSectionEnabled: true,
         },
       },

@@ -26,18 +26,18 @@ function useCountdown(hours: number) {
   const [timeLeft, setTimeLeft] = useState({ h: hours, m: 0, s: 0 });
   useEffect(() => {
     let end: number;
-    const storedEnd = localStorage.getItem("eshara_offer_end_time");
+    const storedEnd = localStorage.getItem("shyn_offer_end_time");
     
     if (storedEnd) {
       end = parseInt(storedEnd, 10);
       // If timer has expired, reset it
       if (end < Date.now()) {
         end = Date.now() + hours * 3600 * 1000;
-        localStorage.setItem("eshara_offer_end_time", end.toString());
+        localStorage.setItem("shyn_offer_end_time", end.toString());
       }
     } else {
       end = Date.now() + hours * 3600 * 1000;
-      localStorage.setItem("eshara_offer_end_time", end.toString());
+      localStorage.setItem("shyn_offer_end_time", end.toString());
     }
 
     const tick = () => {
@@ -140,7 +140,7 @@ export default function ExclusiveOffers() {
             style={{ fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: "var(--charcoal)", lineHeight: 1.15 }}
           >
             {offer.title}.{" "}
-            <span style={{ color: "#C47B1A" }}>Celebrate with Eshara.</span>
+            <span style={{ color: "#C47B1A" }}>Celebrate with SHYN.ISH.</span>
           </h2>
           <p className="font-sans text-sm mt-2 max-w-sm mx-auto" style={{ color: "var(--text-secondary)" }}>
             {offer.description}
@@ -252,8 +252,8 @@ export default function ExclusiveOffers() {
               <div className="relative w-44 h-44 sm:w-52 sm:h-52 mb-4 group">
                 <div className="absolute inset-0 rounded-full bg-[#FFD700]/10 blur-xl scale-90 group-hover:scale-100 transition-transform duration-700" />
                 <Image
-                  src={offer.imageUrl || "/assets/layered-bottle.png"}
-                  alt={offer.title || "Eshara Exclusive Offer Product"}
+                  src={offer.imageUrl || "/assets/products/necklace-pendant.jpg"}
+                  alt={offer.title || "SHYN.ISH Exclusive Offer Product"}
                   fill
                   className="object-contain relative z-10 transition-transform duration-500 group-hover:scale-105"
                   sizes="(max-width: 768px) 180px, 220px"

@@ -67,7 +67,7 @@ export default function ScreenshotUploader({
     }
 
     const priceText = amount ? ` for ₹${amount}` : "";
-    let messageText = `Hi Eshara Naturals! I have placed order *${orderNumber}*${priceText}.\nAttached is my payment confirmation screenshot.`;
+    let messageText = `Hi SHYN.ISH! I have placed order *${orderNumber}*${priceText}.\nAttached is my payment confirmation screenshot.`;
 
     if (uploadedUrl && !uploadedUrl.startsWith("data:")) {
       messageText += `\n\nPayment Receipt Link: ${uploadedUrl}`;
