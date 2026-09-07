@@ -6,7 +6,6 @@ import BestsellersGrid from "@/components/home/BestsellersGrid";
 import AffordablePriceHub from "@/components/home/AffordablePriceHub";
 import MaterialCraftStory from "@/components/home/MaterialCraftStory";
 import LifestyleSection from "@/components/home/LifestyleSection";
-import GiftBoxScene from "@/components/3d/GiftBoxScene";
 import PackagingSection from "@/components/home/PackagingSection";
 import InstagramUgcSection from "@/components/home/InstagramUgcSection";
 import CustomerReviewsSection from "@/components/home/CustomerReviewsSection";
@@ -105,10 +104,7 @@ export default async function HomePage() {
       {/* SCENE 08: Made to be Worn (Lifestyle Gallery) */}
       <LifestyleSection />
 
-      {/* SCENE 09: Make Someone Shine (Interactive 3D Gift Box) */}
-      <GiftBoxScene />
-
-      {/* SCENE 10: Packed With Care */}
+      {/* SCENE 09: Packed With Care */}
       <PackagingSection />
 
       {/* SCENE 11: From Our Instagram (UGC Grid) */}
