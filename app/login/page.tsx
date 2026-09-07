@@ -7,6 +7,7 @@ import {
   verifyPasswordResetOtpAndResetPassword 
 } from "@/app/actions/customer";
 import { ArrowLeft, CheckCircle2, KeyRound, Mail, Lock, ShieldCheck, Loader2 } from "lucide-react";
+import Logo from "@/components/shared/Logo";
 
 export default function UnifiedLogin() {
   const router = useRouter();
@@ -118,8 +119,8 @@ export default function UnifiedLogin() {
         {view === 'login' && (
           <div className="animate-in fade-in duration-300">
             <div className="text-center mb-8">
-              <Link href="/" className="font-serif text-2xl tracking-wide uppercase block mb-4" style={{ color: "var(--charcoal)" }}>
-                SHYN.ISH
+              <Link href="/" className="inline-flex justify-center mb-4">
+                <Logo variant="vertical" theme="dark" className="h-14 w-auto object-contain" />
               </Link>
               <h1 className="font-serif text-xl" style={{ color: "var(--charcoal)" }}>Partner & Admin Portal</h1>
               <p className="text-sm text-gray-500 mt-2 font-sans">Sign in to access your dashboard</p>

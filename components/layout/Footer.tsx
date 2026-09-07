@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, Phone, ArrowUpRight, ShieldCheck, Sparkles, Truck } from "lucide-react";
 import InstagramIcon from "@/components/shared/InstagramIcon";
+import Logo from "@/components/shared/Logo";
 
 const COLUMNS = [
   {
@@ -79,10 +80,13 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-4">
-              <span className="font-serif text-3xl lg:text-4xl tracking-[0.2em] font-medium text-white">
-                SHYN<span className="text-[#C5A059]">.</span>ISH
-              </span>
+            <Link href="/" className="inline-block mb-5 group">
+              <Logo
+                variant="horizontal"
+                theme="white"
+                className="h-10 lg:h-11 w-auto object-contain transition-opacity group-hover:opacity-90"
+                alt="SHYN.ISH Luxury Jewellery"
+              />
             </Link>
             <p className="text-xs font-sans tracking-[0.2em] uppercase text-[#C5A059] mb-4">
               Everyday Shine. Effortless Style.

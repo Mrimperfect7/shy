@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -8,6 +8,7 @@ import SearchOverlay from "@/components/shop/SearchOverlay";
 import MobileMenu from "@/components/layout/MobileMenu";
 import { ShoppingBag, Search, User, Menu, LogOut, Heart } from "lucide-react";
 import { motion } from "framer-motion";
+import Logo from "@/components/shared/Logo";
 
 const NAV_LINKS = [
   { href: "/shop", label: "Shop All" },
@@ -73,29 +74,27 @@ export default function Header({ isLoggedIn: serverLoggedIn = false }: { isLogge
             <Link
               href="/"
               aria-label="SHYN.ISH — Everyday Shine. Effortless Style."
-              className="flex flex-col flex-shrink-0 group"
+              className="flex items-center flex-shrink-0 group py-1 mr-4 lg:mr-8 xl:mr-12"
               data-cursor="SHINE"
             >
-              <div className="flex items-baseline gap-1">
-                <span className="font-serif text-2xl lg:text-3xl font-medium tracking-[0.2em] text-[#141312] group-hover:text-[#C5A059] transition-colors">
-                  SHYN<span className="text-[#C5A059]">.</span>ISH
-                </span>
-              </div>
-              <span className="text-[9px] uppercase tracking-[0.3em] font-sans text-[#5E564F] -mt-1 font-light">
-                Jewellery
-              </span>
+              <Logo
+                variant="horizontal"
+                theme="dark"
+                priority
+                className="h-7 sm:h-7.5 lg:h-8 w-auto object-contain transition-transform duration-300 group-hover:scale-[1.03]"
+              />
             </Link>
 
             {/* Center: Desktop Nav */}
             <nav
               aria-label="Primary navigation"
-              className="hidden lg:flex items-center gap-7"
+              className="hidden lg:flex items-center gap-4 xl:gap-6 flex-shrink-0"
             >
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-xs tracking-[0.16em] uppercase font-sans font-medium text-[#181614]/85 hover:text-[#C5A059] transition-colors relative group py-1"
+                  className="text-[10px] xl:text-[11px] tracking-[0.11em] uppercase font-sans font-medium whitespace-nowrap text-[#181614]/80 hover:text-[#C5A059] transition-colors relative group py-1 px-0.5"
                 >
                   {link.label}
                   <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-[#C5A059] transition-all duration-300 group-hover:w-full" />

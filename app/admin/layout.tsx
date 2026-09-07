@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import Logo from "@/components/shared/Logo";
 import { usePathname, useRouter } from "next/navigation";
 import { 
   LayoutDashboard, 
@@ -78,9 +79,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
           <button onClick={() => setSidebarOpen(!sidebarOpen)} className="p-1.5 hover:bg-gray-100 rounded-md transition-colors">
             <Menu size={22} style={{ color: "var(--charcoal)" }} />
           </button>
-          <span className="font-serif text-lg tracking-[0.2em] font-semibold text-[#141312]">
-            SHYN<span className="text-[#C5A059]">.</span>ISH
-          </span>
+          <Link href="/admin" className="flex items-center">
+            <Logo variant="horizontal" theme="dark" className="h-7 w-auto object-contain" />
+          </Link>
         </div>
         <span className="text-xs font-sans font-bold text-gray-500 uppercase tracking-wider hidden sm:block">Admin Dashboard</span>
         <button

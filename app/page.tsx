@@ -10,6 +10,7 @@ import GiftBoxScene from "@/components/3d/GiftBoxScene";
 import PackagingSection from "@/components/home/PackagingSection";
 import InstagramUgcSection from "@/components/home/InstagramUgcSection";
 import CustomerReviewsSection from "@/components/home/CustomerReviewsSection";
+import FAQSection from "@/components/home/FAQSection";
 import FinalCtaSection from "@/components/home/FinalCtaSection";
 import JewelleryChain from "@/components/3d/JewelleryChain";
 import prisma from "@/lib/prisma";
@@ -116,7 +117,10 @@ export default async function HomePage() {
       {/* SCENE 12: Customer Reviews & Social Proof */}
       <CustomerReviewsSection reviews={reviews} />
 
-      {/* SCENE 13: Final Campaign CTA */}
+      {/* SCENE 13: Frequently Asked Questions & Founder Story FAQ */}
+      <FAQSection />
+
+      {/* SCENE 14: Final Campaign CTA */}
       <FinalCtaSection />
     </main>
   );

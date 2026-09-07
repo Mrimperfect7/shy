@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Logo from "@/components/shared/Logo";
 import { usePathname, useRouter } from "next/navigation";
 import { 
   LayoutDashboard, 
@@ -53,8 +54,9 @@ export default function InfluencerLayout({ children }: { children: React.ReactNo
         
         <div className="flex flex-col h-full">
           <div className="h-20 flex items-center justify-between px-6 border-b" style={{ borderColor: "rgba(26,26,26,0.1)" }}>
-            <Link href="/influencer" className="font-serif text-xl tracking-widest uppercase block" style={{ color: "var(--charcoal)" }}>
-              SHYN.ISH Partner
+            <Link href="/influencer" className="flex items-center gap-2">
+              <Logo variant="horizontal" theme="dark" className="h-6 w-auto object-contain" />
+              <span className="text-[10px] uppercase font-sans tracking-widest text-[#C5A059] font-medium">Partner</span>
             </Link>
             <button onClick={() => setSidebarOpen(false)} className="lg:hidden p-2">
               <X size={20} style={{ color: "var(--charcoal)" }} />

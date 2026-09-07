@@ -43,8 +43,8 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
       <body>
         <div class="container">
           <div class="logo">
-            <h2 style="font-family: serif; color: #141312; margin: 0; font-size: 24px; letter-spacing: 2px;">SHYN.ISH</h2>
-            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #C5A059; margin-top: 4px;">Everyday Shine. Effortless Style.</p>
+            <img src="${siteUrl}/assets/shyn-logo.png" alt="SHYN.ISH" width="170" style="display:block;margin:0 auto 10px;max-width:100%;height:auto;" />
+            <p style="font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #C5A059; margin-top: 4px; font-weight: 500;">Everyday Shine. Effortless Style.</p>
           </div>
 
           <h3 style="font-size: 18px; margin-bottom: 8px; color: #141312;">Password Reset Verification Code</h3>
@@ -92,8 +92,8 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
       await transporter.sendMail({
         from: fromAddress,
         to: toEmail,
-        subject: `${otp} is your Eshara Naturals verification code`,
-        text: `Your Eshara Naturals password reset OTP is ${otp}. It is valid for 15 minutes.`,
+        subject: `${otp} is your SHYN.ISH verification code`,
+        text: `Your SHYN.ISH password reset OTP is ${otp}. It is valid for 15 minutes.`,
         html: emailHtml,
       });
 
@@ -118,9 +118,9 @@ export async function sendOtpEmail(params: SendOtpEmailParams): Promise<SendOtpR
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          from: initialFrom.includes("@") ? initialFrom : "Eshara Naturals <onboarding@resend.dev>",
+          from: initialFrom.includes("@") ? initialFrom : "SHYN.ISH <onboarding@resend.dev>",
           to: toEmail,
-          subject: `${otp} is your Eshara Naturals verification code`,
+          subject: `${otp} is your SHYN.ISH verification code`,
           html: emailHtml,
         }),
       });

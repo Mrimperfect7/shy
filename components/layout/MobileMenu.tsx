@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { X, MessageCircle, Heart } from "lucide-react";
 import InstagramIcon from "@/components/shared/InstagramIcon";
+import Logo from "@/components/shared/Logo";
 import { useEffect } from "react";
 
 const LINKS = [
@@ -27,13 +28,8 @@ export default function MobileMenu({ onClose, isLoggedIn = false }: { onClose: (
   return (
     <div className="mobile-menu fixed inset-0 bg-[#FAF8F5] z-[150] flex flex-col" role="dialog" aria-label="Navigation menu" aria-modal="true">
       <div className="flex items-center justify-between px-6 py-5 border-b border-[#C5A059]/20">
-        <Link href="/" onClick={onClose} className="flex flex-col">
-          <span className="font-serif text-2xl font-medium tracking-[0.2em] text-[#141312]">
-            SHYN<span className="text-[#C5A059]">.</span>ISH
-          </span>
-          <span className="text-[8px] uppercase tracking-[0.25em] font-sans text-[#5E564F] -mt-0.5">
-            Jewellery
-          </span>
+        <Link href="/" onClick={onClose} className="flex items-center">
+          <Logo variant="horizontal" theme="dark" className="h-8 w-auto object-contain" />
         </Link>
         <button onClick={onClose} aria-label="Close menu" className="p-2 text-[#141312] hover:text-[#C5A059] transition-colors">
           <X size={24} strokeWidth={1.4} />
@@ -47,7 +43,7 @@ export default function MobileMenu({ onClose, isLoggedIn = false }: { onClose: (
               <Link
                 href={link.href}
                 onClick={onClose}
-                className="flex items-center justify-between py-3.5 font-serif text-2xl font-medium text-[#181614] hover:text-[#C5A059] transition-colors"
+                className="flex items-center justify-between py-2.5 font-serif text-lg sm:text-xl font-medium text-[#181614] hover:text-[#C5A059] transition-colors"
               >
                 <span>{link.label}</span>
                 <span className="text-[#C5A059] text-sm">→</span>

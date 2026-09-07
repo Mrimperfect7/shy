@@ -93,8 +93,8 @@ export default function HeroScrollExperience() {
           
           <div className="relative w-64 sm:w-80 md:w-[400px] aspect-[700/296] mb-2">
             <Image
-              src="/assets/eshara-logo.png"
-              alt="Eshara Naturals"
+              src="/assets/shyn-logo.png"
+              alt="SHYN.ISH"
               fill
               priority
               className="object-contain"
