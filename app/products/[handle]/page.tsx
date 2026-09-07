@@ -4,7 +4,6 @@ import Link from "next/link";
 import ProductCard from "@/components/shop/ProductCard";
 import ProductGallery from "@/components/product/ProductGallery";
 import ProductForm from "@/components/product/ProductForm";
-import Product3DViewer from "@/components/3d/Product3DViewer";
 import ReviewSection from "@/components/product/ReviewSection";
 import TrustBar from "@/components/home/TrustBar";
 import { Sparkles, Shield, Droplets, Heart, CheckCircle2 } from "lucide-react";
@@ -185,25 +184,9 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             
-            {/* Gallery + 3D Viewer (Left - 7 cols) */}
+            {/* Gallery (Left - 7 cols) */}
             <div className="lg:col-span-7 space-y-6">
               <ProductGallery images={product.images} />
-              
-              {/* Interactive 3D Model Card */}
-              <div className="mt-8 space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-xs uppercase tracking-widest font-sans font-semibold text-[#141312] flex items-center gap-1.5">
-                    <Sparkles size={14} className="text-[#C5A059]" />
-                    <span>Interactive 360° Inspection</span>
-                  </span>
-                  <span className="text-[11px] text-[#5E564F] font-sans">Touch or drag to view angle</span>
-                </div>
-                <Product3DViewer
-                  productTitle={product.title}
-                  category={rawProduct.category?.slug || "necklace"}
-                  className="w-full h-[360px] rounded-3xl"
-                />
-              </div>
             </div>
 
             {/* Form / Purchase Info (Right - 5 cols) */}
