@@ -1,4 +1,5 @@
 import AboutSection from "@/components/home/AboutSection";
+import AboutFounderSection from "@/components/home/AboutFounderSection";
 import type { Metadata } from "next";
 import { getSeoMetadata } from "@/lib/seo";
 import { Sparkles, Shield, Droplets, Heart, CheckCircle2 } from "lucide-react";
@@ -112,6 +113,9 @@ export default function AboutPage() {
 
       {/* About Story & 5-Step Process */}
       <AboutSection />
+
+      {/* The Founder's Journey */}
+      <AboutFounderSection />
 
       {/* Guiding Principles */}
       <section className="py-16 lg:py-24 bg-white" id="materials">

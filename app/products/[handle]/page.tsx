@@ -127,6 +127,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
     plating: rawProduct.plating || "18K PVD Gold",
     dimensions: rawProduct.dimensions || "Standard Fit",
     careInstructions: rawProduct.careInstructions || "Water-resistant everyday wear. Store in provided velvet pouch.",
+    category: rawProduct.category?.slug || rawProduct.category?.name || rawProduct.slug || "necklaces",
     images: (rawProduct.imageUrls || []).map((url: string, i: number) => ({
       url,
       altText: `${rawProduct.title} - Angle ${i + 1}`,

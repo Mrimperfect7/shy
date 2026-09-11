@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Sparkles } from "lucide-react";
 
 interface ProductGalleryProps {
   images: { url: string; altText: string }[];
@@ -62,6 +63,21 @@ export default function ProductGallery({ images }: ProductGalleryProps) {
             </div>
           ))}
         </div>
+
+        {/* Floating Quick Action: AI Try On */}
+        <button
+          type="button"
+          onClick={() => {
+            if (typeof window !== "undefined") {
+              window.dispatchEvent(new CustomEvent("open-ai-tryon"));
+            }
+          }}
+          className="absolute bottom-3.5 right-3.5 z-20 bg-[#141312]/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-[#C5A059]/40 text-[#FAF8F5] text-[11px] font-sans font-semibold shadow-md hover:bg-[#141312] hover:scale-105 active:scale-95 transition-all flex items-center gap-1.5 group cursor-pointer"
+          title="Virtual Try-On"
+        >
+          <Sparkles size={13} className="text-[#C5A059] animate-pulse" />
+          <span>AI Try On</span>
+        </button>
       </div>
 
       {/* Mobile Pagination Dots */}

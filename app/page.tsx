@@ -1,4 +1,5 @@
-import Hero3DSection from "@/components/home/Hero3DSection";
+import LiveJewelleryHero from "@/components/home/LiveJewelleryHero";
+import AboutFounderSection from "@/components/home/AboutFounderSection";
 import TrustBar from "@/components/home/TrustBar";
 import CategoryGrid from "@/components/home/CategoryGrid";
 import CollectionStory3D from "@/components/home/CollectionStory3D";
@@ -77,8 +78,8 @@ export default async function HomePage() {
 
   return (
     <main id="main" className="overflow-hidden bg-[#FAF8F5]">
-      {/* SCENE 01: Cinematic 3D Hero */}
-      <Hero3DSection />
+      {/* SCENE 01: Live Moving Jewellery Hero (No 3D, Real Photography, Scroll-Driven) */}
+      <LiveJewelleryHero />
 
       {/* SCENE 02: Trust & Material Strip */}
       <TrustBar />
@@ -106,6 +107,9 @@ export default async function HomePage() {
 
       {/* SCENE 09: Packed With Care */}
       <PackagingSection />
+
+      {/* SCENE 10: About Our Founder — Authentic Homemaker Story */}
+      <AboutFounderSection />
 
       {/* SCENE 11: From Our Instagram (UGC Grid) */}
       <InstagramUgcSection reels={reels} />

@@ -1,11 +1,17 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import toast from "react-hot-toast";
 import { Star, ShoppingBag, Zap, Minus, Plus, Truck, Shield, Sparkles, MessageCircle, Heart } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
+import { inferJewelryCategory, TryOnProduct } from "@/lib/tryon/types";
+
+const VirtualTryOnModal = dynamic(() => import("@/components/tryon/VirtualTryOnModal"), {
+  ssr: false,
+});
 
 interface ProductFormProps {
   product: any;
@@ -17,6 +23,14 @@ export default function ProductForm({ product }: ProductFormProps) {
   const [quantity, setQuantity] = useState(1);
   const [adding, setAdding] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [isTryOnOpen, setIsTryOnOpen] = useState(false);
+
+  // Listen for global open-ai-tryon event from gallery or sticky bar
+  useEffect(() => {
+    const handler = () => setIsTryOnOpen(true);
+    window.addEventListener("open-ai-tryon", handler);
+    return () => window.removeEventListener("open-ai-tryon", handler);
+  }, []);
 
   // Indian PIN code validation
   const [pincode, setPincode] = useState("");
@@ -33,6 +47,17 @@ export default function ProductForm({ product }: ProductFormProps) {
     : null;
   const isSale = Boolean(compareAt && compareAt > price);
   const discountPercent = isSale && compareAt ? Math.round(((compareAt - price) / compareAt) * 100) : 0;
+
+  const tryOnProduct: TryOnProduct = {
+    id: product.id || product.handle,
+    title: product.title,
+    handle: product.handle,
+    price: price,
+    imageUrl: product.images?.[0]?.url || "/assets/products/necklace-pendant.jpg",
+    category: inferJewelryCategory(product.category || product.title || product.handle),
+    material: product.material,
+    dimensions: product.dimensions,
+  };
 
   const handleAdd = () => {
     setAdding(true);
@@ -169,6 +194,30 @@ export default function ProductForm({ product }: ProductFormProps) {
           </div>
         </div>
 
+        {/* ✨ AI VIRTUAL TRY-ON BUTTON */}
+        <button
+          type="button"
+          onClick={() => setIsTryOnOpen(true)}
+          className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-[#141312] via-[#242220] to-[#141312] border-2 border-[#C5A059] text-[#FAF8F5] shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-between group hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#C5A059]/20 border border-[#C5A059]/50 text-[#C5A059] flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Sparkles size={16} className="animate-pulse" />
+            </div>
+            <div className="text-left">
+              <span className="font-serif text-sm font-semibold tracking-wide text-white flex items-center gap-1.5">
+                <span>✨ AI VIRTUAL TRY-ON</span>
+              </span>
+              <span className="text-[10px] text-[#C5A059] font-sans block">
+                Visualize on diverse AI models or your selfie
+              </span>
+            </div>
+          </div>
+          <span className="text-[10px] uppercase font-sans font-bold tracking-wider px-3 py-1.5 rounded-full bg-gradient-to-r from-[#ECC880] via-[#C5A059] to-[#9A7832] text-[#141312] shadow-sm">
+            Try On Now
+          </span>
+        </button>
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
           <button
             onClick={handleAdd}
@@ -237,6 +286,15 @@ export default function ProductForm({ product }: ProductFormProps) {
           <span>💳 Online Prepaid Orders (COD Unavailable)</span>
         </div>
       </div>
+
+      {/* Virtual Try-On Modal */}
+      {isTryOnOpen && (
+        <VirtualTryOnModal
+          isOpen={isTryOnOpen}
+          onClose={() => setIsTryOnOpen(false)}
+          product={tryOnProduct}
+        />
+      )}
     </div>
   );
 }
