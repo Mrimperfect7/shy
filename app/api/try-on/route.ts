@@ -75,18 +75,12 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // 2. Resolve Jewelry Product Image
+    // 2. Resolve the ACTUAL catalog jewelry image.
+    // Never substitute a generic category asset: doing so makes the try-on show a
+    // different piece from the product the customer selected. Generic assets are
+    // used only by the product catalog itself, never by the try-on engine.
     let jewelryBuffer: Buffer;
-    let jewelryUrl = body.productImageUrl;
-
-    // Prioritize transparent, isolated asset for realistic try-on compositing
-    if (body.category === "earrings" || jewelryUrl.includes("earring") || jewelryUrl.includes("croissant") || jewelryUrl.includes("hoop")) {
-      jewelryUrl = "/assets/tryon/assets/single-hoop-left.png";
-    } else if (body.category === "necklaces" || body.category === "chains" || body.category === "pendants" || jewelryUrl.includes("herringbone") || jewelryUrl.includes("necklace") || jewelryUrl.includes("pendant")) {
-      jewelryUrl = "/assets/hero/floating-chain.png";
-    } else if (body.category === "rings" || jewelryUrl.includes("ring") || jewelryUrl.includes("eternity") || jewelryUrl.includes("band")) {
-      jewelryUrl = "/assets/hero/floating-rings.png";
-    }
+    const jewelryUrl = body.productImageUrl;
 
     if (jewelryUrl.startsWith("/")) {
       const localJewelryPath = path.join(process.cwd(), "public", jewelryUrl.replace(/^\//, ""));
