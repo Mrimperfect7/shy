@@ -1,0 +1,25 @@
+{
+  "type": "Targeted final verification after testing-agent iterations 1 and 2",
+  "scope": "Necklace angled fit, body loading, expanded/collapsed panel selector contract, reset view",
+  "method": "Screenshot tool running Playwright against current REACT_APP_BACKEND_URL, desktop 1920x800",
+  "result": "pass",
+  "verified": [
+    "NK201 product loads with Pearl Cascade Necklace selected and no body-model-error",
+    "panel-collapse is present when expanded, and clicking it exposes panel-toggle",
+    "After orbiting the neck view, the gold chain is visibly continuous to the pearl pendant, without the previously missing mid-chain sections",
+    "Reset model view completes without errors"
+  ],
+  "change_since_iteration_2": "Moved baked neckAnchor 0.02 scene units forward for clearance in angled views; regenerated the existing local body GLB",
+  "evidence": "Final screenshot returned inline by screenshot_tool at 20260919_053156; browser artifacts are remote, not files under /app/test_reports/screenshots",
+  "remaining_issues": [],
+  "report_corrections": [
+    "Iteration 1 panel-collapse issue was a false positive caused by collapsed panel state",
+    "camera-view-wrist/ring/neck were the correct selectors throughout, including the testing briefs",
+    "Mannequin validates required node names before mounting; missing nodes are caught by the body error boundary"
+  ],
+  "limitations": [
+    "Body models are code-sculpted display mannequins, not human scans or measured personal fit simulations",
+    "Existing jewelry meshes are generated preview assets, not independently verified physical-product replicas",
+    "Payments and authentication were outside this change and were not retested"
+  ]
+}

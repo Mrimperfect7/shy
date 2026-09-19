@@ -1,0 +1,908 @@
+[
+  {
+    "id": "BG001",
+    "title": "Royal Gold Bangle",
+    "slug": "royal-gold-bangle",
+    "handle": "royal-gold-bangle",
+    "price": 4999,
+    "compareAtPrice": 6999,
+    "inventory": 40,
+    "imageUrls": [
+      "/assets/products/bangle-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bangle-royal.jpg",
+        "altText": "Royal Gold Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bangle",
+      "name": "Bangles",
+      "slug": "bangle"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "62mm Inner Diameter",
+    "careInstructions": "Water & sweat resistant. Wipe with soft cloth.",
+    "descriptionHtml": "<p>A regal high-polish bangle with hand-set white sapphire pavé. The cornerstone of every SHYNISH stack.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/BG001.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "pave",
+      "gem": "#FFFFFF"
+    }
+  },
+  {
+    "id": "BG002",
+    "title": "Gold Diamond Bangle",
+    "slug": "gold-diamond-bangle",
+    "handle": "gold-diamond-bangle",
+    "price": 6499,
+    "compareAtPrice": 8999,
+    "inventory": 30,
+    "imageUrls": [
+      "/assets/products/bangle-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bangle-royal.jpg",
+        "altText": "Gold Diamond Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bangle",
+      "name": "Bangles",
+      "slug": "bangle"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "60mm Inner Diameter",
+    "careInstructions": "Anti-tarnish. Store in velvet pouch.",
+    "descriptionHtml": "<p>Mirror-buffed gold bangle crowned with a single row of brilliant-cut cubic zirconia. Catches light from every angle.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/BG002.glb",
+    "tryOnConfig": {
+      "scale": 1.02,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "gems",
+      "gem": "#FFFFFF"
+    }
+  },
+  {
+    "id": "BG003",
+    "title": "Rose Quartz Kada Bangle",
+    "slug": "rose-quartz-kada-bangle",
+    "handle": "rose-quartz-kada-bangle",
+    "price": 3999,
+    "compareAtPrice": 5499,
+    "inventory": 35,
+    "imageUrls": [
+      "/assets/products/jewelry-editorial.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/jewelry-editorial.jpg",
+        "altText": "Rose Quartz Kada Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bangle",
+      "name": "Bangles",
+      "slug": "bangle"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Rose Gold",
+    "dimensions": "64mm Inner Diameter",
+    "careInstructions": "Hypoallergenic. Shower safe.",
+    "descriptionHtml": "<p>A bold rose-gold kada in the Punjabi tradition, finished with twin blush quartz cabochons at the crown.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/BG003.glb",
+    "tryOnConfig": {
+      "scale": 1.05,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "kada",
+      "gem": "#F4C2C2"
+    }
+  },
+  {
+    "id": "BR001",
+    "title": "Serpent Chain Bracelet",
+    "slug": "serpent-chain-bracelet",
+    "handle": "serpent-chain-bracelet",
+    "price": 2499,
+    "compareAtPrice": 3499,
+    "inventory": 50,
+    "imageUrls": [
+      "/assets/products/bracelet-gold.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bracelet-gold.jpg",
+        "altText": "Serpent Chain Bracelet"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelet",
+      "name": "Bracelets",
+      "slug": "bracelet"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "17cm + 3cm Extender",
+    "careInstructions": "Water resistant. Avoid perfume directly on chain.",
+    "descriptionHtml": "<p>Fluid serpent-link chain that drapes the wrist like liquid metal, finished with a sculpted lobster clasp.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/BR001.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "chain",
+      "gem": null
+    }
+  },
+  {
+    "id": "BR002",
+    "title": "Pearl Charm Bracelet",
+    "slug": "pearl-charm-bracelet",
+    "handle": "pearl-charm-bracelet",
+    "price": 2999,
+    "compareAtPrice": 4199,
+    "inventory": 45,
+    "imageUrls": [
+      "/assets/products/jewelry-editorial.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/jewelry-editorial.jpg",
+        "altText": "Pearl Charm Bracelet"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelet",
+      "name": "Bracelets",
+      "slug": "bracelet"
+    },
+    "material": "316L Stainless Steel + Freshwater Pearl",
+    "plating": "18K PVD Gold",
+    "dimensions": "16cm + 4cm Extender",
+    "careInstructions": "Wipe pearls with damp cloth after wear.",
+    "descriptionHtml": "<p>Hand-knotted freshwater pearls on a gold vermeil chain with a single pavé charm. Quiet luxury, daily.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/BR002.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "pearl",
+      "gem": "#F2EAD9"
+    }
+  },
+  {
+    "id": "BR003",
+    "title": "Minimal Bar Cuff Bracelet",
+    "slug": "minimal-bar-cuff-bracelet",
+    "handle": "minimal-bar-cuff-bracelet",
+    "price": 1999,
+    "compareAtPrice": 2999,
+    "inventory": 60,
+    "imageUrls": [
+      "/assets/products/bracelet-gold.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bracelet-gold.jpg",
+        "altText": "Minimal Bar Cuff Bracelet"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelet",
+      "name": "Bracelets",
+      "slug": "bracelet"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "Platinum PVD",
+    "dimensions": "Open Cuff · Adjustable 55-60mm",
+    "careInstructions": "Anti-scratch satin finish. Shower safe.",
+    "descriptionHtml": "<p>An architectural open cuff in brushed platinum tone — the quiet counterpoint to a gold stack.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/BR003.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "cuff",
+      "gem": null
+    }
+  },
+  {
+    "id": "RG101",
+    "title": "Ruby Solitaire Ring",
+    "slug": "ruby-solitaire-ring",
+    "handle": "ruby-solitaire-ring",
+    "price": 5499,
+    "compareAtPrice": 7499,
+    "inventory": 25,
+    "imageUrls": [
+      "/assets/products/ring-solitaire.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/ring-solitaire.jpg",
+        "altText": "Ruby Solitaire Ring"
+      }
+    ],
+    "category": {
+      "id": "cat-ring",
+      "name": "Rings",
+      "slug": "ring"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "Sizes 6, 7, 8",
+    "careInstructions": "Water & sweat resistant.",
+    "descriptionHtml": "<p>A pigeon-blood ruby cabochon in a four-prong cathedral setting. One stone, absolute conviction.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "finger",
+    "model3dUrl": "/models/jewelry/RG101.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "ring",
+      "variant": "solitaire",
+      "gem": "#9B111E"
+    }
+  },
+  {
+    "id": "RG102",
+    "title": "Diamond Halo Ring",
+    "slug": "diamond-halo-ring",
+    "handle": "diamond-halo-ring",
+    "price": 7999,
+    "compareAtPrice": 10999,
+    "inventory": 20,
+    "imageUrls": [
+      "/assets/products/rings-stack.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/rings-stack.jpg",
+        "altText": "Diamond Halo Ring"
+      }
+    ],
+    "category": {
+      "id": "cat-ring",
+      "name": "Rings",
+      "slug": "ring"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "Platinum PVD",
+    "dimensions": "Sizes 6, 7, 8",
+    "careInstructions": "Clean with soft brush and mild soap.",
+    "descriptionHtml": "<p>A brilliant centre stone orbited by twelve micro-pavé diamonds. Our most requested engagement silhouette.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "finger",
+    "model3dUrl": "/models/jewelry/RG102.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "ring",
+      "variant": "halo",
+      "gem": "#FFFFFF"
+    }
+  },
+  {
+    "id": "RG103",
+    "title": "Emerald Signet Ring",
+    "slug": "emerald-signet-ring",
+    "handle": "emerald-signet-ring",
+    "price": 4499,
+    "compareAtPrice": 6299,
+    "inventory": 30,
+    "imageUrls": [
+      "/assets/products/ring-solitaire.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/ring-solitaire.jpg",
+        "altText": "Emerald Signet Ring"
+      }
+    ],
+    "category": {
+      "id": "cat-ring",
+      "name": "Rings",
+      "slug": "ring"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "Sizes 7, 8, 9",
+    "careInstructions": "Anti-tarnish guarantee.",
+    "descriptionHtml": "<p>A bold signet face set with a step-cut emerald. Old-money energy, everyday price.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "finger",
+    "model3dUrl": "/models/jewelry/RG103.glb",
+    "tryOnConfig": {
+      "scale": 1.05,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "index",
+      "variant": "signet",
+      "gem": "#046A38"
+    }
+  },
+  {
+    "id": "NK201",
+    "title": "Pearl Cascade Necklace",
+    "slug": "pearl-cascade-necklace",
+    "handle": "pearl-cascade-necklace",
+    "price": 8999,
+    "compareAtPrice": 11999,
+    "inventory": 15,
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Pearl Cascade Necklace"
+      }
+    ],
+    "category": {
+      "id": "cat-necklace",
+      "name": "Necklaces",
+      "slug": "necklace"
+    },
+    "material": "316L Stainless Steel + Freshwater Pearl",
+    "plating": "18K PVD Gold",
+    "dimensions": "42cm + 5cm Extender",
+    "careInstructions": "Store flat in velvet pouch.",
+    "descriptionHtml": "<p>Graduated freshwater pearls cascading from a whisper-thin gold chain. Worn at the hollow of the throat.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "neck",
+    "model3dUrl": "/models/jewelry/NK201.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "pearl-drop",
+      "gem": "#F2EAD9"
+    }
+  },
+  {
+    "id": "NK202",
+    "title": "Emerald Drop Necklace",
+    "slug": "emerald-drop-necklace",
+    "handle": "emerald-drop-necklace",
+    "price": 9499,
+    "compareAtPrice": 12999,
+    "inventory": 12,
+    "imageUrls": [
+      "/assets/products/necklace-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-royal.jpg",
+        "altText": "Emerald Drop Necklace"
+      }
+    ],
+    "category": {
+      "id": "cat-necklace",
+      "name": "Necklaces",
+      "slug": "necklace"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "45cm Chain with Lobster Clasp",
+    "careInstructions": "Water-resistant daily wear.",
+    "descriptionHtml": "<p>A single pear-cut emerald suspended from a knife-edge gold chain. The room notices.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "neck",
+    "model3dUrl": "/models/jewelry/NK202.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "gem-drop",
+      "gem": "#046A38"
+    }
+  },
+  {
+    "id": "NK203",
+    "title": "Celestial Lariat Necklace",
+    "slug": "celestial-lariat-necklace",
+    "handle": "celestial-lariat-necklace",
+    "price": 5999,
+    "compareAtPrice": 7999,
+    "inventory": 28,
+    "imageUrls": [
+      "/assets/products/necklace-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-royal.jpg",
+        "altText": "Celestial Lariat Necklace"
+      }
+    ],
+    "category": {
+      "id": "cat-necklace",
+      "name": "Necklaces",
+      "slug": "necklace"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Rose Gold",
+    "dimensions": "50cm Lariat Drop",
+    "careInstructions": "Hypoallergenic. Shower safe.",
+    "descriptionHtml": "<p>A rose-gold lariat threaded through a pavé crescent — adjust the drop to your neckline.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "neck",
+    "model3dUrl": "/models/jewelry/NK203.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "lariat",
+      "gem": "#FFFFFF"
+    }
+  },
+  {
+    "id": "shyn-prod-1",
+    "title": "Minimalist Solitaire Eternity Band",
+    "slug": "minimalist-solitaire-eternity-band",
+    "handle": "minimalist-solitaire-eternity-band",
+    "price": 99,
+    "compareAtPrice": 199,
+    "inventory": 50,
+    "imageUrls": [
+      "/assets/products/rings-stack.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/rings-stack.jpg",
+        "altText": "Minimalist Solitaire Eternity Band"
+      }
+    ],
+    "category": {
+      "id": "cat-rings",
+      "name": "Rings & Bands",
+      "slug": "rings"
+    },
+    "material": "316L Surgical Stainless Steel",
+    "plating": "18K PVD Gold Plating",
+    "dimensions": "Sizes 6, 7, 8 Available",
+    "careInstructions": "Water & sweat resistant. Wipe with soft cloth.",
+    "descriptionHtml": "<p>Dainty micro-pave sparkle designed for daily stacking. Hypoallergenic 316L stainless steel core ensures zero green fingers.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "finger",
+    "model3dUrl": "/models/jewelry/shyn-prod-1.glb",
+    "tryOnConfig": {
+      "scale": 0.9,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "middle",
+      "variant": "band",
+      "gem": "#FFFFFF"
+    }
+  },
+  {
+    "id": "shyn-prod-2",
+    "title": "Luxe Twisted Croissant Hoops",
+    "slug": "luxe-twisted-croissant-hoops",
+    "handle": "luxe-twisted-croissant-hoops",
+    "price": 185,
+    "compareAtPrice": 350,
+    "inventory": 40,
+    "imageUrls": [
+      "/assets/products/earrings-hoops.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/earrings-hoops.jpg",
+        "altText": "Luxe Twisted Croissant Hoops"
+      }
+    ],
+    "category": {
+      "id": "cat-earrings",
+      "name": "Earrings & Hoops",
+      "slug": "earrings"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Vacuum Gold",
+    "dimensions": "22mm Outer Diameter",
+    "careInstructions": "Shower-safe everyday wear.",
+    "descriptionHtml": "<p>French vintage-inspired ribbed croissant hoops. Hollow interior for featherlight all-day comfort without pulling earlobes.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": false
+  },
+  {
+    "id": "shyn-prod-3",
+    "title": "Liquid Gold Herringbone Snake Chain",
+    "slug": "liquid-gold-herringbone-chain",
+    "handle": "liquid-gold-herringbone-chain",
+    "price": 199,
+    "compareAtPrice": 399,
+    "inventory": 35,
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Liquid Gold Herringbone Chain"
+      }
+    ],
+    "category": {
+      "id": "cat-necklaces",
+      "name": "Necklaces & Chains",
+      "slug": "necklaces"
+    },
+    "material": "304/316 Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "40cm + 5cm Extender",
+    "careInstructions": "Store flat in velvet pouch to prevent kinking.",
+    "descriptionHtml": "<p>Silky, mirror-finish herringbone chain that rests flat against your collarbone like liquid gold. Water and perfume resistant.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "neck",
+    "model3dUrl": "/models/jewelry/shyn-prod-3.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "chain",
+      "gem": null
+    }
+  },
+  {
+    "id": "shyn-prod-4",
+    "title": "Lucky Four-Leaf Clover Huggies",
+    "slug": "lucky-four-leaf-clover-huggies",
+    "handle": "lucky-four-leaf-clover-huggies",
+    "price": 199,
+    "compareAtPrice": 399,
+    "inventory": 45,
+    "imageUrls": [
+      "/assets/products/earrings-hoops.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/earrings-hoops.jpg",
+        "altText": "Lucky Four-Leaf Clover Huggies"
+      }
+    ],
+    "category": {
+      "id": "cat-earrings",
+      "name": "Earrings & Hoops",
+      "slug": "earrings"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "14mm Huggie Diameter",
+    "careInstructions": "Hypoallergenic. Safe for sensitive ears.",
+    "descriptionHtml": "<p>Delicate black onyx-style lucky clover motif framed in rich 18K gold beading. Click-latch closure for secure daily wear.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": false
+  },
+  {
+    "id": "shyn-prod-5",
+    "title": "Aura Interlocking 18K Gold Pendant",
+    "slug": "aura-interlocking-18k-gold-pendant",
+    "handle": "aura-interlocking-18k-gold-pendant",
+    "price": 480,
+    "compareAtPrice": 890,
+    "inventory": 25,
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Aura Interlocking 18K Gold Pendant"
+      }
+    ],
+    "category": {
+      "id": "cat-necklaces",
+      "name": "Necklaces & Chains",
+      "slug": "necklaces"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K Heavy PVD Gold Coating",
+    "dimensions": "45cm Chain with Lobster Clasp",
+    "careInstructions": "Anti-tarnish guarantee. Water-resistant daily wear.",
+    "descriptionHtml": "<p>Dual interlocking circular bands with roman numerals and micro-crystal pavé center. Our signature under ₹480 luxury statement piece.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "neck",
+    "model3dUrl": "/models/jewelry/shyn-prod-5.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "gem-drop",
+      "gem": "#FFFFFF"
+    }
+  },
+  {
+    "id": "shyn-prod-6",
+    "title": "Classic Roman Numeral Cuff Bangle",
+    "slug": "classic-roman-numeral-cuff-bangle",
+    "handle": "classic-roman-numeral-cuff-bangle",
+    "price": 480,
+    "compareAtPrice": 890,
+    "inventory": 30,
+    "imageUrls": [
+      "/assets/products/rings-stack.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/rings-stack.jpg",
+        "altText": "Classic Roman Numeral Cuff Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelets",
+      "name": "Bracelets & Bangles",
+      "slug": "bracelets"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "Oval Fit: 58mm x 48mm Inner Diameter",
+    "careInstructions": "Hinged click clasp. Anti-scratch mirror buff.",
+    "descriptionHtml": "<p>Timeless bevel-edged luxury cuff with laser-etched Roman numerals and pavé cubic zirconia accents. Perfect for stacking.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": true,
+    "tryOnBodyPart": "wrist",
+    "model3dUrl": "/models/jewelry/shyn-prod-6.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "flat",
+      "gem": null
+    }
+  },
+  {
+    "id": "shyn-prod-7",
+    "title": "Classic Champagne Mesh Watch",
+    "slug": "classic-champagne-mesh-watch",
+    "handle": "classic-champagne-mesh-watch",
+    "price": 690,
+    "compareAtPrice": 1290,
+    "inventory": 15,
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Classic Champagne Mesh Watch"
+      }
+    ],
+    "category": {
+      "id": "cat-watches",
+      "name": "Watches & Sets",
+      "slug": "watches-sets"
+    },
+    "material": "Japanese Quartz Movement + Stainless Steel Mesh",
+    "plating": "18K PVD Champagne Gold",
+    "dimensions": "28mm Case Diameter, Adjustable Mesh Strap",
+    "careInstructions": "3ATM Water Resistant (Splash & rain proof).",
+    "descriptionHtml": "<p>Ultra-thin 6mm case with shimmering sunray dial and magnetic/sliding mesh clasp. Pairs effortlessly with our Roman cuff.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": false
+  },
+  {
+    "id": "shyn-prod-8",
+    "title": "SHYN.ISH Signature Velvet Gift Box",
+    "slug": "shynish-signature-velvet-gift-box",
+    "handle": "shynish-signature-velvet-gift-box",
+    "price": 99,
+    "compareAtPrice": 199,
+    "inventory": 100,
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "SHYN.ISH Signature Velvet Gift Box"
+      }
+    ],
+    "category": {
+      "id": "cat-gifts",
+      "name": "Luxury Gifting",
+      "slug": "gifts"
+    },
+    "material": "Rigid Board + Microfiber Velvet + Gold Foil",
+    "plating": "Gold Foil Embossed",
+    "dimensions": "9cm x 9cm x 4cm",
+    "careInstructions": "Keeps jewellery anti-tarnished and protected.",
+    "descriptionHtml": "<p>Matte black presentation gift box with gold foil logo, plush interior cushion, and travel pouch.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": false
+  },
+  {
+    "id": "shyn-prod-9",
+    "title": "Anti-Tarnish Daily Wear Gift Set (Chain + Hoops)",
+    "slug": "anti-tarnish-daily-wear-gift-set",
+    "handle": "anti-tarnish-daily-wear-gift-set",
+    "price": 480,
+    "compareAtPrice": 850,
+    "inventory": 20,
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Anti-Tarnish Daily Wear Gift Set"
+      }
+    ],
+    "category": {
+      "id": "cat-gifts",
+      "name": "Luxury Gifting",
+      "slug": "gifts"
+    },
+    "material": "316L Stainless Steel",
+    "plating": "18K PVD Gold",
+    "dimensions": "Boxed Set with Pouch",
+    "careInstructions": "Both pieces anti-tarnish and shower safe.",
+    "descriptionHtml": "<p>Curated starter stack including the Liquid Gold Herringbone Chain and Twisted Hoops, boxed in our signature velvet packaging.</p>",
+    "isJewellery": true,
+    "tryOnEnabled": false
+  }
+]

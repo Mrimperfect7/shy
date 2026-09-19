@@ -1,0 +1,93 @@
+{
+  "project_title": "SHYNISH 3D Jewelry Customizer & Showroom Enhancements",
+  "design_archetype": "LUXURY & PERFORMANCE PRO (Showroom Dark Mode)",
+  "emotional_tone": "High-end luxury jewelry atelier, sleek obsidian & 18K gold aesthetics with realistic 3D display forms",
+  "theme": "Dark Showroom (#0B0B0C base, #D4AF37 gold accents, #161618 velvet)",
+  
+  "3d_mannequin_geometry_and_proportions": {
+    "hand_forearm_redesign": {
+      "problem": "Currently uses disconnected cylinder forearm + rounded box palm + floating capsule fingers.",
+      "solution_code_mesh": "Construct a smooth continuous anatomical hand mesh using Three.js ExtrudeGeometry / LatheGeometry / Parametric / Tube curves or merged CSG/Group blending.",
+      "forearm_spec": "Gradual tapered anatomical forearm using CylinderGeometry with length 0.9, top radius 0.125, bottom radius 0.175, with smooth transitional bevel mesh to wrist joint.",
+      "palm_thenar_spec": "Replace BoxGeometry with an organic palm shape using ExtrudeGeometry along a soft palm outline (with thumb thenar eminence swelling and hypothenar mound), radius corner rounding 0.08.",
+      "finger_joints": "Connect proximal, middle, and distal phalanges with joint knuckles (small sphere geometries at joints) to eliminate gaps, set soft resting curl angles: Index (-0.15 rad), Middle (-0.1 rad), Ring (-0.18 rad), Little (-0.22 rad), Thumb gently opposed at 45 degrees.",
+      "skin_material_update": "MeshPhysicalMaterial with subsurface scattering approximation: color '#E8DFD3', roughness 0.38, clearcoat 0.15, clearcoatRoughness 0.25, metalness 0.02, envMapIntensity 1.2."
+    },
+    "bust_neck_redesign": {
+      "problem": "Currently uses flat lathed bust shape without defined collarbones, sternum, or elegant neck curve.",
+      "solution_code_mesh": "Refine bust LatheGeometry profile vector sequence to add anatomical contours: delicate neck narrowing (r=0.125 at mid-neck), collarbone ridge flare (x=0.28, y=0.42), shoulder slope taper, and soft pedestal transition.",
+      "bust_material_update": "Velvet MeshStandardMaterial: color '#121214', roughness 0.98, metalness 0.0, with subtle rim lighting highlight or sheen map."
+    }
+  },
+
+  "camera_framing_and_lighting": {
+    "camera_view_presets": {
+      "wrist": {
+        "position": [-0.32, 0.38, 0.95],
+        "target": [-0.38, -0.02, 0.12],
+        "fov": 38,
+        "description": "Macro close-up on wrist joint and forearm stack, highlighting bangle/bracelet fit."
+      },
+      "ring": {
+        "position": [0.28, 0.26, 0.72],
+        "target": [0.24, -0.02, 0.08],
+        "fov": 34,
+        "description": "Intimate finger focus framing rings across all 5 finger anchors with zero distortion."
+      },
+      "neck": {
+        "position": [1.0, 0.52, 0.45],
+        "target": [1.0, 0.22, -0.90],
+        "fov": 40,
+        "description": "High-fashion portrait view centering the collarbone and draped necklace curve."
+      }
+    },
+    "studio_lighting": {
+      "key_spotlight": "Warm showroom spot at [2.5, 4.5, 2.5], color '#FFF5E0', intensity 120, penumbra 0.5 with high-res soft shadows.",
+      "fill_light": "Gold ambient rim fill at [-3.5, 2.0, -2.0], color '#D4AF37', intensity 45.",
+      "sparkle_glint": "Point light at [0.5, 1.5, 1.8], color '#FFFFFF', intensity 15 to capture diamond/gem facets."
+    }
+  },
+
+  "typography": {
+    "headings": {
+      "font_family": "Cormorant Garamond, Playfair Display, or serif fallback",
+      "h1": "text-2xl sm:text-3xl font-serif text-[#F7F5F0]",
+      "h2": "text-xl sm:text-2xl font-serif text-[#D4AF37]"
+    },
+    "body": {
+      "font_family": "Inter or system sans-serif",
+      "text": "text-sm text-zinc-300 font-sans"
+    },
+    "accent_labels": {
+      "font_family": "JetBrains Mono / monospace",
+      "text": "text-[10px] font-mono tracking-[0.25em] uppercase text-amber-400/80"
+    }
+  },
+
+  "colors": {
+    "background": "#0B0B0C",
+    "surface": "#121215",
+    "surface_border": "rgba(212, 175, 55, 0.2)",
+    "primary_accent": "#D4AF37",
+    "primary_hover": "#F3E5AB",
+    "text_main": "#F7F5F0",
+    "text_muted": "#A1A1AA"
+  },
+
+  "testing_and_accessibility": {
+    "data_testid_rules": "All interactive buttons, camera selectors, catalog drag items, and worn list cards MUST have data-testid attributes (e.g. data-testid='camera-view-wrist', data-testid='worn-item-card')."
+  },
+
+  "instructions_to_main_agent": [
+    "Keep existing Next.js + Prisma + Zustand setup untouched for product catalog and cart.",
+    "Improve Mannequin.tsx 3D meshes procedurally by smoothing geometry joints, refining palm/finger anatomical profiles, and enhancing skin MeshPhysicalMaterial.",
+    "Ensure all camera view presets in TryOnScene.tsx remain buttery smooth with lerped OrbitControls targets.",
+    "Do NOT introduce any AI image generation services or alter store routing."
+  ],
+
+  "UNIVERSAL GUIDELINES FOR MAIN AGENT": [
+    "Never use generic centered layouts or flat gradients.",
+    "Ensure all interactive elements have hover and focus states.",
+    "All interactive elements MUST include a data-testid attribute."
+  ]
+}

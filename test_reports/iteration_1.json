@@ -1,0 +1,72 @@
+{
+  "summary": "Frontend-only smoke + integration test of the /customizer 3D try-on. Verified wrist/ring/neck sculptures render as smooth, continuous ivory bodies (arm+hand+5 fingers; closed neck/shoulders bust) on both desktop 1920x1080 and mobile 390x844. Product try-ons (BG001+BG002 stacking, RG101/RG102/RG103 with finger picker, NK201/NK202/NK203) work; rings sit on the chosen finger with visible gemstones; bangles wrap the wrist. Anchor persistence, view switching, reset view, worn-items panel, add-to-cart (eshara-cart), View Product link and clear-all all work. Body-asset failure correctly shows body-model-error. One testid (panel-collapse) referenced in task is absent (only panel-toggle exists). Necklace side-chain arcs float disconnected above the pendant on all three necklaces (visual fit concern).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {"component": "WornItemsPanel", "issue": "Task references data-testid=panel-collapse for desktop collapse, but only panel-toggle exists in DOM (both desktop and mobile). Not a blocker but breaks the documented selector contract.", "selector": "[data-testid=panel-collapse]", "priority": "LOW"}
+    ],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Neck view (NK201/NK202/NK203)", "issues": [
+        "Two symmetrical gold arcs (necklace back-loop / chain) sit high on the neck near the ears and appear visually disconnected from the pendant/main design at the base of the neck. Identical arcs render across all three necklaces, so at a glance they look like floating hoops rather than a continuous chain. Consider translating the arcs down or connecting them to the bottom necklace curve so the piece reads as a single closed necklace."
+      ]},
+      {"screen": "Customizer header stack", "issues": [
+        "AnnouncementBar marquee + main Header + Customize Your Look header stack three bars above the viewport (~7rem tall). No white gap so 'double-header white gap' criterion is satisfied, but the stack is heavy and eats vertical space, especially on mobile."
+      ]},
+      {"screen": "Ring view mobile 390x844", "issues": [
+        "Hand model is horizontally offset so the wrist end is clipped off the left edge. Fingers stay fully visible so ring interactions still work, but framing feels off-center."
+      ]}
+    ]
+  },
+  "verified_flows": [
+    "Wrist view renders continuous forearm+hand with 5 separated fingers (desktop + mobile).",
+    "Neck view renders smooth closed neck/shoulders bust with base plinth (desktop + mobile).",
+    "Ring view renders full hand with fingers; RG101 on index and RG102 on thumb display gemstones above finger surface (not buried).",
+    "BG001+BG002 stack on wrist without floating disconnected arm parts.",
+    "NK201/NK202/NK203 each render on the bust with unique pendant geometry.",
+    "Switching Wrist->Ring->Neck keeps persisted items (BG001 wristAnchor, RG101 indexFingerAnchor, NK201 neckAnchor) and shows only the active display sculpture.",
+    "Reset view button clickable and does not throw.",
+    "Add to cart writes correct product to localStorage 'eshara-cart' with matching productId, title, price (NK201 -> Pearl Cascade Necklace @ 8999).",
+    "View Product link href is /products/pearl-cascade-necklace (matches product slug).",
+    "Clear-all clears zustand items list to 0.",
+    "Blocking /models/body/atelier-mannequin-v1.glb triggers body-model-error boundary with useful message instead of stuck loader.",
+    "Category tabs (bangles/bracelets/rings/necklaces) all present with expected testids.",
+    "FingerPicker modal opens with finger-select-thumb/index/middle/ring/little buttons and correctly assigns anchor."
+  ],
+  "screenshots": [
+    "/app/test_reports/screenshots/desktop_wrist.png",
+    "/app/test_reports/screenshots/desktop_ring.png",
+    "/app/test_reports/screenshots/desktop_neck.png",
+    "/app/test_reports/screenshots/desktop_wrist_BG001.png",
+    "/app/test_reports/screenshots/desktop_wrist_BG001_BG002.png",
+    "/app/test_reports/screenshots/desktop_ring_RG101_index.png",
+    "/app/test_reports/screenshots/desktop_ring_stacked_all.png",
+    "/app/test_reports/screenshots/desktop_neck_NK201.png",
+    "/app/test_reports/screenshots/desktop_neck_NK202.png",
+    "/app/test_reports/screenshots/desktop_neck_NK203.png",
+    "/app/test_reports/screenshots/mobile_wrist.png",
+    "/app/test_reports/screenshots/mobile_ring.png",
+    "/app/test_reports/screenshots/mobile_neck.png",
+    "/app/test_reports/screenshots/mobile_wrist_BG001.png",
+    "/app/test_reports/screenshots/asset_blocked.png"
+  ],
+  "test_report_links": [],
+  "action_items": [
+    "Add data-testid=panel-collapse to the desktop collapse control in WornItemsPanel (or update task/testid contract).",
+    "Revisit necklace geometry: the two upper side arcs float above the shoulders and read as disconnected from the pendant/base curve. Either link them into a single closed chain or lower them to the collarbone line so the necklace reads as one piece.",
+    "Consider centering the hand model or expanding the ring-view camera framing on <=390px viewports so the wrist end is not clipped."
+  ],
+  "critical_code_review_comments": [
+    "Mannequin.tsx uses non-null assertions (model.getObjectByName('HandDisplay')!.visible = ...). If the GLB asset ever ships without one of those named nodes the effect will crash the render loop with a runtime TypeError; consider a defensive guard.",
+    "StorefrontLayout intentionally keeps AnnouncementBar + Header on /customizer. Combined with the customizer's own header this yields a ~7rem stacked chrome region and forces h-[calc(100dvh-7rem)] math. Fine, but any change to the site header height silently breaks vertical fit.",
+    "cameraView-based visibility toggle (HandDisplay vs NeckDisplay) is fine, but if the GLB ever adds more root display groups they will remain permanently visible; consider iterating all *Display children instead of hardcoding two."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (frontend-only)", "frontend": "100% of requested checks passed with minor visual/testid issues"},
+  "test_credentials": "n/a - customizer requires no auth",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Public URL: https://jewelry-visualizer-2.preview.emergentagent.com/customizer. Zustand key 'shynish-3d-tryon' persists items[]; clear it via localStorage.removeItem before each fresh flow. Cart key is 'eshara-cart'. FingerPicker modal appears after wearing a ring - use [data-testid=finger-select-<id>] where id in {thumb,index,middle,ring,little}. Only panel-toggle exists (no panel-collapse). Reset view uses [data-testid=reset-model-view]. To test asset failure boundary use await page.route('**/atelier-mannequin-v1.glb', lambda r: r.abort()) BEFORE navigation.",
+  "rca of the issue": "n/a - no blocking bugs. Necklace disconnected-chain look stems from the neck anchor geometry: the side arcs (chain back) and bottom pendant are separate mesh groups in the necklace model whose local Y offsets do not meet on the bust surface; because the bust silhouette differs from the mannequin the chain assumed, the top of the chain lands high on the throat while the pendant hangs near the collarbone, giving a floating impression. Mitigation: either bake the chain into a single continuous curve mesh or drive its top position from the neckAnchor + a bust-radius offset per view."
+}

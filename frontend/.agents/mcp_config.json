@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "RapidAPI Hub - Harem Altın Gold Price Api": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp.rapidapi.com",
+        "--header",
+        "x-api-host: harem-altin-gold-price-api.p.rapidapi.com",
+        "--header",
+        "x-api-key: 9e7553610fmshc3f946f17edfe16p11e183jsn81aa0f5d332e"
+      ]
+    }
+  }
+}

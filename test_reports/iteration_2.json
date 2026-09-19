@@ -1,0 +1,37 @@
+{
+  "summary": "Frontend-only retest on desktop 1920x1080 and mobile 390x844 for showroom /customizer. All four fixes from iteration_1 verified: (1) NK201/NK202/NK203 chain is now visibly continuous around the neck in front view (single gold oval meeting the pendant at the collarbone) - no invisible mid-chain sections; (2) mobile 390x844 ring view now frames the full hand - wrist AND forearm end AND all five fingers are inside the canvas, no left-edge clip; (3) data-testid=panel-collapse DOES exist on the expanded WornItemsPanel on both desktop and mobile (previous iteration_1 selector claim corrected - it was a false positive because panel starts collapsed and only exposes panel-toggle; after clicking panel-toggle, panel-collapse count == 1 and works to collapse); (4) showroom header sits at top=0 with NO announcement bar on /customizer, no root document scroll (scrollHeight == clientHeight on both viewports), while /shop still keeps its announcement bar (regression intact). Anchor-persist across view switches also still works.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": [
+      {"screen": "Necklace side/orbit views (NK201-203)", "issues": ["Front view now reads as a continuous gold oval chain and is a clear improvement over iteration_1's floating arcs. When orbiting ~30deg, the far half of the chain correctly hides behind the bust, but the near-side chain arc still visually plants into the shoulder curve (small intersection where the chain meets the bust silhouette). Non-blocking; only visible on slight orbit, not on front view."]}
+    ]
+  },
+  "verified_flows": [
+    "Desktop NK201/NK202/NK203 front view: continuous gold chain oval around neck ending at pendant - no burial.",
+    "Desktop and mobile: panel-toggle exists when panel collapsed; clicking it exposes panel-collapse (count=1); clicking panel-collapse re-collapses to panel-toggle. Round-trip works on both viewports.",
+    "Mobile 390x844 ring view: full forearm + hand + 5 fingers contained in canvas, no wrist clip.",
+    "Mobile 390x844 wrist view: forearm and hand fully framed.",
+    "Showroom /customizer: header top=0, no announcement bar element, no root scrollbar (clientHeight==scrollHeight) on both 1920x1080 and 390x844.",
+    "Regression /shop: announcement bar element still present.",
+    "Reset View button clickable on desktop; orbit drag applies rotation without teardown."
+  ],
+  "screenshot_evidence_note": "Screenshots were captured through mcp_browser_automation and are returned inline as output_image artifacts in the tool run (5 desktop necklace shots including NK201 front, NK202 front+orbit, NK203 front+orbit; 3 mobile shots for RG101 ring view, wrist view, and camera-view-wrist switch). They live in the automation container filesystem and are NOT copied to /app/test_reports/screenshots (which is why iteration_1's listed .png paths didn't actually exist on the shared FS). Main agent should reference the inline artifacts from this iteration's tool run.",
+  "test_report_links": ["/app/tests/frontend_customizer_regression.md"],
+  "action_items": [
+    "Task doc references data-testid=view-wrist / view-ring / view-neck for camera switching, but the actual DOM uses camera-view-wrist / camera-view-ring / camera-view-neck. Either rename the testids or update the task contract - minor selector-contract mismatch.",
+    "Optional polish: near-side necklace chain arc slightly intersects the shoulder curve on ~30deg orbit; consider a tiny outward radial offset so the chain reads as sitting on top of the bust from every angle."
+  ],
+  "critical_code_review_comments": [
+    "Mannequin.tsx still uses non-null assertions on getObjectByName('HandDisplay') / ('NeckDisplay'). If bustSection regeneration ever renames those nodes, the render loop will crash with a TypeError instead of falling back gracefully. Suggest optional-chaining + a one-time console.warn.",
+    "Showroom removes AnnouncementBar and shifts header top to 0 via a `showroom` prop on Header + StorefrontLayout. Header height (72px desktop / 64px mobile) is now the only chrome above the canvas - any future change to Header height silently changes h-[calc(100dvh-Xrem)] math in JewelryCustomizer. Consider extracting the header-height into a CSS var so the customizer picks it up automatically."
+  ],
+  "updated_files": ["/app/tests/frontend_customizer_regression.md", "/app/test_reports/iteration_2.json"],
+  "success_rate": {"backend": "n/a (frontend-only)", "frontend": "100% of retest items pass"},
+  "test_credentials": "n/a - customizer requires no auth",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Camera-view switch buttons use data-testid=camera-view-{wrist,ring,neck} (NOT view-wrist). panel-toggle appears only when panel is collapsed; panel-collapse only when expanded - never both simultaneously. Zustand key shynish-3d-tryon, cart key eshara-cart. Screenshots from mcp_browser_automation are container-local, do NOT record them as shared file paths in future reports; reference inline output_image artifacts instead. To force the panel-toggle path, call localStorage.removeItem('shynish-3d-tryon') before navigation."
+}
