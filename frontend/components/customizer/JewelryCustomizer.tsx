@@ -60,7 +60,10 @@ export default function JewelryCustomizer({
 
   // Product page → "Try This On": wear the exact product on arrival (once)
   useEffect(() => {
-    if (!initialProduct || wornInitialRef.current === initialProduct.id) return;
+    if (!initialProduct) return;
+    const state = useTryOnStore.getState();
+    if (wornInitialRef.current === initialProduct.id) return;
+    if (state.items.some((i) => i.productId === initialProduct.id)) return;
     wornInitialRef.current = initialProduct.id;
     if (!initialProduct.tryOnEnabled || !normalizeCategory(initialProduct.category, initialProduct.title)) return;
     wearProduct(initialProduct, initialProduct.tryOnConfig?.finger);

@@ -98,6 +98,6 @@ export async function GET(request: Request) {
     });
   } catch (err) {
     console.error("Products API error:", err);
-    return NextResponse.json({ products: [], pageInfo: { hasNextPage: false, endCursor: null } });
+    return NextResponse.json({ products: SHYNISH_CATALOG, pageInfo: { hasNextPage: false, endCursor: null } });
   }
 }

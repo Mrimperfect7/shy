@@ -29,7 +29,11 @@ Modify the EXISTING SHYNISH store (github.com/Mrimperfect7/shy — Next.js 16 + 
 - P1: Real GLB assets per product (drop files in /public/models/jewelry/<ID>.glb + set model3dUrl in admin/seed)
 - P1: Razorpay keys for live checkout (currently unset — checkout untested/MOCKED)
 - P2: Admin UI fields for tryOnConfig editing; chain-link refinement on bracelet variant; earring anchors (ear lobes) if desired
-- P2: HMR websocket over preview ingress (502 — cosmetic, dev-only)
+
+## Ops Notes (important)
+- Frontend runs PRODUCTION build (`next start`). After any code change: `cd /app/frontend && yarn build && sudo supervisorctl restart frontend`
+- Postgres data lives in /app/postgres-data (persists); its supervisor conf lives in /etc (does NOT persist). After a pod restart, if products API returns empty: `bash /app/scripts/init-db.sh`
+- Bugfix 2026-09-19: switched dev→production serving (dev chunks got 403-blocked through preview proxy → infinite "Preparing the showroom…" on real devices); Postgres cluster was wiped by pod restart → moved to /app/postgres-data + supervisor autostart; /api/products catch now falls back to static catalog
 
 ## Next Tasks
 1. Upload real GLBs and flip model3dUrl per product
