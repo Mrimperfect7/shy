@@ -84,3 +84,9 @@ android-sdk/
 # overlay black-box crash/user-report dumps — session data, never history
 **/.emergent/recordings/
 frontend/.next/dev/cache/turbopack/v16.3.1-3d32eb87/00000193.sst
+.env
+.env.*
+*.env
+credentials.json
+*.key
+.credentials
