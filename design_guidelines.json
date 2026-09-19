@@ -1,0 +1,135 @@
+{
+  "project_name": "SHYNISH",
+  "app_type": "hybrid_fullstack",
+  "theme": "Dark Luxury",
+  "tech_stack": {
+    "framework": "React / Next.js (.js/.jsx format)",
+    "styling": "Tailwind CSS + Custom CSS Variables",
+    "3d_engine": "@react-three/fiber + @react-three/drei",
+    "motion": "framer-motion + lenis smooth scroll",
+    "icons": "lucide-react"
+  },
+  "typography": {
+    "display_font": "Cormorant Garamond, Playfair Display, serif",
+    "body_font": "Manrope, Plus Jakarta Sans, sans-serif",
+    "mono_font": "JetBrains Mono, monospace",
+    "hierarchy": {
+      "h1_hero": "text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight font-extralight text-amber-100",
+      "h2_section": "text-2xl sm:text-3xl lg:text-4xl font-serif tracking-normal text-amber-50",
+      "h3_card": "text-lg sm:text-xl font-serif text-zinc-100",
+      "body": "text-sm sm:text-base font-sans text-zinc-300 leading-relaxed",
+      "overline": "text-xs font-mono tracking-[0.25em] uppercase text-amber-400/80",
+      "price": "font-mono font-medium text-amber-300"
+    }
+  },
+  "colors": {
+    "base_background": "#0B0B0C",
+    "surface_dark": "#121215",
+    "surface_card": "#18181C",
+    "surface_card_hover": "#222228",
+    "border_subtle": "rgba(212, 175, 55, 0.15)",
+    "border_gold_glow": "rgba(212, 175, 55, 0.4)",
+    "accent_gold_primary": "#D4AF37",
+    "accent_gold_light": "#F3E5AB",
+    "accent_gold_dark": "#9A7B38",
+    "text_primary": "#F7F5F0",
+    "text_muted": "#A1A1AA",
+    "text_dim": "#71717A",
+    "status_highlight": "#E2B857",
+    "vignette_overlay": "radial-gradient(circle at center, transparent 40%, rgba(5,5,6,0.85) 100%)"
+  },
+  "3d_customizer_architecture": {
+    "canvas_settings": {
+      "camera_fov": 45,
+      "shadows": true,
+      "gl_antialias": true,
+      "tone_mapping": "ACESFilmicToneMapping",
+      "exposure": 1.15
+    },
+    "studio_lighting": {
+      "environment_preset": "city",
+      "ambient_light": { "intensity": 0.35, "color": "#FFF8E7" },
+      "key_spotlight": { "position": [5, 8, 5], "intensity": 1.8, "color": "#FFF3D6", "castShadow": true },
+      "rim_gold_light": { "position": [-6, 3, -4], "intensity": 1.2, "color": "#D4AF37" },
+      "fill_soft_light": { "position": [0, -4, 4], "intensity": 0.4, "color": "#7E8AA2" }
+    },
+    "mannequin_body_anchors": {
+      "wrist": { "position": [0, -0.2, 0], "rotation": [0, 0, 0], "stackable": true, "max_stack": 4 },
+      "ring_finger_index": { "position": [-0.3, 0.45, 0.1], "rotation": [0, 0.1, 0] },
+      "ring_finger_middle": { "position": [-0.1, 0.52, 0.12], "rotation": [0, 0, 0] },
+      "ring_finger_ring": { "position": [0.1, 0.48, 0.1], "rotation": [0, -0.1, 0] },
+      "ring_finger_pinky": { "position": [0.28, 0.38, 0.08], "rotation": [0, -0.2, 0] },
+      "ring_finger_thumb": { "position": [-0.48, 0.22, -0.1], "rotation": [0.3, 0.4, 0] },
+      "neck": { "position": [0, 1.2, -0.15], "rotation": [0, 0, 0] }
+    },
+    "procedural_materials": {
+      "yellow_gold_18k": { "color": "#E3C05A", "metalness": 0.95, "roughness": 0.12 },
+      "rose_gold": { "color": "#E8A382", "metalness": 0.92, "roughness": 0.14 },
+      "platinum_white": { "color": "#E5E9EE", "metalness": 0.98, "roughness": 0.08 },
+      "diamond_sparkle": { "color": "#FFFFFF", "transmission": 0.9, "opacity": 1, "transparent": true, "roughness": 0.02, "ior": 2.42 }
+    },
+    "camera_preset_views": {
+      "WRIST": { "position": [0, 0.1, 1.8], "target": [0, -0.1, 0], "fov": 38 },
+      "RING": { "position": [0, 0.5, 1.2], "target": [0, 0.45, 0], "fov": 32 },
+      "NECK": { "position": [0, 1.3, 2.2], "target": [0, 1.1, 0], "fov": 42 }
+    }
+  },
+  "key_components_layout": {
+    "header": { "style": "Glassmorphic backdrop-blur-md bg-black/70 border-b border-amber-500/20 fixed top-0 w-full z-50 px-6 py-4 flex justify-between items-center" },
+    "hero_section": { "style": "Min-h-screen bg-[#0B0B0C] flex items-center pt-24 pb-16 px-6 lg:px-16 text-left relative overflow-hidden" },
+    "customizer_workspace": { "style": "grid grid-cols-1 lg:grid-cols-12 h-[calc(100vh-80px)] mt-[80px] bg-[#0B0B0C] overflow-hidden" },
+    "viewport_3d": { "span": "lg:col-span-8 relative h-full bg-[#0E0E10] border-r border-amber-500/20" },
+    "catalog_sidebar": { "span": "lg:col-span-4 h-full bg-[#121215] flex flex-col border-l border-amber-500/10 overflow-y-auto" },
+    "worn_items_panel": { "style": "absolute bottom-6 left-6 z-20 bg-[#16161A]/90 backdrop-blur-md border border-amber-500/30 p-4 rounded-lg shadow-2xl max-w-sm w-full" },
+    "finger_picker_modal": { "style": "fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4" }
+  },
+  "image_urls": [
+    {
+      "category": "hero_banner",
+      "url": "https://images.unsplash.com/photo-1673131158656-84601f4d00ea?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "SHYNISH Luxury Model Wearing Gold & Diamond Jewelry"
+    },
+    {
+      "category": "haute_collection_1",
+      "url": "https://images.unsplash.com/photo-1731406322264-dac59f83828b?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "SHYNISH Editorial Gold Necklace & Rings Stack"
+    },
+    {
+      "category": "rings_category",
+      "url": "https://images.unsplash.com/photo-1633934542430-0905ccb5f050?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "Handcrafted Diamond Solitaire Ring Closeup"
+    },
+    {
+      "category": "necklaces_category",
+      "url": "https://images.unsplash.com/photo-1585960622850-ed33c41d6418?crop=entropy&cs=srgb&fm=jpg&q=85",
+      "alt": "18K Gold Royal Pendant Necklace"
+    },
+    {
+      "category": "bangles_category",
+      "url": "https://images.pexels.com/photos/32797482/pexels-photo-32797482.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "Crafted Gold Bangle & Ring Showcase Set"
+    },
+    {
+      "category": "model_portrait",
+      "url": "https://images.pexels.com/photos/32382395/pexels-photo-32382395.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "SHYNISH Private Showroom Model Presentation"
+    }
+  ],
+  "general_ui_ux_guidelines": {
+    "data_testid_requirement": "EVERY interactive element (buttons, tabs, sliders, drag points, cart actions, view modes) MUST include data-testid='...' using kebab-case role naming e.g. data-testid='customizer-camera-wrist-button', data-testid='product-card-tryon-button-1', data-testid='finger-select-index'.",
+    "currency_format": "All prices MUST display currency in Indian Rupees (₹) with appropriate locale formatting e.g. ₹ 1,45,000.",
+    "no_ai_disclaimer": "Strictly NO artificial intelligence or virtual try-on webcam overlays. Showcase real code-rendered 3D WebGL mannequin and procedural jewelry physics.",
+    "editorial_marquee": "Include one slow-drifting editorial marquee ribbon at 0.05 speed with thin gold lettering and wide tracking.",
+    "hover_states": "Buttons and cards must feature gold border luminescence transitions and backdrop opacity shifts on hover.",
+    "accessibility": "Ensure text-to-background contrast exceeds APCA standards on dark surfaces. Form controls and inputs must have distinct focus rings with gold tint."
+  },
+  "instructions_to_main_agent": [
+    "Build the 3D Try-On Customizer using @react-three/fiber Canvas with custom OrbitControls and camera transitions driven by Framer Motion or GSAP.",
+    "Implement named anchors for hand/wrist/fingers/neck on the procedural mannequin geometry.",
+    "Ensure products in the catalog sidebar have a 'TRY ON' button and HTML5 drag-and-drop handles that trigger auto-placement onto mannequin anchors.",
+    "Build the Finger Picker overlay when a ring product is chosen or dragged to the hand.",
+    "Provide interactive adjustment sliders (Scale, Rotate Y, Stack position offset) in the Worn Items control panel.",
+    "All components must be written as React Javascript (.js / .jsx) files.",
+    "Add test IDs (`data-testid`) to all interactive buttons, inputs, tabs, modal controls, and product cards."
+  ]
+}
