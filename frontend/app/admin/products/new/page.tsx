@@ -7,6 +7,7 @@ import { ArrowLeft, Save, Loader2 } from "lucide-react";
 import { createProductAction } from "@/app/actions/admin-products";
 import ProductImageManager from "@/components/admin/ProductImageManager";
 import RichTextEditor from "@/components/admin/RichTextEditor";
+import TryOn3DSection from "@/components/admin/TryOn3DSection";
 
 export default function NewProductPage() {
   const router = useRouter();
@@ -16,6 +17,9 @@ export default function NewProductPage() {
   const [status, setStatus] = useState("ACTIVE");
   const [inventory, setInventory] = useState("100");
   const [descriptionHtml, setDescriptionHtml] = useState("");
+  const [tryOnEnabled, setTryOnEnabled] = useState(false);
+  const [tryOnCategory, setTryOnCategory] = useState("");
+  const [model3dUrl, setModel3dUrl] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,6 +32,9 @@ export default function NewProductPage() {
       formData.set("imageUrls", JSON.stringify(images));
       formData.set("status", status);
       formData.set("inventory", inventory);
+      formData.set("tryOnEnabled", tryOnEnabled ? "true" : "false");
+      formData.set("tryOnCategory", tryOnCategory);
+      formData.set("model3dUrl", model3dUrl);
       
       const res = await createProductAction(formData);
 
@@ -159,6 +166,16 @@ export default function NewProductPage() {
             <ProductImageManager images={images} onChange={setImages} />
           </div>
         </div>
+
+        {/* ── 3D TRY-ON SHOWROOM (code-rendered, no AI) ── */}
+        <TryOn3DSection
+          tryOnEnabled={tryOnEnabled}
+          setTryOnEnabled={setTryOnEnabled}
+          tryOnCategory={tryOnCategory}
+          setTryOnCategory={setTryOnCategory}
+          model3dUrl={model3dUrl}
+          setModel3dUrl={setModel3dUrl}
+        />
 
         <div className="flex justify-end gap-3">
           <Link

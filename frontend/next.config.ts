@@ -10,6 +10,7 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: '15mb',
+      allowedOrigins: ['*.preview.emergentagent.com', '*.preview.emergentcf.cloud', 'db490e46-4f47-47b6-9cac-ebd034c9b2ac.cluster-7.preview.emergentcf.cloud'],
     },
     optimizePackageImports: ['lucide-react', 'framer-motion', 'react-hot-toast', 'recharts'],
   },

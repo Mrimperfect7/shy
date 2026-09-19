@@ -7,9 +7,20 @@
     "price": 4999,
     "compareAtPrice": 6999,
     "inventory": 40,
-    "imageUrls": ["/assets/products/bangle-royal.jpg"],
-    "images": [{ "url": "/assets/products/bangle-royal.jpg", "altText": "Royal Gold Bangle" }],
-    "category": { "id": "cat-bangle", "name": "Bangles", "slug": "bangle" },
+    "imageUrls": [
+      "/assets/products/bangle-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bangle-royal.jpg",
+        "altText": "Royal Gold Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bangle",
+      "name": "Bangles",
+      "slug": "bangle"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "62mm Inner Diameter",
@@ -18,8 +29,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "pave", "gem": "#FFFFFF" }
+    "model3dUrl": "/models/jewelry/BG001.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "pave",
+      "gem": "#FFFFFF"
+    }
   },
   {
     "id": "BG002",
@@ -29,9 +54,20 @@
     "price": 6499,
     "compareAtPrice": 8999,
     "inventory": 30,
-    "imageUrls": ["/assets/products/bangle-royal.jpg"],
-    "images": [{ "url": "/assets/products/bangle-royal.jpg", "altText": "Gold Diamond Bangle" }],
-    "category": { "id": "cat-bangle", "name": "Bangles", "slug": "bangle" },
+    "imageUrls": [
+      "/assets/products/bangle-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bangle-royal.jpg",
+        "altText": "Gold Diamond Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bangle",
+      "name": "Bangles",
+      "slug": "bangle"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "60mm Inner Diameter",
@@ -40,8 +76,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1.02, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "gems", "gem": "#FFFFFF" }
+    "model3dUrl": "/models/jewelry/BG002.glb",
+    "tryOnConfig": {
+      "scale": 1.02,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "gems",
+      "gem": "#FFFFFF"
+    }
   },
   {
     "id": "BG003",
@@ -51,9 +101,20 @@
     "price": 3999,
     "compareAtPrice": 5499,
     "inventory": 35,
-    "imageUrls": ["/assets/products/jewelry-editorial.jpg"],
-    "images": [{ "url": "/assets/products/jewelry-editorial.jpg", "altText": "Rose Quartz Kada Bangle" }],
-    "category": { "id": "cat-bangle", "name": "Bangles", "slug": "bangle" },
+    "imageUrls": [
+      "/assets/products/jewelry-editorial.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/jewelry-editorial.jpg",
+        "altText": "Rose Quartz Kada Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bangle",
+      "name": "Bangles",
+      "slug": "bangle"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Rose Gold",
     "dimensions": "64mm Inner Diameter",
@@ -62,8 +123,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1.05, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "kada", "gem": "#F4C2C2" }
+    "model3dUrl": "/models/jewelry/BG003.glb",
+    "tryOnConfig": {
+      "scale": 1.05,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "kada",
+      "gem": "#F4C2C2"
+    }
   },
   {
     "id": "BR001",
@@ -73,9 +148,20 @@
     "price": 2499,
     "compareAtPrice": 3499,
     "inventory": 50,
-    "imageUrls": ["/assets/products/bracelet-gold.jpg"],
-    "images": [{ "url": "/assets/products/bracelet-gold.jpg", "altText": "Serpent Chain Bracelet" }],
-    "category": { "id": "cat-bracelet", "name": "Bracelets", "slug": "bracelet" },
+    "imageUrls": [
+      "/assets/products/bracelet-gold.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bracelet-gold.jpg",
+        "altText": "Serpent Chain Bracelet"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelet",
+      "name": "Bracelets",
+      "slug": "bracelet"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "17cm + 3cm Extender",
@@ -84,8 +170,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "chain", "gem": null }
+    "model3dUrl": "/models/jewelry/BR001.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "chain",
+      "gem": null
+    }
   },
   {
     "id": "BR002",
@@ -95,9 +195,20 @@
     "price": 2999,
     "compareAtPrice": 4199,
     "inventory": 45,
-    "imageUrls": ["/assets/products/jewelry-editorial.jpg"],
-    "images": [{ "url": "/assets/products/jewelry-editorial.jpg", "altText": "Pearl Charm Bracelet" }],
-    "category": { "id": "cat-bracelet", "name": "Bracelets", "slug": "bracelet" },
+    "imageUrls": [
+      "/assets/products/jewelry-editorial.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/jewelry-editorial.jpg",
+        "altText": "Pearl Charm Bracelet"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelet",
+      "name": "Bracelets",
+      "slug": "bracelet"
+    },
     "material": "316L Stainless Steel + Freshwater Pearl",
     "plating": "18K PVD Gold",
     "dimensions": "16cm + 4cm Extender",
@@ -106,8 +217,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "pearl", "gem": "#F2EAD9" }
+    "model3dUrl": "/models/jewelry/BR002.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "pearl",
+      "gem": "#F2EAD9"
+    }
   },
   {
     "id": "BR003",
@@ -117,9 +242,20 @@
     "price": 1999,
     "compareAtPrice": 2999,
     "inventory": 60,
-    "imageUrls": ["/assets/products/bracelet-gold.jpg"],
-    "images": [{ "url": "/assets/products/bracelet-gold.jpg", "altText": "Minimal Bar Cuff Bracelet" }],
-    "category": { "id": "cat-bracelet", "name": "Bracelets", "slug": "bracelet" },
+    "imageUrls": [
+      "/assets/products/bracelet-gold.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/bracelet-gold.jpg",
+        "altText": "Minimal Bar Cuff Bracelet"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelet",
+      "name": "Bracelets",
+      "slug": "bracelet"
+    },
     "material": "316L Stainless Steel",
     "plating": "Platinum PVD",
     "dimensions": "Open Cuff · Adjustable 55-60mm",
@@ -128,8 +264,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "cuff", "gem": null }
+    "model3dUrl": "/models/jewelry/BR003.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "cuff",
+      "gem": null
+    }
   },
   {
     "id": "RG101",
@@ -139,9 +289,20 @@
     "price": 5499,
     "compareAtPrice": 7499,
     "inventory": 25,
-    "imageUrls": ["/assets/products/ring-solitaire.jpg"],
-    "images": [{ "url": "/assets/products/ring-solitaire.jpg", "altText": "Ruby Solitaire Ring" }],
-    "category": { "id": "cat-ring", "name": "Rings", "slug": "ring" },
+    "imageUrls": [
+      "/assets/products/ring-solitaire.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/ring-solitaire.jpg",
+        "altText": "Ruby Solitaire Ring"
+      }
+    ],
+    "category": {
+      "id": "cat-ring",
+      "name": "Rings",
+      "slug": "ring"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "Sizes 6, 7, 8",
@@ -150,8 +311,23 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "finger",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "finger": "ring", "variant": "solitaire", "gem": "#9B111E" }
+    "model3dUrl": "/models/jewelry/RG101.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "ring",
+      "variant": "solitaire",
+      "gem": "#9B111E"
+    }
   },
   {
     "id": "RG102",
@@ -161,9 +337,20 @@
     "price": 7999,
     "compareAtPrice": 10999,
     "inventory": 20,
-    "imageUrls": ["/assets/products/rings-stack.jpg"],
-    "images": [{ "url": "/assets/products/rings-stack.jpg", "altText": "Diamond Halo Ring" }],
-    "category": { "id": "cat-ring", "name": "Rings", "slug": "ring" },
+    "imageUrls": [
+      "/assets/products/rings-stack.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/rings-stack.jpg",
+        "altText": "Diamond Halo Ring"
+      }
+    ],
+    "category": {
+      "id": "cat-ring",
+      "name": "Rings",
+      "slug": "ring"
+    },
     "material": "316L Stainless Steel",
     "plating": "Platinum PVD",
     "dimensions": "Sizes 6, 7, 8",
@@ -172,8 +359,23 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "finger",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "finger": "ring", "variant": "halo", "gem": "#FFFFFF" }
+    "model3dUrl": "/models/jewelry/RG102.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "ring",
+      "variant": "halo",
+      "gem": "#FFFFFF"
+    }
   },
   {
     "id": "RG103",
@@ -183,9 +385,20 @@
     "price": 4499,
     "compareAtPrice": 6299,
     "inventory": 30,
-    "imageUrls": ["/assets/products/ring-solitaire.jpg"],
-    "images": [{ "url": "/assets/products/ring-solitaire.jpg", "altText": "Emerald Signet Ring" }],
-    "category": { "id": "cat-ring", "name": "Rings", "slug": "ring" },
+    "imageUrls": [
+      "/assets/products/ring-solitaire.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/ring-solitaire.jpg",
+        "altText": "Emerald Signet Ring"
+      }
+    ],
+    "category": {
+      "id": "cat-ring",
+      "name": "Rings",
+      "slug": "ring"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "Sizes 7, 8, 9",
@@ -194,8 +407,23 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "finger",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1.05, "position": [0, 0, 0], "rotation": [0, 0, 0], "finger": "index", "variant": "signet", "gem": "#046A38" }
+    "model3dUrl": "/models/jewelry/RG103.glb",
+    "tryOnConfig": {
+      "scale": 1.05,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "index",
+      "variant": "signet",
+      "gem": "#046A38"
+    }
   },
   {
     "id": "NK201",
@@ -205,9 +433,20 @@
     "price": 8999,
     "compareAtPrice": 11999,
     "inventory": 15,
-    "imageUrls": ["/assets/products/necklace-pendant.jpg"],
-    "images": [{ "url": "/assets/products/necklace-pendant.jpg", "altText": "Pearl Cascade Necklace" }],
-    "category": { "id": "cat-necklace", "name": "Necklaces", "slug": "necklace" },
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Pearl Cascade Necklace"
+      }
+    ],
+    "category": {
+      "id": "cat-necklace",
+      "name": "Necklaces",
+      "slug": "necklace"
+    },
     "material": "316L Stainless Steel + Freshwater Pearl",
     "plating": "18K PVD Gold",
     "dimensions": "42cm + 5cm Extender",
@@ -216,8 +455,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "neck",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "pearl-drop", "gem": "#F2EAD9" }
+    "model3dUrl": "/models/jewelry/NK201.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "pearl-drop",
+      "gem": "#F2EAD9"
+    }
   },
   {
     "id": "NK202",
@@ -227,9 +480,20 @@
     "price": 9499,
     "compareAtPrice": 12999,
     "inventory": 12,
-    "imageUrls": ["/assets/products/necklace-royal.jpg"],
-    "images": [{ "url": "/assets/products/necklace-royal.jpg", "altText": "Emerald Drop Necklace" }],
-    "category": { "id": "cat-necklace", "name": "Necklaces", "slug": "necklace" },
+    "imageUrls": [
+      "/assets/products/necklace-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-royal.jpg",
+        "altText": "Emerald Drop Necklace"
+      }
+    ],
+    "category": {
+      "id": "cat-necklace",
+      "name": "Necklaces",
+      "slug": "necklace"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "45cm Chain with Lobster Clasp",
@@ -238,8 +502,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "neck",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "gem-drop", "gem": "#046A38" }
+    "model3dUrl": "/models/jewelry/NK202.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "gem-drop",
+      "gem": "#046A38"
+    }
   },
   {
     "id": "NK203",
@@ -249,9 +527,20 @@
     "price": 5999,
     "compareAtPrice": 7999,
     "inventory": 28,
-    "imageUrls": ["/assets/products/necklace-royal.jpg"],
-    "images": [{ "url": "/assets/products/necklace-royal.jpg", "altText": "Celestial Lariat Necklace" }],
-    "category": { "id": "cat-necklace", "name": "Necklaces", "slug": "necklace" },
+    "imageUrls": [
+      "/assets/products/necklace-royal.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-royal.jpg",
+        "altText": "Celestial Lariat Necklace"
+      }
+    ],
+    "category": {
+      "id": "cat-necklace",
+      "name": "Necklaces",
+      "slug": "necklace"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Rose Gold",
     "dimensions": "50cm Lariat Drop",
@@ -260,8 +549,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "neck",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "lariat", "gem": "#FFFFFF" }
+    "model3dUrl": "/models/jewelry/NK203.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "lariat",
+      "gem": "#FFFFFF"
+    }
   },
   {
     "id": "shyn-prod-1",
@@ -271,9 +574,20 @@
     "price": 99,
     "compareAtPrice": 199,
     "inventory": 50,
-    "imageUrls": ["/assets/products/rings-stack.jpg"],
-    "images": [{ "url": "/assets/products/rings-stack.jpg", "altText": "Minimalist Solitaire Eternity Band" }],
-    "category": { "id": "cat-rings", "name": "Rings & Bands", "slug": "rings" },
+    "imageUrls": [
+      "/assets/products/rings-stack.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/rings-stack.jpg",
+        "altText": "Minimalist Solitaire Eternity Band"
+      }
+    ],
+    "category": {
+      "id": "cat-rings",
+      "name": "Rings & Bands",
+      "slug": "rings"
+    },
     "material": "316L Surgical Stainless Steel",
     "plating": "18K PVD Gold Plating",
     "dimensions": "Sizes 6, 7, 8 Available",
@@ -282,8 +596,23 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "finger",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 0.9, "position": [0, 0, 0], "rotation": [0, 0, 0], "finger": "middle", "variant": "band", "gem": "#FFFFFF" }
+    "model3dUrl": "/models/jewelry/shyn-prod-1.glb",
+    "tryOnConfig": {
+      "scale": 0.9,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "finger": "middle",
+      "variant": "band",
+      "gem": "#FFFFFF"
+    }
   },
   {
     "id": "shyn-prod-2",
@@ -293,9 +622,20 @@
     "price": 185,
     "compareAtPrice": 350,
     "inventory": 40,
-    "imageUrls": ["/assets/products/earrings-hoops.jpg"],
-    "images": [{ "url": "/assets/products/earrings-hoops.jpg", "altText": "Luxe Twisted Croissant Hoops" }],
-    "category": { "id": "cat-earrings", "name": "Earrings & Hoops", "slug": "earrings" },
+    "imageUrls": [
+      "/assets/products/earrings-hoops.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/earrings-hoops.jpg",
+        "altText": "Luxe Twisted Croissant Hoops"
+      }
+    ],
+    "category": {
+      "id": "cat-earrings",
+      "name": "Earrings & Hoops",
+      "slug": "earrings"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Vacuum Gold",
     "dimensions": "22mm Outer Diameter",
@@ -312,9 +652,20 @@
     "price": 199,
     "compareAtPrice": 399,
     "inventory": 35,
-    "imageUrls": ["/assets/products/necklace-pendant.jpg"],
-    "images": [{ "url": "/assets/products/necklace-pendant.jpg", "altText": "Liquid Gold Herringbone Chain" }],
-    "category": { "id": "cat-necklaces", "name": "Necklaces & Chains", "slug": "necklaces" },
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Liquid Gold Herringbone Chain"
+      }
+    ],
+    "category": {
+      "id": "cat-necklaces",
+      "name": "Necklaces & Chains",
+      "slug": "necklaces"
+    },
     "material": "304/316 Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "40cm + 5cm Extender",
@@ -323,8 +674,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "neck",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "chain", "gem": null }
+    "model3dUrl": "/models/jewelry/shyn-prod-3.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "chain",
+      "gem": null
+    }
   },
   {
     "id": "shyn-prod-4",
@@ -334,9 +699,20 @@
     "price": 199,
     "compareAtPrice": 399,
     "inventory": 45,
-    "imageUrls": ["/assets/products/earrings-hoops.jpg"],
-    "images": [{ "url": "/assets/products/earrings-hoops.jpg", "altText": "Lucky Four-Leaf Clover Huggies" }],
-    "category": { "id": "cat-earrings", "name": "Earrings & Hoops", "slug": "earrings" },
+    "imageUrls": [
+      "/assets/products/earrings-hoops.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/earrings-hoops.jpg",
+        "altText": "Lucky Four-Leaf Clover Huggies"
+      }
+    ],
+    "category": {
+      "id": "cat-earrings",
+      "name": "Earrings & Hoops",
+      "slug": "earrings"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "14mm Huggie Diameter",
@@ -353,9 +729,20 @@
     "price": 480,
     "compareAtPrice": 890,
     "inventory": 25,
-    "imageUrls": ["/assets/products/necklace-pendant.jpg"],
-    "images": [{ "url": "/assets/products/necklace-pendant.jpg", "altText": "Aura Interlocking 18K Gold Pendant" }],
-    "category": { "id": "cat-necklaces", "name": "Necklaces & Chains", "slug": "necklaces" },
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Aura Interlocking 18K Gold Pendant"
+      }
+    ],
+    "category": {
+      "id": "cat-necklaces",
+      "name": "Necklaces & Chains",
+      "slug": "necklaces"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K Heavy PVD Gold Coating",
     "dimensions": "45cm Chain with Lobster Clasp",
@@ -364,8 +751,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "neck",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "gem-drop", "gem": "#FFFFFF" }
+    "model3dUrl": "/models/jewelry/shyn-prod-5.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "gem-drop",
+      "gem": "#FFFFFF"
+    }
   },
   {
     "id": "shyn-prod-6",
@@ -375,9 +776,20 @@
     "price": 480,
     "compareAtPrice": 890,
     "inventory": 30,
-    "imageUrls": ["/assets/products/rings-stack.jpg"],
-    "images": [{ "url": "/assets/products/rings-stack.jpg", "altText": "Classic Roman Numeral Cuff Bangle" }],
-    "category": { "id": "cat-bracelets", "name": "Bracelets & Bangles", "slug": "bracelets" },
+    "imageUrls": [
+      "/assets/products/rings-stack.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/rings-stack.jpg",
+        "altText": "Classic Roman Numeral Cuff Bangle"
+      }
+    ],
+    "category": {
+      "id": "cat-bracelets",
+      "name": "Bracelets & Bangles",
+      "slug": "bracelets"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "Oval Fit: 58mm x 48mm Inner Diameter",
@@ -386,8 +798,22 @@
     "isJewellery": true,
     "tryOnEnabled": true,
     "tryOnBodyPart": "wrist",
-    "model3dUrl": null,
-    "tryOnConfig": { "scale": 1, "position": [0, 0, 0], "rotation": [0, 0, 0], "variant": "flat", "gem": null }
+    "model3dUrl": "/models/jewelry/shyn-prod-6.glb",
+    "tryOnConfig": {
+      "scale": 1,
+      "position": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "variant": "flat",
+      "gem": null
+    }
   },
   {
     "id": "shyn-prod-7",
@@ -397,9 +823,20 @@
     "price": 690,
     "compareAtPrice": 1290,
     "inventory": 15,
-    "imageUrls": ["/assets/products/necklace-pendant.jpg"],
-    "images": [{ "url": "/assets/products/necklace-pendant.jpg", "altText": "Classic Champagne Mesh Watch" }],
-    "category": { "id": "cat-watches", "name": "Watches & Sets", "slug": "watches-sets" },
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Classic Champagne Mesh Watch"
+      }
+    ],
+    "category": {
+      "id": "cat-watches",
+      "name": "Watches & Sets",
+      "slug": "watches-sets"
+    },
     "material": "Japanese Quartz Movement + Stainless Steel Mesh",
     "plating": "18K PVD Champagne Gold",
     "dimensions": "28mm Case Diameter, Adjustable Mesh Strap",
@@ -416,9 +853,20 @@
     "price": 99,
     "compareAtPrice": 199,
     "inventory": 100,
-    "imageUrls": ["/assets/products/necklace-pendant.jpg"],
-    "images": [{ "url": "/assets/products/necklace-pendant.jpg", "altText": "SHYN.ISH Signature Velvet Gift Box" }],
-    "category": { "id": "cat-gifts", "name": "Luxury Gifting", "slug": "gifts" },
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "SHYN.ISH Signature Velvet Gift Box"
+      }
+    ],
+    "category": {
+      "id": "cat-gifts",
+      "name": "Luxury Gifting",
+      "slug": "gifts"
+    },
     "material": "Rigid Board + Microfiber Velvet + Gold Foil",
     "plating": "Gold Foil Embossed",
     "dimensions": "9cm x 9cm x 4cm",
@@ -435,9 +883,20 @@
     "price": 480,
     "compareAtPrice": 850,
     "inventory": 20,
-    "imageUrls": ["/assets/products/necklace-pendant.jpg"],
-    "images": [{ "url": "/assets/products/necklace-pendant.jpg", "altText": "Anti-Tarnish Daily Wear Gift Set" }],
-    "category": { "id": "cat-gifts", "name": "Luxury Gifting", "slug": "gifts" },
+    "imageUrls": [
+      "/assets/products/necklace-pendant.jpg"
+    ],
+    "images": [
+      {
+        "url": "/assets/products/necklace-pendant.jpg",
+        "altText": "Anti-Tarnish Daily Wear Gift Set"
+      }
+    ],
+    "category": {
+      "id": "cat-gifts",
+      "name": "Luxury Gifting",
+      "slug": "gifts"
+    },
     "material": "316L Stainless Steel",
     "plating": "18K PVD Gold",
     "dimensions": "Boxed Set with Pouch",

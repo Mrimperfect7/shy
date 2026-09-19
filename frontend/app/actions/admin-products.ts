@@ -3,6 +3,53 @@
 import prisma from "@/lib/prisma";
 import { put } from "@vercel/blob";
 import { revalidatePath } from "next/cache";
+import path from "path";
+import { promises as fs } from "fs";
+
+// 3D Try-On: category → body anchor mapping (code-based, no AI)
+const TRYON_BODY_PART: Record<string, string> = { bangle: "wrist", bracelet: "wrist", ring: "finger", necklace: "neck" };
+const TRYON_CATEGORY_NAME: Record<string, string> = { bangle: "Bangles", bracelet: "Bracelets", ring: "Rings", necklace: "Necklaces" };
+
+async function resolveTryOnFields(formData: FormData) {
+  const tryOnCategory = ((formData.get("tryOnCategory") as string) || "").trim() || null;
+  const enabled = formData.get("tryOnEnabled") === "true" && !!tryOnCategory;
+  const model3dUrl = ((formData.get("model3dUrl") as string) || "").trim() || null;
+  let categoryId: string | undefined;
+  if (tryOnCategory) {
+    const cat = await prisma.category.upsert({
+      where: { slug: tryOnCategory },
+      update: {},
+      create: { name: TRYON_CATEGORY_NAME[tryOnCategory] || tryOnCategory, slug: tryOnCategory },
+    });
+    categoryId = cat.id;
+  }
+  return {
+    ...(categoryId ? { categoryId } : {}),
+    tryOnEnabled: enabled,
+    tryOnCategory,
+    tryOnRefUrl: (formData.get("tryOnRefUrl") as string) || null,
+    model3dUrl,
+    tryOnBodyPart: enabled && tryOnCategory ? TRYON_BODY_PART[tryOnCategory] || null : null,
+    tryOnConfig: enabled ? { scale: 1, position: [0, 0, 0], rotation: [0, 0, 0] } : null,
+  };
+}
+
+export async function uploadProductModelAction(formData: FormData) {
+  try {
+    const file = formData.get("model") as File;
+    if (!file || file.size === 0) return { success: false, error: "No model file provided" };
+    if (!/\.(glb|gltf)$/i.test(file.name)) return { success: false, error: "Only .glb / .gltf files are supported" };
+    const buf = Buffer.from(await file.arrayBuffer());
+    const dir = path.join(process.cwd(), "public", "models", "jewelry");
+    await fs.mkdir(dir, { recursive: true });
+    const safe = `${Date.now()}-${file.name.replace(/[^a-zA-Z0-9._-]/g, "_")}`;
+    await fs.writeFile(path.join(dir, safe), buf);
+    return { success: true, url: `/models/jewelry/${safe}` };
+  } catch (error: any) {
+    console.error("Model upload failed:", error);
+    return { success: false, error: error.message || "Failed to upload model" };
+  }
+}
 
 export async function uploadProductImageAction(formData: FormData) {
   try {
@@ -73,6 +120,7 @@ export async function createProductAction(formData: FormData) {
         imageUrls,
         status,
         inventory,
+        ...((await resolveTryOnFields(formData)) as any),
       }
     });
 
@@ -141,9 +189,7 @@ export async function updateProductAction(formData: FormData) {
         imageUrls,
         status,
         inventory,
-        tryOnEnabled: formData.get("tryOnEnabled") === "true",
-        tryOnCategory: (formData.get("tryOnCategory") as string) || null,
-        tryOnRefUrl: (formData.get("tryOnRefUrl") as string) || null,
+        ...((await resolveTryOnFields(formData)) as any),
       }
     });
 

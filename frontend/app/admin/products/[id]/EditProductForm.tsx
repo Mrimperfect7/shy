@@ -3,22 +3,14 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, Save, Trash2, Loader2, AlertCircle, CheckCircle2, Sparkles } from "lucide-react";
+import { ArrowLeft, Save, Trash2, Loader2, AlertCircle, CheckCircle2 } from "lucide-react";
 import { updateProductAction, deleteProductAction } from "@/app/actions/admin-products";
 import ProductImageManager from "@/components/admin/ProductImageManager";
 import RichTextEditor from "@/components/admin/RichTextEditor";
+import TryOn3DSection from "@/components/admin/TryOn3DSection";
 
-const JEWELRY_CATEGORIES = [
-  { value: "", label: "Auto-detect from title/slug" },
-  { value: "earrings",  label: "Earrings / Studs / Jhumkas / Hoops" },
-  { value: "necklaces", label: "Necklaces / Chokers" },
-  { value: "chains",    label: "Chains (Herringbone / Cuban / Rope)" },
-  { value: "pendants",  label: "Pendants / Lockets / Charms" },
-  { value: "rings",     label: "Rings / Bands / Solitaires" },
-  { value: "bracelets", label: "Bracelets / Bangles / Cuffs / Anklets" },
-  { value: "nose_pins", label: "Nose Pins / Nath" },
-  { value: "sets",      label: "Jewellery Sets / Combos" },
-];
+const toSingularCategory = (c?: string | null) =>
+  ({ necklaces: "necklace", chains: "necklace", pendants: "necklace", rings: "ring", bracelets: "bracelet", bangles: "bangle" } as Record<string, string>)[c || ""] || c || "";
 
 interface ProductProps {
   id: string;
@@ -33,6 +25,7 @@ interface ProductProps {
   tryOnEnabled?: boolean;
   tryOnCategory?: string | null;
   tryOnRefUrl?: string | null;
+  model3dUrl?: string | null;
 }
 
 export default function EditProductForm({ product }: { product: ProductProps }) {
@@ -52,8 +45,9 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
   const [status, setStatus] = useState(product.status || "ACTIVE");
   const [images, setImages] = useState<string[]>(product.imageUrls || []);
   const [tryOnEnabled, setTryOnEnabled] = useState(product.tryOnEnabled ?? false);
-  const [tryOnCategory, setTryOnCategory] = useState(product.tryOnCategory || "");
+  const [tryOnCategory, setTryOnCategory] = useState(toSingularCategory(product.tryOnCategory));
   const [tryOnRefUrl, setTryOnRefUrl] = useState(product.tryOnRefUrl || "");
+  const [model3dUrl, setModel3dUrl] = useState(product.model3dUrl || "");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -71,6 +65,7 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
       formData.set("tryOnEnabled", tryOnEnabled ? "true" : "false");
       formData.set("tryOnCategory", tryOnCategory);
       formData.set("tryOnRefUrl", tryOnRefUrl);
+      formData.set("model3dUrl", model3dUrl);
       
       const res = await updateProductAction(formData);
 
@@ -273,80 +268,15 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
           </div>
         </div>
 
-        {/* ── AI VIRTUAL TRY-ON SETTINGS ── */}
-        <div className="bg-white rounded-xl shadow-sm border p-6 space-y-5" style={{ borderColor: "rgba(197,160,89,0.3)" }}>
-          <div className="flex items-center gap-2 border-b pb-3" style={{ borderColor: "rgba(197,160,89,0.2)" }}>
-            <div className="w-8 h-8 rounded-lg bg-[#141312] text-[#C5A059] flex items-center justify-center">
-              <Sparkles size={15} />
-            </div>
-            <div>
-              <h3 className="font-serif text-base font-semibold text-[#141312]">AI Virtual Try-On</h3>
-              <p className="text-xs text-gray-500 font-sans">Allow customers to virtually try on this jewellery piece using AI</p>
-            </div>
-          </div>
-
-          {/* Enable toggle */}
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm font-sans font-medium text-gray-800">Enable AI Try-On for this product</p>
-              <p className="text-xs text-gray-500 font-sans mt-0.5">Shows the ✨ AI TRY ON button on the product page</p>
-            </div>
-            <button
-              type="button"
-              onClick={() => setTryOnEnabled((v) => !v)}
-              className={`relative w-12 h-6 rounded-full transition-colors duration-200 focus:outline-none ${
-                tryOnEnabled ? "bg-[#C5A059]" : "bg-gray-200"
-              }`}
-            >
-              <span
-                className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full shadow transition-transform duration-200 ${
-                  tryOnEnabled ? "translate-x-6" : "translate-x-0"
-                }`}
-              />
-            </button>
-          </div>
-
-          {tryOnEnabled && (
-            <div className="space-y-4 pt-2">
-              {/* Category override */}
-              <div>
-                <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">
-                  Jewellery Category
-                  <span className="text-gray-400 font-normal ml-2">(optional — auto-detected if blank)</span>
-                </label>
-                <select
-                  value={tryOnCategory}
-                  onChange={(e) => setTryOnCategory(e.target.value)}
-                  className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-white"
-                  style={{ borderColor: "rgba(26,26,26,0.15)" }}
-                >
-                  {JEWELRY_CATEGORIES.map((cat) => (
-                    <option key={cat.value} value={cat.value}>{cat.label}</option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Try-on reference image */}
-              <div>
-                <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">
-                  Try-On Reference Image URL
-                  <span className="text-gray-400 font-normal ml-2">(optional — uses product image if blank)</span>
-                </label>
-                <input
-                  type="url"
-                  value={tryOnRefUrl}
-                  onChange={(e) => setTryOnRefUrl(e.target.value)}
-                  placeholder="https://cdn.example.com/clean-bg-jewellery.png"
-                  className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50 font-mono text-xs"
-                  style={{ borderColor: "rgba(26,26,26,0.15)" }}
-                />
-                <p className="text-[11px] text-gray-400 font-sans mt-1">
-                  💡 For best results: use a high-resolution image on a clean/transparent background showing only the jewellery piece.
-                </p>
-              </div>
-            </div>
-          )}
-        </div>
+        {/* ── 3D TRY-ON SHOWROOM SETTINGS (code-rendered, no AI) ── */}
+        <TryOn3DSection
+          tryOnEnabled={tryOnEnabled}
+          setTryOnEnabled={setTryOnEnabled}
+          tryOnCategory={tryOnCategory}
+          setTryOnCategory={setTryOnCategory}
+          model3dUrl={model3dUrl}
+          setModel3dUrl={setModel3dUrl}
+        />
 
         {/* Action Buttons */}
         <div className="flex items-center justify-between gap-4">

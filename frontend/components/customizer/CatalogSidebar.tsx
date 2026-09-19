@@ -50,9 +50,9 @@ function CatalogCard({ product }: { product: TryOnProduct }) {
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
-        {supported && product.model3dUrl == null && (
+        {supported && (
           <span className="absolute top-2 left-2 text-[8px] font-mono tracking-[0.18em] uppercase px-1.5 py-0.5 rounded bg-black/60 border border-[#D4AF37]/30 text-amber-300/90">
-            Preview model
+            {product.model3dUrl ? "3D model" : "Preview model"}
           </span>
         )}
         {supported && (

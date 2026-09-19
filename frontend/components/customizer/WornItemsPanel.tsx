@@ -1,9 +1,10 @@
 "use client";
 
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ShoppingBag, Eye, Trash2, RotateCcw } from "lucide-react";
+import { ShoppingBag, Eye, Trash2, RotateCcw, ChevronUp, ChevronDown } from "lucide-react";
 import toast from "react-hot-toast";
 import { useCartStore } from "@/lib/store";
 import { useTryOnStore } from "./tryOnStore";
@@ -14,6 +15,10 @@ export default function WornItemsPanel() {
   const addToCart = useCartStore((s) => s.addItem);
   const selected = items.find((i) => i.instanceId === selectedId) || null;
   const total = items.reduce((acc, i) => acc + i.price, 0);
+  // Collapsible on phones so the 3D model keeps the screen
+  const [collapsed, setCollapsed] = useState(
+    typeof window !== "undefined" ? window.innerWidth < 1024 : false
+  );
 
   const handleAdd = (item: typeof selected) => {
     if (!item) return;
@@ -29,6 +34,28 @@ export default function WornItemsPanel() {
       >
         Drag a piece onto the model — or tap <span className="text-amber-300 font-semibold">TRY ON</span>
       </div>
+    );
+  }
+
+  // Collapsed: slim bar (default on phones) so the 3D model keeps the screen
+  if (collapsed) {
+    return (
+      <button
+        data-testid="panel-toggle"
+        onClick={() => setCollapsed(false)}
+        className="absolute bottom-4 left-4 right-4 sm:right-auto z-20 flex items-center justify-between gap-3 px-4 py-2.5 rounded-full bg-[#16161A]/92 backdrop-blur-md border border-[#D4AF37]/35 shadow-2xl text-left"
+      >
+        <span className="flex items-center gap-2 min-w-0">
+          <span className="w-2 h-2 rounded-full bg-[#D4AF37] animate-pulse flex-shrink-0" />
+          <span className="text-[11px] font-sans text-zinc-200 truncate">
+            {selected ? selected.name : `${items.length} piece${items.length > 1 ? "s" : ""} worn`}
+          </span>
+        </span>
+        <span className="flex items-center gap-2 flex-shrink-0">
+          <span className="font-mono text-[11px] text-amber-300">{formatINR(total)}</span>
+          <ChevronUp size={14} className="text-amber-300" />
+        </span>
+      </button>
     );
   }
 
@@ -156,7 +183,17 @@ export default function WornItemsPanel() {
 
       <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-[#D4AF37]/15">
         <span className="text-[9px] uppercase tracking-[0.2em] text-zinc-500 font-sans">{items.length} piece{items.length > 1 ? "s" : ""} worn</span>
-        <span className="font-mono text-xs text-amber-300" data-testid="look-total">{formatINR(total)}</span>
+        <span className="flex items-center gap-3">
+          <span className="font-mono text-xs text-amber-300" data-testid="look-total">{formatINR(total)}</span>
+          <button
+            onClick={() => setCollapsed(true)}
+            data-testid="panel-collapse"
+            aria-label="Collapse panel"
+            className="lg:hidden text-zinc-500 hover:text-amber-200 transition-colors"
+          >
+            <ChevronDown size={15} />
+          </button>
+        </span>
       </div>
     </motion.div>
   );

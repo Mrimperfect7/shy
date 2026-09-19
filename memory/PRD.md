@@ -19,10 +19,13 @@ Modify the EXISTING SHYNISH store (github.com/Mrimperfect7/shy — Next.js 16 + 
 - next.config: allowedDevOrigins for Emergent preview domains
 
 ## Implemented (2026-09-16/19)
-- /customizer showroom: dark luxury theme, "Customize Your Look", view switcher (Wrist/Ring/Neck animated camera), catalog sidebar with category tabs + marquee, dnd-kit drag-from-store, finger picker modal, worn-items panel (image/name/₹/category + sliders + View Product/Add to Cart/Remove + look total)
+- /customizer showroom: dark luxury theme, "Customize Your Look", view switcher (Wrist/Ring/Neck animated camera), catalog sidebar with category tabs + marquee, dnd-kit drag-from-store, finger picker modal, worn-items panel (image/name/₹/category + sliders + View Product/Add to Cart/Remove + look total); panel collapsible on phones (slim bar ↔ expanded)
 - Product page "Try This On" (tryOnEnabled only), gallery "3D Try On" chip, shop card chips, ProductForm link uses ?product=<id> only
-- /api/products returns category + tryOn fields
-- All 15 spec flows verified via Playwright + curl (bangle/bracelet/ring/necklace placement, exact IDs through cart `eshara-cart`, View Product round-trip, stacking, multi-item, unavailable fallback, mobile layout, desktop drag)
+- /api/products returns category + tryOn fields; catch falls back to static catalog
+- REAL GLB assets: scripts/generate-glb-models.mjs (three + @gltf-transform) writes per-product GLBs to /public/models/jewelry/<ID>.glb and patches catalog JSON model3dUrl; runtime loads exact GLB via useGLTF, procedural preview only when model3dUrl is null
+- Admin → 3D: TryOn3DSection on new/edit product forms (enable toggle, category → auto body anchor, GLB upload via uploadProductModelAction writes to /public/models/jewelry, URL field); create/update actions set categoryId + tryOnEnabled + tryOnBodyPart + default tryOnConfig. New admin products appear in the showroom instantly (procedural preview if no GLB)
+- All 15 spec flows verified via Playwright + curl; admin-create→3D verified E2E (test product cleaned up after)
+- Infra fixes: production serving (dev chunks got 403 via proxy), experimental.serverActions.allowedOrigins for preview domains, Postgres data in /app/postgres-data + supervisor autostart, recovery script /app/scripts/init-db.sh
 
 ## Backlog
 - P0: (none blocking)
