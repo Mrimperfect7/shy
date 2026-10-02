@@ -141,6 +141,9 @@ Visual Style Instruction: ${getStyleInstruction(style)}
 Apply the selected visual style to the environment, wardrobe, lighting, composition and photography.
 Do not alter the jewellery design to match the style.
 
+The final image must look like a real professional jewellery photograph captured by a high-end commercial photographer.
+Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate gemstones, floating jewellery, incorrect scale and artificial-looking skin.`;
+
     // If FAL_KEY is available, we use premium Fal.ai generation.
     // If NOT, we fallback to Pollinations.ai (Free Method - No API Key Required)
     const usePremiumFal = !!process.env.FAL_KEY;
