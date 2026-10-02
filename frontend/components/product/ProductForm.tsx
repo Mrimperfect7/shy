@@ -196,6 +196,30 @@ export default function ProductForm({ product }: ProductFormProps) {
           </Link>
         )}
 
+        {/* AI VISUAL STUDIO */}
+        <Link
+          href={`/studio?product=${encodeURIComponent(product.id || product.handle || "")}`}
+          className="w-full py-3.5 px-5 rounded-2xl bg-white border border-[#C5A059]/40 text-[#141312] shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-between group hover:border-[#C5A059] cursor-pointer"
+        >
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-[#F4EFE6] text-[#C5A059] flex items-center justify-center group-hover:scale-110 transition-transform">
+              <Sparkles size={16} />
+            </div>
+            <div className="text-left">
+              <span className="font-serif text-sm font-semibold tracking-wide text-[#141312] flex items-center gap-1.5">
+                <span>AI VISUAL STUDIO</span>
+              </span>
+              <span className="text-[10px] text-[#5E564F] font-sans block">
+                Generate highly realistic marketing images of this piece
+              </span>
+            </div>
+          </div>
+          <span className="text-[10px] uppercase font-sans font-bold tracking-wider px-3 py-1.5 rounded-full bg-[#F4EFE6] text-[#C5A059] border border-[#C5A059]/30 group-hover:bg-[#C5A059] group-hover:text-white transition-colors">
+            Generate
+          </span>
+        </Link>
+
+
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
           <button
             onClick={handleAdd}

@@ -20,8 +20,7 @@ import {
   Search
 } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Activity } from "lucide-react";
-
+import { Activity, Sparkles } from "lucide-react";
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -58,6 +57,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
     { name: "Instagram Reels", href: "/admin/reels", icon: Video },
     { name: "Store Polls", href: "/admin/polls", icon: Activity },
     { name: "SEO & Marketing", href: "/admin/seo", icon: Search },
+    { name: "AI Visual Studio", href: "/studio", icon: Sparkles },
   ];
 
 
