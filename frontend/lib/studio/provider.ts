@@ -1,5 +1,4 @@
-
-
+import { fal } from "@fal-ai/client";
 export interface AIProvider {
   analyzeImage(imageBase64: string): Promise<any>;
   generateModel(params: any): Promise<string>;
@@ -51,7 +50,7 @@ function getStyleInstruction(styleId: string): string {
   return styles[styleId.toLowerCase()] || styleId; // fallback to the literal string if it's "custom" or unknown
 }
 
-export class GroqAIProvider implements AIProvider {
+export class HybridAIProvider implements AIProvider {
   async analyzeImage(imageBase64: string): Promise<any> {
     if (!process.env.GROQ_API_KEY) {
       console.warn("GROQ_API_KEY not set. Using basic fallback analysis.");
@@ -145,9 +144,9 @@ Do not alter the jewellery design to match the style.
 The final image must look like a real professional jewellery photograph captured by a high-end commercial photographer.
 Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate gemstones, floating jewellery, incorrect scale and artificial-looking skin.`;
 
-    // Generate Image using Groq
-    if (!process.env.GROQ_API_KEY) {
-      console.warn("GROQ_API_KEY not set. Using mock result.");
+    // Generate Image using Fal.ai (since Groq doesn't generate images)
+    if (!process.env.FAL_KEY) {
+      console.warn("FAL_KEY not set. Using mock result.");
       return "https://placehold.co/800x1066/141312/C5A059.png?text=AI+Generated+Jewellery";
     }
 
@@ -160,24 +159,25 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
         attempts++;
         let currentUrl = "";
 
-        // Assuming Groq supports OpenAI-compatible image generation endpoints in the future
-        const res = await fetch("https://api.groq.com/openai/v1/images/generations", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${process.env.GROQ_API_KEY}`,
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            model: "dall-e-3", // Standard placeholder for image generation model
-            prompt: prompt,
-            n: 1,
-            size: "1024x1024"
-          })
-        });
-
-        if (res.ok) {
-          const data = await res.json();
-          currentUrl = data.data?.[0]?.url;
+        if (isPhoto && modelDetails.photoBase64) {
+          const result: any = await fal.subscribe("fal-ai/flux/dev/image-to-image", {
+            input: {
+              image_url: modelDetails.photoBase64,
+              prompt: prompt,
+              strength: 0.85,
+            },
+            logs: true,
+          });
+          currentUrl = result.data?.images?.[0]?.url || result.data?.image?.url;
+        } else {
+          const result: any = await fal.subscribe("fal-ai/flux-pro/v1.1-ultra", {
+            input: {
+              prompt: prompt,
+              aspect_ratio: "3:4",
+            },
+            logs: true,
+          });
+          currentUrl = result.data?.images?.[0]?.url || result.data?.image?.url;
         }
 
         // Quality Validation (mocked, randomly fails 20% of the time to simulate retry logic)
@@ -193,7 +193,7 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
 
       return finalImageUrl;
     } catch (err) {
-      console.error("Groq AI Generation Error:", err);
+      console.error("Fal AI Generation Error:", err);
       // Fallback
       return "https://placehold.co/800x1066/141312/C5A059.png?text=AI+Generated+Jewellery";
     }
@@ -201,5 +201,5 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
 }
 
 export const getAIProvider = (): AIProvider => {
-  return new GroqAIProvider();
+  return new HybridAIProvider();
 };
