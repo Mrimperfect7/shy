@@ -146,7 +146,7 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
 
     // If FAL_KEY is available, we use premium Fal.ai generation.
     // If NOT, we fallback to Pollinations.ai (Free Method - No API Key Required)
-    const usePremiumFal = !!process.env.FAL_KEY;
+    let usePremiumFal = !!process.env.FAL_KEY;
 
     try {
       let attempts = 0;
@@ -160,26 +160,32 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
         let currentUrl = "";
 
         if (usePremiumFal) {
-          // PREMIUM METHOD: Fal.ai
-          if (isPhoto && modelDetails.photoBase64) {
-            const result: any = await fal.subscribe("fal-ai/flux/dev/image-to-image", {
-              input: {
-                image_url: modelDetails.photoBase64,
-                prompt: prompt,
-                strength: 0.85,
-              },
-              logs: true,
-            });
-            currentUrl = result.data?.images?.[0]?.url || result.data?.image?.url;
-          } else {
-            const result: any = await fal.subscribe("fal-ai/flux-pro/v1.1-ultra", {
-              input: {
-                prompt: prompt,
-                aspect_ratio: "3:4",
-              },
-              logs: true,
-            });
-            currentUrl = result.data?.images?.[0]?.url || result.data?.image?.url;
+          try {
+            // PREMIUM METHOD: Fal.ai
+            if (isPhoto && modelDetails.photoBase64) {
+              const result: any = await fal.subscribe("fal-ai/flux/dev/image-to-image", {
+                input: {
+                  image_url: modelDetails.photoBase64,
+                  prompt: prompt,
+                  strength: 0.85,
+                },
+                logs: true,
+              });
+              currentUrl = result.data?.images?.[0]?.url || result.data?.image?.url;
+            } else {
+              const result: any = await fal.subscribe("fal-ai/flux-pro/v1.1-ultra", {
+                input: {
+                  prompt: prompt,
+                  aspect_ratio: "3:4",
+                },
+                logs: true,
+              });
+              currentUrl = result.data?.images?.[0]?.url || result.data?.image?.url;
+            }
+          } catch (falError) {
+            console.error("Fal API failed (invalid key or no credits). Falling back to FREE method.");
+            usePremiumFal = false; // Switch to free method for the next retry
+            continue; // Immediately retry with free method
           }
         } else {
           // FREE METHOD: Pollinations.ai
