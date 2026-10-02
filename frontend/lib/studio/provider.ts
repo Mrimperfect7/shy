@@ -148,13 +148,13 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
     // Generate Image using Groq
     if (!process.env.GROQ_API_KEY) {
       console.warn("GROQ_API_KEY not set. Using mock result.");
-      return "https://images.unsplash.com/photo-1599643478514-4a820c56a8e0?q=80&w=1000&auto=format&fit=crop";
+      return "https://placehold.co/800x1066/141312/C5A059.png?text=AI+Generated+Jewellery";
     }
 
     try {
       let attempts = 0;
       const maxRetries = 2;
-      let finalImageUrl = "https://images.unsplash.com/photo-1599643478514-4a820c56a8e0?q=80&w=1000&auto=format&fit=crop";
+      let finalImageUrl = "https://placehold.co/800x1066/141312/C5A059.png?text=AI+Generated+Jewellery";
 
       while (attempts <= maxRetries) {
         attempts++;
@@ -195,7 +195,7 @@ Avoid CGI appearance, plastic-looking jewellery, distorted anatomy, duplicate ge
     } catch (err) {
       console.error("Groq AI Generation Error:", err);
       // Fallback
-      return "https://images.unsplash.com/photo-1599643478514-4a820c56a8e0?q=80&w=1000&auto=format&fit=crop";
+      return "https://placehold.co/800x1066/141312/C5A059.png?text=AI+Generated+Jewellery";
     }
   }
 }
