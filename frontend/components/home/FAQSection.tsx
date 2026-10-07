@@ -10,12 +10,12 @@ export interface FAQItem {
 
 export const SHYNISH_FAQS: FAQItem[] = [
   {
-    q: "How did a housewife start SHYN.ISH? What is the story behind the brand?",
-    a: "SHYN.ISH began right at a family dining table. Like millions of Indian homemakers, our founder loved wearing elegant jewellery but was tired of cheap brass pieces that turned black within days, and hesitant to wear expensive locker gold for daily household chores. Using her personal household savings, she partnered with certified metallurgy craftspeople to produce 18K PVD gold coated stainless steel jewellery — offering lifetime anti-tarnish lustre directly to women across India at honest prices."
+    q: "What is the story behind SHYN.ISH?",
+    a: "SHYN.ISH began with a father's deep passion for the jewellery industry, which eventually became a lifelong dream for our founder. After pursuing studies and building a professional career, that passion kept coming back. What started as an interest that couldn't be left behind has now evolved into SHYN.ISH — a brand dedicated to providing genuine 18K PVD gold coated stainless steel jewellery directly to women across India at honest prices."
   },
   {
     q: "Why is your 18K gold jewellery priced under ₹480? Is the quality genuine?",
-    a: "Yes, 100%! Traditional jewellery showrooms add massive retail rent, distributor margins, and celebrity endorsement fees — marking up costs by 400% to 800%. By operating directly from our home studio without middlemen and dispatching straight to you, we pass all those savings directly to you. You get authentic medical-grade 316L stainless steel with vacuum PVD 18K gold plating at fair factory rates."
+    a: "Yes, 100%! Traditional jewellery showrooms add massive retail rent, distributor margins, and celebrity endorsement fees — marking up costs by 400% to 800%. By operating directly from our studio without middlemen and dispatching straight to you, we pass all those savings directly to you. You get authentic medical-grade 316L stainless steel with vacuum PVD 18K gold plating at fair factory rates."
   },
   {
     q: "Does 18K PVD gold really not tarnish? Can I wear it while cooking, washing dishes, or bathing?",

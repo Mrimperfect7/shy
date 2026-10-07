@@ -21,7 +21,7 @@ export default function AboutFounderSection() {
             Our Founder’s Journey
           </h2>
           <p className="font-sans text-sm sm:text-base text-[#5E564F] font-light leading-relaxed">
-            From a quiet family dining table to revolutionizing everyday luxury jewellery for women across India.
+            From a father&apos;s legacy to a lifelong dream—driven by passion, patience, and the desire to build something meaningful.
           </p>
         </div>
 
@@ -31,22 +31,32 @@ export default function AboutFounderSection() {
             
             {/* Story Subheading */}
             <h3 className="font-serif text-2xl sm:text-4xl lg:text-[2.6rem] text-[#141312] font-normal tracking-tight leading-[1.12] mb-6">
-              Too Shy For The Spotlight.
+              A Passion That
               <br />
               <span className="italic font-normal text-[#C5A059]">
-                Bold Enough To Redefine Luxury.
+                Never Let Go.
               </span>
             </h3>
 
             {/* Heartfelt Founder Narrative */}
             <div className="space-y-4 text-[#4A423B] font-sans text-sm sm:text-base leading-relaxed max-w-2xl">
               <p className="font-normal">
-                For years, my days revolved around quiet household chores and caring for my family. 
-                Like millions of Indian homemakers, I had a secret passion for jewellery — but was heartbroken seeing women choose between brass pieces that turned black in a week and real gold locked away in bank lockers.
+                The story of our jewellery business began with my father, who started the journey with a deep passion for the jewellery industry.
               </p>
               <p className="font-light text-[#5E564F]">
-                One afternoon, from my own dining table, I took our modest household savings to solve this once and for all. 
-                No showroom rents. No celebrity margins. Just surgical-grade 316L steel coated in durable <strong className="text-[#141312] font-semibold">18K PVD Gold</strong> that withstands cooking, dishwashing, perfume, and daily wear — honestly priced under ₹480.
+                Growing up, I was always fascinated by the business and dreamed of becoming part of it. However, while I was pursuing my studies, I wasn&apos;t given the opportunity to step into the business. My focus had to remain on education, so I continued my studies while keeping that passion quietly alive.
+              </p>
+              <p className="font-light text-[#5E564F]">
+                After completing my education, I started my professional career and began working in a job. Yet, even then, the thought of the jewellery business never left me. No matter how far I moved in my career, I continued to feel that something was missing.
+              </p>
+              <p className="font-medium text-[#141312]">
+                That passion kept coming back.
+              </p>
+              <p className="font-light text-[#5E564F]">
+                Eventually, I realized that this wasn&apos;t simply an interest I could leave behind. It was something I genuinely wanted to build and dedicate myself to. So, I made the decision to take the leap and start my own journey in the jewellery business.
+              </p>
+              <p className="font-light text-[#5E564F]">
+                What began with my father&apos;s initiative became a dream of my own — driven by passion, patience, and the desire to build something meaningful.
               </p>
             </div>
 
@@ -56,7 +66,7 @@ export default function AboutFounderSection() {
                 <Heart size={20} fill="#C5A059" className="text-[#C5A059]" />
               </div>
               <p className="text-xs sm:text-[13px] text-[#2C2723] font-serif italic leading-relaxed">
-                &ldquo;When you wear SHYN.ISH, you wear an honest dream made by a woman who believes every Indian homemaker deserves to sparkle without guilt.&rdquo;
+                &ldquo;<strong className="font-bold text-[#141312]">This is not just a business I chose. It is a dream I couldn&apos;t let go of.</strong>&rdquo;
               </p>
             </div>
 
@@ -86,7 +96,7 @@ export default function AboutFounderSection() {
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-[#C5A059]" />
-                <span className="font-medium text-[#181614]">Direct from Homemaker</span>
+                <span className="font-medium text-[#181614]">A Father&apos;s Legacy</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 size={16} className="text-[#C5A059]" />
@@ -123,10 +133,10 @@ export default function AboutFounderSection() {
               {/* Floating Bottom Card Over Image */}
               <div className="absolute bottom-5 left-5 right-5 bg-[#141312]/90 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-white/10 text-white shadow-xl">
                 <p className="text-[11px] uppercase tracking-[0.2em] text-[#C5A059] font-sans font-medium mb-1">
-                  The Woman Behind The Brand
+                  The Founder
                 </p>
                 <p className="text-xs sm:text-sm font-serif italic text-white/95 leading-snug">
-                  &ldquo;Behind these shy hands is a quiet resolve to make every Indian woman shine in real 18K gold quality.&rdquo;
+                  &ldquo;This is not just a business I chose. It is a dream I couldn&apos;t let go of.&rdquo;
                 </p>
               </div>
 
