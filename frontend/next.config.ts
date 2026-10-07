@@ -67,7 +67,7 @@ const nextConfig: NextConfig = {
           },
           {
             key: 'Permissions-Policy',
-            // Allow camera for AI selfie try-on; restrict others
+            // Allow camera only for scanning; restrict others
             value: 'camera=(self), microphone=(), geolocation=()',
           },
         ],
@@ -87,6 +87,15 @@ const nextConfig: NextConfig = {
           {
             key: 'Cache-Control',
             value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        source: '/models/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
           },
         ],
       },

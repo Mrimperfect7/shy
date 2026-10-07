@@ -127,9 +127,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
     dimensions: rawProduct.dimensions || "Standard Fit",
     careInstructions: rawProduct.careInstructions || "Water-resistant everyday wear. Store in provided velvet pouch.",
     category: rawProduct.category?.slug || rawProduct.category?.name || rawProduct.slug || "necklaces",
-    tryOnEnabled: rawProduct.tryOnEnabled ?? false,
-    tryOnCategory: rawProduct.tryOnCategory || null,
-    tryOnRefUrl: rawProduct.tryOnRefUrl || null,
+    model3dUrl: rawProduct.model3dUrl || null,
     images: (rawProduct.imageUrls || []).map((url: string, i: number) => ({
       url,
       altText: `${rawProduct.title} - Angle ${i + 1}`,
@@ -188,13 +186,17 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
             
             {/* Gallery (Left - 7 cols) */}
-            <div className="lg:col-span-7 space-y-6">
-              <ProductGallery images={product.images} productId={product.id} />
+            <div id="product-gallery" className="lg:col-span-7 space-y-6">
+              <ProductGallery
+                images={product.images}
+                productId={product.id}
+                model3dUrl={product.model3dUrl}
+              />
             </div>
 
             {/* Form / Purchase Info (Right - 5 cols) */}
             <div className="lg:col-span-5">
-              <ProductForm product={product} />
+              <ProductForm product={product} model3dUrl={product.model3dUrl} />
             </div>
 
           </div>

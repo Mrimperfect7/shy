@@ -3,15 +3,16 @@
 import { useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { Star, ShoppingBag, Zap, Minus, Plus, Truck, Sparkles, MessageCircle } from "lucide-react";
+import { Star, ShoppingBag, Zap, Minus, Plus, Truck, MessageCircle, Box } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 
 interface ProductFormProps {
   product: any;
+  model3dUrl?: string | null;
 }
 
-export default function ProductForm({ product }: ProductFormProps) {
+export default function ProductForm({ product, model3dUrl }: ProductFormProps) {
   const router = useRouter();
   const { addItem } = useCartStore();
   const [quantity, setQuantity] = useState(1);
@@ -170,54 +171,39 @@ export default function ProductForm({ product }: ProductFormProps) {
           </div>
         </div>
 
-        {/* 3D TRY-ON SHOWROOM — exact product, code-rendered (no AI) */}
-        {product.tryOnEnabled && (
-          <Link
-            href={`/customizer?product=${encodeURIComponent(product.id || product.handle || "")}`}
-            data-testid="product-try-on-button"
+        {/* VIEW IN 3D — shown only when product has a 3D model */}
+        {model3dUrl && (
+          <button
+            type="button"
+            data-testid="product-view-3d-button"
+            onClick={() => {
+              // Scroll to gallery area and trigger 3D tab via custom event
+              const galleryEl = document.getElementById("product-gallery");
+              if (galleryEl) {
+                galleryEl.scrollIntoView({ behavior: "smooth", block: "center" });
+              }
+              window.dispatchEvent(new CustomEvent("open-3d-viewer"));
+            }}
             className="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-[#141312] via-[#242220] to-[#141312] border-2 border-[#C5A059] text-[#FAF8F5] shadow-lg hover:shadow-2xl transition-all duration-300 flex items-center justify-between group hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
           >
             <div className="flex items-center gap-3">
               <div className="w-8 h-8 rounded-full bg-[#C5A059]/20 border border-[#C5A059]/50 text-[#C5A059] flex items-center justify-center group-hover:scale-110 transition-transform">
-                <Sparkles size={16} className="animate-pulse" />
+                <Box size={16} />
               </div>
               <div className="text-left">
                 <span className="font-serif text-sm font-semibold tracking-wide text-white flex items-center gap-1.5">
-                  <span>3D TRY-ON SHOWROOM</span>
+                  <span>VIEW IN 3D</span>
                 </span>
                 <span className="text-[10px] text-[#C5A059] font-sans block">
-                  See {product.title} on the model — rendered in real 3D
+                  Rotate, zoom &amp; inspect every detail
                 </span>
               </div>
             </div>
             <span className="text-[10px] uppercase font-sans font-bold tracking-wider px-3 py-1.5 rounded-full bg-gradient-to-r from-[#ECC880] via-[#C5A059] to-[#9A7832] text-[#141312] shadow-sm">
-              Try This On
+              Inspect
             </span>
-          </Link>
+          </button>
         )}
-
-        {/* AI VISUAL STUDIO */}
-        <Link
-          href={`/studio?product=${encodeURIComponent(product.id || product.handle || "")}`}
-          className="w-full py-3.5 px-5 rounded-2xl bg-white border border-[#C5A059]/40 text-[#141312] shadow-sm hover:shadow-md transition-all duration-300 flex items-center justify-between group hover:border-[#C5A059] cursor-pointer"
-        >
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-full bg-[#F4EFE6] text-[#C5A059] flex items-center justify-center group-hover:scale-110 transition-transform">
-              <Sparkles size={16} />
-            </div>
-            <div className="text-left">
-              <span className="font-serif text-sm font-semibold tracking-wide text-[#141312] flex items-center gap-1.5">
-                <span>AI VISUAL STUDIO</span>
-              </span>
-              <span className="text-[10px] text-[#5E564F] font-sans block">
-                Generate highly realistic marketing images of this piece
-              </span>
-            </div>
-          </div>
-          <span className="text-[10px] uppercase font-sans font-bold tracking-wider px-3 py-1.5 rounded-full bg-[#F4EFE6] text-[#C5A059] border border-[#C5A059]/30 group-hover:bg-[#C5A059] group-hover:text-white transition-colors">
-            Generate
-          </span>
-        </Link>
 
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
