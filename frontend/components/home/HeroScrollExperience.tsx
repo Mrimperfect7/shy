@@ -61,8 +61,8 @@ export default function HeroScrollExperience() {
         {/* Full-screen Hero Background Image */}
         <div className="absolute inset-0 w-full h-full pointer-events-none z-0 flex items-center justify-center">
           <Image 
-            src="/assets/herobg.jpg" 
-            alt="Eshara Luxury Botanical Skincare" 
+            src="/assets/hero-jewelry.jpg" 
+            alt="SHYN.ISH Luxury Jewelry" 
             fill
             priority
             className="hero-bg-image object-cover md:object-cover object-center origin-center md:block hidden" 
@@ -70,8 +70,8 @@ export default function HeroScrollExperience() {
           />
           {/* Mobile specific image rendering */}
           <Image 
-            src="/assets/herobg-mobile.png" 
-            alt="Eshara Luxury Botanical Skincare" 
+            src="/assets/hero-jewelry.jpg" 
+            alt="SHYN.ISH Luxury Jewelry" 
             fill
             priority
             className="hero-bg-image object-cover object-center origin-center md:hidden block" 
@@ -83,10 +83,10 @@ export default function HeroScrollExperience() {
         <div className="hero-content-wrapper absolute z-20 flex flex-col items-center justify-center w-full px-4 pointer-events-auto mt-[-5vh]">
           
           <div className="flex flex-col items-center mb-4">
-            <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[var(--forest)] mb-2 font-sans font-medium">The Power of Nature</p>
+            <p className="text-[10px] md:text-xs tracking-[0.2em] uppercase text-[var(--forest)] mb-2 font-sans font-medium">Fine Elegance</p>
             <div className="flex items-center gap-2 mb-4">
               <div className="h-[1px] w-8 bg-[var(--forest)] opacity-50"></div>
-              <span className="text-[var(--forest)] text-lg">🌿</span>
+              <span className="text-[var(--forest)] text-lg">✨</span>
               <div className="h-[1px] w-8 bg-[var(--forest)] opacity-50"></div>
             </div>
           </div>
@@ -103,7 +103,7 @@ export default function HeroScrollExperience() {
 
           <div className="text-center mb-8">
             <h4 className="font-serif text-[1.2rem] sm:text-2xl md:text-[1.8rem] text-[var(--forest)] tracking-widest leading-tight mb-3">
-              NURTURE BY NATURE.
+              CRAFTED FOR YOU.
             </h4>
             
             <div className="flex items-center justify-center gap-2 mb-4">
@@ -113,12 +113,12 @@ export default function HeroScrollExperience() {
             </div>
             
             <p className="font-sans text-[0.8rem] sm:text-sm text-[var(--forest)] opacity-80 tracking-wide">
-              From Ayurvedic Roots to Modern Rituals
+              Timeless Jewelry for Modern Life
             </p>
           </div>
 
-          <Link href="/products/eshara-natural-hair-oil" className="border border-[var(--forest)] bg-[var(--forest)] text-white hover:bg-transparent hover:text-[var(--forest)] transition-colors duration-300 px-6 py-3 text-xs tracking-widest uppercase flex items-center gap-2">
-            Shop now <ArrowRight size={14} />
+          <Link href="/shop" className="border border-[var(--forest)] bg-[var(--forest)] text-white hover:bg-transparent hover:text-[var(--forest)] transition-colors duration-300 px-6 py-3 text-xs tracking-widest uppercase flex items-center gap-2">
+            Explore Collection <ArrowRight size={14} />
           </Link>
         </div>
 

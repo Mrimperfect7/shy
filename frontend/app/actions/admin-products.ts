@@ -77,6 +77,13 @@ export async function createProductAction(formData: FormData) {
   const status = (formData.get("status") as string) || "ACTIVE";
   const inventoryStr = formData.get("inventory") as string;
   const inventory = inventoryStr ? parseInt(inventoryStr) : 100;
+  const featuresJson = (formData.get("features") as string) || "[]";
+  let features: string[] = [];
+  try {
+    features = JSON.parse(featuresJson);
+  } catch {
+    features = [];
+  }
   
   const imageUrlsJson = (formData.get("imageUrls") as string) || (formData.get("existingImages") as string) || "[]";
   const images = formData.getAll("image") as File[];
@@ -118,6 +125,7 @@ export async function createProductAction(formData: FormData) {
         price,
         compareAtPrice,
         imageUrls,
+        features,
         status,
         inventory,
         ...((await resolveTryOnFields(formData)) as any),
@@ -145,6 +153,13 @@ export async function updateProductAction(formData: FormData) {
   const status = (formData.get("status") as string) || "ACTIVE";
   const inventoryStr = formData.get("inventory") as string;
   const inventory = inventoryStr ? parseInt(inventoryStr) : 0;
+  const featuresJson = (formData.get("features") as string) || "[]";
+  let features: string[] = [];
+  try {
+    features = JSON.parse(featuresJson);
+  } catch {
+    features = [];
+  }
   
   const imageUrlsJson = (formData.get("imageUrls") as string) || (formData.get("existingImages") as string) || "[]";
   const newImages = formData.getAll("image") as File[];
@@ -187,6 +202,7 @@ export async function updateProductAction(formData: FormData) {
         price,
         compareAtPrice,
         imageUrls,
+        features,
         status,
         inventory,
         ...((await resolveTryOnFields(formData)) as any),

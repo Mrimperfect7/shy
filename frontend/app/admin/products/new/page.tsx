@@ -17,6 +17,7 @@ export default function NewProductPage() {
   const [status, setStatus] = useState("ACTIVE");
   const [inventory, setInventory] = useState("100");
   const [descriptionHtml, setDescriptionHtml] = useState("");
+  const [features, setFeatures] = useState("");
   const [tryOnEnabled, setTryOnEnabled] = useState(false);
   const [tryOnCategory, setTryOnCategory] = useState("");
   const [model3dUrl, setModel3dUrl] = useState("");
@@ -31,6 +32,7 @@ export default function NewProductPage() {
       formData.set("descriptionHtml", descriptionHtml);
       formData.set("imageUrls", JSON.stringify(images));
       formData.set("status", status);
+      formData.set("features", JSON.stringify(features.split(",").map(s => s.trim()).filter(Boolean)));
       formData.set("inventory", inventory);
       formData.set("tryOnEnabled", tryOnEnabled ? "true" : "false");
       formData.set("tryOnCategory", tryOnCategory);
@@ -96,6 +98,20 @@ export default function NewProductPage() {
               onChange={setDescriptionHtml}
               placeholder="<p>Describe your product benefits, ingredients, and ritual here...</p>"
             />
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">Features (comma separated) e.g., ✨ 18k Gold, 💎 Diamonds</label>
+              <input
+                type="text"
+                value={features}
+                onChange={(e) => setFeatures(e.target.value)}
+                placeholder="✨ 18k Gold, 💎 Diamonds"
+                className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50"
+                style={{ borderColor: "rgba(26,26,26,0.15)" }}
+              />
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

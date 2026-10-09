@@ -18,6 +18,7 @@ model Category {
   name        String
   slug        String    @unique
   description String?
+  imageUrl    String?
   products    Product[]
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
@@ -35,6 +36,7 @@ model Product {
   inventory       Int         @default(0)
   status          String      @default("ACTIVE") // ACTIVE, DRAFT
   imageUrls       String[]    // Array of image URLs
+  features        String[]    @default([])
   categoryId      String?
   category        Category?   @relation(fields: [categoryId], references: [id])
   model3dUrl      String?
