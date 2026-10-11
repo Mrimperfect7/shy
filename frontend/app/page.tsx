@@ -1,4 +1,4 @@
-import HeroScrollExperience from "@/components/home/HeroScrollExperience";
+import LiveJewelleryHero from "@/components/home/LiveJewelleryHero";
 import AboutFounderSection from "@/components/home/AboutFounderSection";
 import TrustBar from "@/components/home/TrustBar";
 import CategoryGrid from "@/components/home/CategoryGrid";
@@ -78,8 +78,8 @@ export default async function HomePage() {
 
   return (
     <main id="main" className="overflow-hidden bg-[#FAF8F5]">
-      {/* SCENE 01: Hero Scroll Experience */}
-      <HeroScrollExperience />
+      {/* SCENE 01: Hero Section */}
+      <LiveJewelleryHero />
 
       {/* SCENE 02: Trust & Material Strip */}
       <TrustBar />

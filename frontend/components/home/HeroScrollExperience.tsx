@@ -112,7 +112,7 @@ export default function HeroScrollExperience() {
           </div>
 
           <Link 
-            href="/shop" 
+            href="/collections" 
             className="group relative inline-flex items-center justify-center gap-3 bg-[#e5d5b5] text-[#1a1714] px-8 py-4 text-xs sm:text-sm tracking-[0.15em] uppercase font-medium transition-all duration-300 hover:bg-white overflow-hidden"
           >
             <span className="relative z-10">Explore Collection</span>

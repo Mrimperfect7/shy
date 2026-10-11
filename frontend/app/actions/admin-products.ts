@@ -117,6 +117,11 @@ export async function createProductAction(formData: FormData) {
       ? slugInput.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
       : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
+    const careInstructions = ((formData.get("careInstructions") as string) || "").trim() || null;
+    const material = ((formData.get("material") as string) || "").trim() || null;
+    const plating = ((formData.get("plating") as string) || "").trim() || null;
+    const dimensions = ((formData.get("dimensions") as string) || "").trim() || null;
+
     const product = await prisma.product.create({
       data: {
         title,
@@ -126,6 +131,10 @@ export async function createProductAction(formData: FormData) {
         compareAtPrice,
         imageUrls,
         features,
+        material,
+        plating,
+        careInstructions,
+        dimensions,
         status,
         inventory,
         ...((await resolveTryOnFields(formData)) as any),
@@ -193,6 +202,11 @@ export async function updateProductAction(formData: FormData) {
       ? slugInput.trim().toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '')
       : title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
+    const careInstructions = ((formData.get("careInstructions") as string) || "").trim() || null;
+    const material = ((formData.get("material") as string) || "").trim() || null;
+    const plating = ((formData.get("plating") as string) || "").trim() || null;
+    const dimensions = ((formData.get("dimensions") as string) || "").trim() || null;
+
     const updated = await prisma.product.update({
       where: { id },
       data: {
@@ -203,6 +217,10 @@ export async function updateProductAction(formData: FormData) {
         compareAtPrice,
         imageUrls,
         features,
+        material,
+        plating,
+        careInstructions,
+        dimensions,
         status,
         inventory,
         ...((await resolveTryOnFields(formData)) as any),

@@ -101,6 +101,20 @@ const nextConfig: NextConfig = {
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        source: '/explore-collection',
+        destination: '/collections',
+        permanent: true,
+      },
+      {
+        source: '/explore-collections',
+        destination: '/collections',
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;

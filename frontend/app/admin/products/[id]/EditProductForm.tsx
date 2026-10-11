@@ -22,6 +22,9 @@ interface ProductProps {
   inventory: number;
   status: string;
   imageUrls: string[];
+  material?: string | null;
+  plating?: string | null;
+  careInstructions?: string | null;
   tryOnEnabled?: boolean;
   tryOnCategory?: string | null;
   tryOnRefUrl?: string | null;
@@ -44,6 +47,9 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
   const [inventory, setInventory] = useState(product.inventory.toString());
   const [status, setStatus] = useState(product.status || "ACTIVE");
   const [images, setImages] = useState<string[]>(product.imageUrls || []);
+  const [careInstructions, setCareInstructions] = useState(product.careInstructions || "");
+  const [material, setMaterial] = useState(product.material || "");
+  const [plating, setPlating] = useState(product.plating || "");
   const [tryOnEnabled, setTryOnEnabled] = useState(product.tryOnEnabled ?? false);
   const [tryOnCategory, setTryOnCategory] = useState(toSingularCategory(product.tryOnCategory));
   const [tryOnRefUrl, setTryOnRefUrl] = useState(product.tryOnRefUrl || "");
@@ -62,6 +68,9 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
       formData.set("imageUrls", JSON.stringify(images));
       formData.set("status", status);
       formData.set("inventory", inventory);
+      formData.set("careInstructions", careInstructions);
+      formData.set("material", material);
+      formData.set("plating", plating);
       formData.set("tryOnEnabled", tryOnEnabled ? "true" : "false");
       formData.set("tryOnCategory", tryOnCategory);
       formData.set("tryOnRefUrl", tryOnRefUrl);
@@ -260,6 +269,58 @@ export default function EditProductForm({ product }: { product: ProductProps }) 
               onChange={setDescriptionHtml}
               placeholder="<p>Describe your product, its benefits, and rituals here...</p>"
             />
+          </div>
+
+          {/* Material & Plating Specifications */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">Core Material</label>
+              <input
+                type="text"
+                name="material"
+                value={material}
+                onChange={(e) => setMaterial(e.target.value)}
+                placeholder="e.g. 316L Stainless Steel"
+                className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50"
+                style={{ borderColor: "rgba(26,26,26,0.15)" }}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">Plating</label>
+              <input
+                type="text"
+                name="plating"
+                value={plating}
+                onChange={(e) => setPlating(e.target.value)}
+                placeholder="e.g. 18K PVD Gold Plated"
+                className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50"
+                style={{ borderColor: "rgba(26,26,26,0.15)" }}
+              />
+            </div>
+          </div>
+
+          {/* Caring Instructions */}
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-sm font-sans font-medium text-gray-700">
+                Care Instructions *
+              </label>
+              <span className="text-xs text-[#8C6D2B] font-medium font-sans">
+                Displayed on product page
+              </span>
+            </div>
+            <textarea
+              name="careInstructions"
+              rows={3}
+              value={careInstructions}
+              onChange={(e) => setCareInstructions(e.target.value)}
+              placeholder="e.g. Water & sweat resistant. Wipe with a soft microfiber cloth after wear. Avoid direct perfume sprays. Store in your SHYN.ISH pouch."
+              className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50 leading-relaxed"
+              style={{ borderColor: "rgba(26,26,26,0.15)" }}
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Provide customers with caring guidelines for everyday wear and long-lasting shine.
+            </p>
           </div>
 
           {/* Product Images Management with First & Touch/Hover Controls */}

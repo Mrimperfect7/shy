@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import toast from "react-hot-toast";
-import { Star, ShoppingBag, Zap, Minus, Plus, Truck, MessageCircle, Box } from "lucide-react";
+import { Star, ShoppingBag, Zap, Minus, Plus, Truck, MessageCircle, Box, ChevronDown, Sparkles } from "lucide-react";
 import { useCartStore } from "@/lib/store";
 import { useRouter } from "next/navigation";
 
@@ -18,6 +18,7 @@ export default function ProductForm({ product, model3dUrl }: ProductFormProps) {
   const [quantity, setQuantity] = useState(1);
   const [adding, setAdding] = useState(false);
   const [isWishlisted, setIsWishlisted] = useState(false);
+  const [careOpen, setCareOpen] = useState(true);
 
   // Indian PIN code validation
   const [pincode, setPincode] = useState("");
@@ -275,6 +276,79 @@ export default function ProductForm({ product, model3dUrl }: ProductFormProps) {
         </div>
       </div>
 
+      {/* Caring Instructions Under Product */}
+      <div className="rounded-2xl border border-[#C5A059]/25 bg-white/70 overflow-hidden shadow-sm transition-all duration-300">
+        <button
+          type="button"
+          onClick={() => setCareOpen(!careOpen)}
+          className="w-full p-4 flex items-center justify-between text-left hover:bg-black/[0.02] transition-colors"
+          aria-expanded={careOpen}
+        >
+          <div className="flex items-center gap-2.5">
+            <div className="w-7 h-7 rounded-full bg-[#C5A059]/15 text-[#8C6D2B] flex items-center justify-center">
+              <Sparkles size={14} />
+            </div>
+            <div>
+              <span className="text-xs uppercase tracking-wider font-sans font-semibold text-[#141312] block">
+                Caring Instructions
+              </span>
+              <span className="text-[11px] text-[#8C6D2B] font-sans">
+                Water-resistant & Anti-tarnish Care Guide
+              </span>
+            </div>
+          </div>
+          <ChevronDown
+            size={16}
+            className={`text-[#8C6D2B] transition-transform duration-300 ${
+              careOpen ? "rotate-180" : ""
+            }`}
+          />
+        </button>
+
+        {careOpen && (
+          <div className="px-4 pb-4 pt-1 space-y-3 border-t border-[#C5A059]/15 text-xs font-sans">
+            {/* Custom Care Text from Database / Admin */}
+            <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#C5A059]/20 text-[#141312] font-medium leading-relaxed">
+              <p className="text-[12px] text-[#332F2A]">
+                {product.careInstructions ||
+                  "Water & sweat resistant. Wipe with a soft microfiber cloth after daily wear. Avoid direct perfume sprays. Store in your SHYN.ISH pouch."}
+              </p>
+            </div>
+
+            {/* Quick 4-Step Care Protocol */}
+            <div className="grid grid-cols-2 gap-2 text-[11px] text-[#5E564F]">
+              <div className="flex items-start gap-1.5 p-2 rounded-lg bg-white/80 border border-gray-100">
+                <span className="text-base leading-none">💧</span>
+                <div>
+                  <span className="font-semibold text-[#141312] block">Water Safe</span>
+                  <span>Shower & workout friendly</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-1.5 p-2 rounded-lg bg-white/80 border border-gray-100">
+                <span className="text-base leading-none">🧴</span>
+                <div>
+                  <span className="font-semibold text-[#141312] block">Perfume Last</span>
+                  <span>Wear after mists & lotions</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-1.5 p-2 rounded-lg bg-white/80 border border-gray-100">
+                <span className="text-base leading-none">✨</span>
+                <div>
+                  <span className="font-semibold text-[#141312] block">Wipe Clean</span>
+                  <span>Microfiber cloth after wear</span>
+                </div>
+              </div>
+              <div className="flex items-start gap-1.5 p-2 rounded-lg bg-white/80 border border-gray-100">
+                <span className="text-base leading-none">👝</span>
+                <div>
+                  <span className="font-semibold text-[#141312] block">Store Dry</span>
+                  <span>In SHYN.ISH velvet pouch</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </div>
 
     </div>
   );

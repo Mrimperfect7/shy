@@ -20,6 +20,9 @@ export default function NewProductPage() {
   const [features, setFeatures] = useState("");
   const [tryOnEnabled, setTryOnEnabled] = useState(false);
   const [tryOnCategory, setTryOnCategory] = useState("");
+  const [careInstructions, setCareInstructions] = useState("Water & sweat resistant. Wipe with a soft microfiber cloth after wear. Avoid direct perfume sprays. Store dry in velvet pouch.");
+  const [material, setMaterial] = useState("316L Stainless Steel");
+  const [plating, setPlating] = useState("18K PVD Gold Plated");
   const [model3dUrl, setModel3dUrl] = useState("");
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -33,6 +36,9 @@ export default function NewProductPage() {
       formData.set("imageUrls", JSON.stringify(images));
       formData.set("status", status);
       formData.set("features", JSON.stringify(features.split(",").map(s => s.trim()).filter(Boolean)));
+      formData.set("careInstructions", careInstructions);
+      formData.set("material", material);
+      formData.set("plating", plating);
       formData.set("inventory", inventory);
       formData.set("tryOnEnabled", tryOnEnabled ? "true" : "false");
       formData.set("tryOnCategory", tryOnCategory);
@@ -112,6 +118,55 @@ export default function NewProductPage() {
                 style={{ borderColor: "rgba(26,26,26,0.15)" }}
               />
             </div>
+          </div>
+
+          {/* Material & Plating Specifications */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">Core Material</label>
+              <input
+                type="text"
+                value={material}
+                onChange={(e) => setMaterial(e.target.value)}
+                placeholder="e.g. 316L Stainless Steel"
+                className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50"
+                style={{ borderColor: "rgba(26,26,26,0.15)" }}
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-sans font-medium mb-1.5 text-gray-700">Plating</label>
+              <input
+                type="text"
+                value={plating}
+                onChange={(e) => setPlating(e.target.value)}
+                placeholder="e.g. 18K PVD Gold Plated"
+                className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50"
+                style={{ borderColor: "rgba(26,26,26,0.15)" }}
+              />
+            </div>
+          </div>
+
+          {/* Caring Instructions */}
+          <div>
+            <div className="flex items-center justify-between mb-1.5">
+              <label className="block text-sm font-sans font-medium text-gray-700">
+                Care Instructions *
+              </label>
+              <span className="text-xs text-[#8C6D2B] font-medium font-sans">
+                Displayed on product page
+              </span>
+            </div>
+            <textarea
+              rows={3}
+              value={careInstructions}
+              onChange={(e) => setCareInstructions(e.target.value)}
+              placeholder="e.g. Water & sweat resistant. Wipe with a soft microfiber cloth after wear. Avoid harsh chemicals and direct perfume sprays. Store in your SHYN.ISH pouch."
+              className="w-full p-3 border rounded-lg font-sans text-sm outline-none focus:ring-1 bg-gray-50/50 leading-relaxed"
+              style={{ borderColor: "rgba(26,26,26,0.15)" }}
+            />
+            <p className="text-xs text-gray-500 mt-1">
+              Provide customers with caring guidelines for everyday wear and long-lasting shine.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

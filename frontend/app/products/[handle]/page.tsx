@@ -232,7 +232,7 @@ export default async function ProductPage(props: { params: Promise<{ handle: str
               <p className="text-[#5E564F]">{product.material}</p>
             </div>
             <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#C5A059]/20 space-y-1">
-              <span className="font-semibold text-[#141312] block">Care Recommendation</span>
+              <span className="font-semibold text-[#141312] block">Caring Instructions</span>
               <p className="text-[#5E564F]">{product.careInstructions}</p>
             </div>
           </div>

@@ -1,4 +1,4 @@
-﻿import Link from "next/link";
+import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 
@@ -55,7 +55,8 @@ const CATEGORIES = [
 
 export default function CategoryGrid() {
   return (
-    <section id="categories" className="py-20 lg:py-28 px-6 lg:px-12 bg-[#FAF8F5]">
+    <section id="categories" className="py-20 lg:py-28 px-6 lg:px-12 bg-[#FAF8F5] relative">
+      <div id="explore-collection" className="absolute -top-20 left-0" aria-hidden />
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
