@@ -63,8 +63,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
   const handleLogout = async () => {
     try {
+      await fetch('/api/auth/logout', { method: 'POST' }).catch(() => {});
       document.cookie = "eshara_session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       document.cookie = "eshara_logged_in=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie = "eshara_role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       window.location.href = "/login";
     } catch (error) {
       console.error("Logout failed", error);

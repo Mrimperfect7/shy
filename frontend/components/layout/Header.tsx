@@ -7,7 +7,7 @@ import { useCart } from "@/context/CartContext";
 import CartDrawer from "@/components/shop/CartDrawer";
 import SearchOverlay from "@/components/shop/SearchOverlay";
 import MobileMenu from "@/components/layout/MobileMenu";
-import { ShoppingBag, Search, User, Menu, LogOut, Heart } from "lucide-react";
+import { ShoppingBag, Search, User, Menu, LogOut, Heart, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import Logo from "@/components/shared/Logo";
 
@@ -29,11 +29,13 @@ export default function Header({ isLoggedIn: serverLoggedIn = false, showroom = 
   const [mobileOpen, setMobileOpen] = useState(false);
   const headerRef = useRef<HTMLElement>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(serverLoggedIn);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     const check = () => {
       const cookies = document.cookie.split(";").map(c => c.trim());
       setIsLoggedIn(cookies.some(c => c.startsWith("eshara_logged_in=") || c.startsWith("shyn_logged_in=")));
+      setIsAdmin(cookies.some(c => c === "eshara_role=admin"));
     };
     check();
   }, []);
@@ -155,17 +157,38 @@ export default function Header({ isLoggedIn: serverLoggedIn = false, showroom = 
               </Link>
 
               {isLoggedIn ? (
-                <button
-                  onClick={async () => {
-                    await fetch('/api/auth/logout', { method: 'POST' });
-                    window.location.href = '/account/login';
-                  }}
-                  aria-label="Logout"
-                  className="hidden sm:flex items-center gap-1 px-3 py-1 rounded-full font-sans text-[11px] font-medium tracking-wider uppercase border border-[#C5A059]/40 text-[#141312] hover:bg-[#141312] hover:text-[#FAF8F5] transition-all"
-                >
-                  <LogOut size={13} strokeWidth={1.5} />
-                  <span>Logout</span>
-                </button>
+                <div className="hidden sm:flex items-center gap-1.5">
+                  {isAdmin ? (
+                    <Link
+                      href="/admin"
+                      aria-label="Admin Dashboard"
+                      className="flex items-center gap-1.5 px-3 py-1 rounded-full font-sans text-[11px] font-semibold tracking-wider uppercase bg-[#141312] text-[#FAF8F5] hover:bg-[#C5A059] hover:text-[#141312] transition-all shadow-sm"
+                    >
+                      <ShieldCheck size={13} strokeWidth={1.8} />
+                      <span>Admin</span>
+                    </Link>
+                  ) : (
+                    <Link
+                      href="/account"
+                      aria-label="My Account"
+                      className="flex items-center gap-1 px-3 py-1 rounded-full font-sans text-[11px] font-medium tracking-wider uppercase border border-[#C5A059]/40 text-[#141312] hover:bg-[#141312] hover:text-[#FAF8F5] transition-all"
+                    >
+                      <User size={13} strokeWidth={1.5} />
+                      <span>Account</span>
+                    </Link>
+                  )}
+                  <button
+                    onClick={async () => {
+                      await fetch('/api/auth/logout', { method: 'POST' });
+                      window.location.href = '/account/login';
+                    }}
+                    aria-label="Logout"
+                    className="p-1.5 text-[#181614]/60 hover:text-red-600 transition-colors"
+                    title="Sign Out"
+                  >
+                    <LogOut size={13} strokeWidth={1.5} />
+                  </button>
+                </div>
               ) : (
                 <Link
                   href="/account/login"
@@ -222,7 +245,7 @@ export default function Header({ isLoggedIn: serverLoggedIn = false, showroom = 
       {/* Overlays */}
       {isOpen && <CartDrawer onClose={closeCart} />}
       {searchOpen && <SearchOverlay onClose={() => setSearchOpen(false)} />}
-      {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} isLoggedIn={isLoggedIn} />}
+      {mobileOpen && <MobileMenu onClose={() => setMobileOpen(false)} isLoggedIn={isLoggedIn} isAdmin={isAdmin} />}
     </>
   );
 }

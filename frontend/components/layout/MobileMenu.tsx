@@ -19,7 +19,7 @@ const LINKS = [
   { href: "/journal", label: "Journal & Styling" },
 ];
 
-export default function MobileMenu({ onClose, isLoggedIn = false }: { onClose: () => void, isLoggedIn?: boolean }) {
+export default function MobileMenu({ onClose, isLoggedIn = false, isAdmin = false }: { onClose: () => void, isLoggedIn?: boolean, isAdmin?: boolean }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") onClose(); };
     window.addEventListener("keydown", onKey);
@@ -56,7 +56,11 @@ export default function MobileMenu({ onClose, isLoggedIn = false }: { onClose: (
 
       <div className="px-6 py-5 border-t border-[#C5A059]/20 space-y-3 bg-[#FAF8F5]">
         <div className="grid grid-cols-2 gap-2">
-          {isLoggedIn ? (
+          {isAdmin ? (
+            <Link href="/admin" onClick={onClose} className="btn-primary w-full justify-center text-xs py-3 bg-[#141312] text-[#FAF8F5]">
+              Admin Panel
+            </Link>
+          ) : isLoggedIn ? (
             <Link href="/account" onClick={onClose} className="btn-primary w-full justify-center text-xs py-3">
               My Account
             </Link>

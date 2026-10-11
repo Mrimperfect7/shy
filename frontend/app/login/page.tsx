@@ -43,7 +43,7 @@ export default function UnifiedLogin() {
         throw new Error(data.error || "Login failed");
       }
 
-      const target = data.redirect || (data.role === "ADMIN" ? "/admin" : data.role === "INFLUENCER" ? "https://influencer.shynish.com" : "/account");
+      const target = data.redirect || ((data.role === "ADMIN" || data.role === "SUPERADMIN") ? "/admin" : data.role === "INFLUENCER" ? "/influencer" : "/account");
       window.location.href = target;
     } catch (err: any) {
       setError(err.message);

@@ -19,6 +19,10 @@ export default async function ReferAndEarnPage() {
   
   if (!user) redirect("/account/login");
 
+  if (user.role === "ADMIN" || user.role === "SUPERADMIN") {
+    redirect("/admin");
+  }
+
   const profile = await prisma.customerReferralProfile.findUnique({
     where: { email: user.email.toLowerCase() },
     include: { rewards: true }

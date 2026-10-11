@@ -11,7 +11,7 @@ export default async function LoginLayout({
   if (token) {
     const session = await verifySession(token);
     if (session) {
-      if (session.role === "ADMIN") {
+      if (session.role === "ADMIN" || session.role === "SUPERADMIN") {
         redirect("/admin");
       } else if (session.role === "INFLUENCER") {
         redirect("/influencer");

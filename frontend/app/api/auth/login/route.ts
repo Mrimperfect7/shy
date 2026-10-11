@@ -25,10 +25,6 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Invalid credentials" }, { status: 401 });
     }
 
-    if (user.role === "SUPERADMIN" && process.env.NODE_ENV === "production") {
-      return NextResponse.json({ error: "Superadmin access is disabled in production" }, { status: 403 });
-    }
-
     const token = await createSession({
       userId: user.id,
       role: user.role,
@@ -37,7 +33,7 @@ export async function POST(request: Request) {
       name: user.name,
     });
 
-    await setSessionCookie(token);
+    await setSessionCookie(token, user.role);
 
     const redirectPath = (user.role === "ADMIN" || user.role === "SUPERADMIN") ? "/admin" : user.role === "INFLUENCER" ? "/influencer" : "/account";
 

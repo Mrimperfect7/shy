@@ -25,6 +25,14 @@ export default async function AccountPage() {
     redirect("/account/login");
   }
 
+  if (user.role === "ADMIN" || user.role === "SUPERADMIN") {
+    redirect("/admin");
+  }
+
+  if (user.role === "INFLUENCER") {
+    redirect("/influencer");
+  }
+
   const profile = await prisma.customerReferralProfile.findUnique({
     where: { email: user.email.toLowerCase() }
   });

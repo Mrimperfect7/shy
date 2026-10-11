@@ -32,7 +32,7 @@ export async function customerLogin(email: string, password: string) {
       name: user.name,
     });
     
-    await setSessionCookie(token);
+    await setSessionCookie(token, user.role);
 
     // If it's a customer, ensure they have a referral profile
     if (user.role === "CUSTOMER") {
@@ -249,7 +249,7 @@ export async function verifyPasswordResetOtpAndResetPassword(input: {
       name: updatedUser.name,
     });
     
-    await setSessionCookie(token);
+    await setSessionCookie(token, updatedUser.role);
 
     const redirectPath = (updatedUser.role === "ADMIN" || updatedUser.role === "SUPERADMIN") ? "/admin" : updatedUser.role === "INFLUENCER" ? "/influencer" : "/account";
 

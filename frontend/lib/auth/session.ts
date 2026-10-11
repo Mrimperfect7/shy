@@ -45,7 +45,7 @@ export async function getSession(): Promise<SessionPayload | null> {
   return verifySession(token);
 }
 
-export async function setSessionCookie(token: string): Promise<void> {
+export async function setSessionCookie(token: string, role?: string): Promise<void> {
   const cookieStore = await cookies();
   // Secure httpOnly session token
   cookieStore.set("eshara_session", token, {
@@ -63,12 +63,26 @@ export async function setSessionCookie(token: string): Promise<void> {
     maxAge: 60 * 60 * 24 * 7, // 7 days
     path: "/",
   });
+
+  const isAdmin = role === "ADMIN" || role === "SUPERADMIN";
+  if (isAdmin) {
+    cookieStore.set("eshara_role", "admin", {
+      httpOnly: false,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
+      maxAge: 60 * 60 * 24 * 7,
+      path: "/",
+    });
+  } else {
+    cookieStore.delete("eshara_role");
+  }
 }
 
 export async function clearSession(): Promise<void> {
   const cookieStore = await cookies();
   cookieStore.delete("eshara_session");
   cookieStore.delete("eshara_logged_in");
+  cookieStore.delete("eshara_role");
 }
 
 export async function requireAdmin(): Promise<SessionPayload> {
@@ -83,9 +97,6 @@ export async function requireSuperAdmin(): Promise<SessionPayload> {
   const session = await getSession();
   if (!session || session.role !== "SUPERADMIN") {
     throw new Error("Unauthorized");
-  }
-  if (process.env.NODE_ENV === "production") {
-    throw new Error("Superadmin access disabled in production");
   }
   return session;
 }
